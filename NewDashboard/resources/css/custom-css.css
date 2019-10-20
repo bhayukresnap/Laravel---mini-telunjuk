@@ -1,0 +1,15 @@
+a{
+        transition: .15s;
+    }
+    a.remove{
+        color:#e03b2f;
+    }
+    a.remove:hover{
+        color:#c4372d;
+    }
+    a.update{
+        color:#2abf52;
+    }
+    a.update:hover{
+        color: #249c44;
+    }
