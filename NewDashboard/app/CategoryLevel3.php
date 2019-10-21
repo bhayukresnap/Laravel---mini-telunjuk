@@ -15,4 +15,9 @@ class CategoryLevel3 extends Model
     public function meta(){
     	return $this->morphOne('App\Meta', 'metaable');
     }
+
+    public function belongslevel2(){
+    	return $this->belongsTo('App\CategoryLevel2');
+    }
+
 }

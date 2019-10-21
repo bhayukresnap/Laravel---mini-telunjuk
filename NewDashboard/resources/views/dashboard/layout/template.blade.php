@@ -145,28 +145,33 @@
 								<li><a href="app-contact2.html">All products</a></li>
 							</ul>
 						</li>
-						<li><a href=""><i class="icon-layers"></i><span>Categories</span></a></li>
+						<li><a href="{{route('categories')}}"><i class="icon-layers"></i><span>Categories</span></a></li>
 						<li>
 							<a href="{{route('images')}}"><i class="fa fa-image"></i><span>Images</span></a>
 						
 						</li>
 						<li><a href="{{route('tags')}}"><i class="fa fa-tags"></i><span>Tags</span></a></li>
 						<li class="header">Developer</li>
+						<li class=""><a href="{{route('clearCache')}}"><i class="fa fa-eraser"></i><span>Clear Cache</span></a></li>
 						<li class=""><a href="#"><i class="fa fa-users"></i><span>Customer (Maintenance)</span></a></li>
 						<li class=""><a href="{{route('home')}}"><i class="icon-lock"></i><span>User Authentication</span></a></li>
 					</ul>
 				</nav>     
 			</div>
 		</div>
-		<div id="particles-js"></div>
 		<div id="main-content">
 			@yield('body')
 		</div>
 	</div>
+
 	<script type="text/javascript">
+		$( "input#title" ).on( "keyup", function(event) {
+			$('input#path_url').val(convertToSlug($(this).val()))
+		});
 		$.ajaxSetup({
-            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-        });
+		    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+		});			
 	</script>
+
 </body>
 </html>

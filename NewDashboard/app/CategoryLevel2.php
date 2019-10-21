@@ -15,4 +15,13 @@ class CategoryLevel2 extends Model
     public function meta(){
     	return $this->morphOne('App\Meta', 'metaable');
     }
+
+    public function belongslevel1(){
+    	return $this->belongsTo('App\CategoryLevel1','categoryLvl1','id');
+    }
+
+    public function manylevel3(){
+    	return $this->hasMany('App\CategoryLevel3','categoryLvl2');
+    }
+
 }

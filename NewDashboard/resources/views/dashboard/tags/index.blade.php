@@ -56,11 +56,11 @@
                     @csrf
                     <div class="form-group">
                         <label>Slug</label>
-                        <input id="alt" name="path_url" class="form-control slug"  autocomplete="off" readonly="readonly"></input>
+                        <input id="path_url" name="path_url" class="form-control slug"  autocomplete="off" readonly="readonly"></input>
                     </div>
                     <div class="form-group">
                         <label>Tag Name</label>
-                        <input type="text" id="alt" name="tagname" class="form-control tagname"  autocomplete="off">
+                        <input type="text" id="title" name="tagname" class="form-control title"  autocomplete="off">
                     </div>
                     <div class="form-group">
                         <label>Meta Title</label>
@@ -112,11 +112,11 @@
                     <div class="form-group">
                         <label>Slug</label>
                         <input type="hidden" id="id" readonly="readonly">
-                        <input id="alt" name="path_url" class="form-control slug"  autocomplete="off" readonly="readonly"></input>
+                        <input id="path_url" name="path_url" class="form-control slug"  autocomplete="off" readonly="readonly"></input>
                     </div>
                     <div class="form-group">
                         <label>Tag Name</label>
-                        <input type="text" id="alt" name="tagname" class="form-control tagname"  autocomplete="off">
+                        <input type="text" id="title" name="tagname" class="form-control title"  autocomplete="off">
                     </div>
                     <div class="form-group">
                         <label>Meta Title</label>
@@ -154,9 +154,6 @@
 <script type="text/javascript">
     $(document).ready(function(){
         get_alltag();
-        $( "input.tagname" ).on( "keyup", function(event) {
-            $('input.slug').val(convertToSlug($(this).val()))
-        });
     });
 
     function loadTags(tag){
@@ -270,6 +267,7 @@
                     if(responseStatus == 200){
                         get_alltag();
                         $('input#alt').val('');
+                        $('#addtag input[name="noindex"][value="false"]').prop('checked','true');
                         $('#modaladdTag').modal('hide');
                     }
                 });
