@@ -80,7 +80,7 @@ class TagController extends ApiController
             return $this->successResponse($tag->tagname.' tag has been updated!', 200);
             //return $this->successResponse('Your tag has been saved!', 200);
         }else{
-            return $this->errorResponse($req, 406);
+            return $this->errorResponse($validator_tag->errors()->all(), 406);
         }
     }
 

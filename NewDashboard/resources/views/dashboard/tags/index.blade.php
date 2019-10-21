@@ -207,11 +207,7 @@
             async:true,
             url: url_update,
             type: 'put',
-            data: new FormData(this),
-            dataType:'JSON',
-            contentType: false,
-            cache: false,
-            processData: false,
+            data: $(this).serialize(),
             error: function (code, statusText, error) {
                 notification("error", code.responseText +statusText+error);
                 removeLoading();

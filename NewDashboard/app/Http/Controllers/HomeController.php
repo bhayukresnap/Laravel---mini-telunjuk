@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
 use App\Image;
+use Illuminate\Support\Facades\Auth;
 use Artisan;
 class HomeController extends Controller
 {
@@ -28,5 +29,8 @@ class HomeController extends Controller
        $exitCode = Artisan::call('route:cache');
        return back();
     }
-
+    public function logout(){
+      Auth::logout();
+      return back();
+    }
 }

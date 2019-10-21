@@ -9,7 +9,7 @@
 	<meta name="description" content="Oculux Bootstrap 4x admin is super flexible, powerful, clean &amp; modern responsive admin dashboard with unlimited possibilities.">
 	<meta name="keywords" content="admin template, Oculux admin template, dashboard template, flat admin template, responsive admin template, web app, Light Dark version">
 	<meta name="author" content="GetBootstrap, design by: puffintheme.com">
-	<link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="/img/favicon.ico" type="image/x-icon">
 	<link rel="stylesheet" type="text/css" href="{{asset('css/all.css')}}">
 	<script src="{{asset('js/all.js')}}"></script>
 </head>
@@ -32,7 +32,7 @@
 
 				<div class="navbar-left">
 					<div class="navbar-btn">
-						<a href="{{route('home')}}"><img src="/images/icon.svg" alt="Oculux Logo" class="img-fluid logo"></a>
+						<a href="{{route('home')}}"><img src="/img/icon.svg" alt="Oculux Logo" class="img-fluid logo"></a>
 						<button type="button" class="btn-toggle-offcanvas"><i class="lnr lnr-menu fa fa-bars"></i></button>
 					</div>
 					<ul class="nav navbar-nav">
@@ -110,13 +110,13 @@
 		</nav>
 		<div id="left-sidebar" class="sidebar">
 			<div class="navbar-brand">
-				<a href="{{route('home')}}"><img src="/images/icon.svg" alt="Oculux Logo" class="img-fluid logo"><span>Oculux</span></a>
+				<a href="{{route('home')}}"><img src="/img/icon.svg" alt="Oculux Logo" class="img-fluid logo"><span>Oculux</span></a>
 				<button type="button" class="btn-toggle-offcanvas btn btn-sm float-right"><i class="lnr lnr-menu icon-close"></i></button>
 			</div>
 			<div class="sidebar-scroll">
 				<div class="user-account">
 					<div class="user_div">
-						<img src="/images/user.png" class="user-photo" alt="User Profile Picture">
+						<img src="/img/user.png" class="user-photo" alt="User Profile Picture">
 					</div>
 					<div class="dropdown">
 						<span>Welcome,</span>

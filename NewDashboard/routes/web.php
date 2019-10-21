@@ -38,6 +38,8 @@ Route::middleware(['auth'])->group(function(){
 		'destroy'=>'deletetag',
 		'show'=>'viewtag'
 	]);
+
+	Route('/logout','HomeController@logout')->name('logout');
 });
 
 Route::get('/clear-cache', 'HomeController@clearCache')->name('clearCache');
