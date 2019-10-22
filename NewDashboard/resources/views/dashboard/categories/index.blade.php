@@ -21,19 +21,7 @@
 			<a href="#" data-toggle="modal" data-target="#modalcatlevel3" class="btn btn-sm btn-success btn-round" title=""><i class="icon-layers"></i> Add Categories Level 3</a>
 		</div>
 		<div class="col-12">
-			<ol>
-				<li>Living Room
-					<ul>
-						<li>
-							Sofa armchair
-							<ul>
-								<li>Sofa armchair</li>
-								<li>Sofa</li>
-							</ul>
-						</li>
-					</ul>
-				</li>
-			</ol>
+			<ol id="loadCategories"></ol>
 			<hr>
 		</div>
 	</div>
@@ -214,8 +202,7 @@
 <script type="text/javascript">
 
     $(document).ready(function(){
-        getCategoriesLevel1();
-        getCategoriesLevel2();
+        getAllCategories();
     });
 
 	$('form#addLevel1').submit(function(e){
@@ -241,7 +228,7 @@
                         notification(status, value)
                     });
                     if(responseStatus == 200){
-                        getCategoriesLevel1();
+                        getAllCategories();
                         $('input#alt').val('');
                         $('input#title').val('');
                         $('input#path_url').val('');
@@ -276,7 +263,7 @@
                         notification(status, value)
                     });
                     if(responseStatus == 200){
-                        getCategoriesLevel2();
+                        getAllCategories();
                         $('input#alt').val('');
                         $('input#title').val('');
                         $('input#path_url').val('');
@@ -312,6 +299,7 @@
                         notification(status, value)
                     });
                     if(responseStatus == 200){
+                        getAllCategories();
                         $('input#alt').val('');
                         $('input#title').val('');
                         $('input#path_url').val('');
@@ -335,29 +323,62 @@
         });
         $('#'+id).html(str);
     }
-
-    function getCategoriesLevel1(){
+    function fetchDataCategories(json){
         loading();
-        $.getJSON('{{route('allcategorieslevel1')}}', function(data){
+        let str = '';
+        const level_1 = [],level_2 = [];
+        $(json).each(function(index,value){
+            str +=  '<li>'
+            str +=      '<span>'+value.category_name+'</span>'
+            str +=  '</li>'
+            let temp = {
+                id: value.id,
+                category_name:value.category_name,
+            }
+            level_1.push(temp);
+            if(value.manylevel2.length > 0){
+                str +=  '<ul>'
+                $(value.manylevel2).each(function(index2, value2){
+                    str +=  '<li>'
+                    str +=      '<span>'+value2.category_name+'</span>'
+                    str +=  '</li>'
+                    let temp = {
+                        id: value2.id,
+                        category_name:value2.category_name,
+                    }
+                    level_2.push(temp);
+                    if(value2.manylevel3.length > 0){
+                        str +=  '<ul>'
+                        $(value2.manylevel3).each(function(index3,value3){
+                            str +=  '<li>'
+                            str +=      '<span>'+value3.category_name+'</span>'
+                            str +=  '</li>'
+                        });
+                        str +=  '</ul>'
+                    }
 
-        }).fail(function(code, statusText, error){
-            notification("error", code.responseText +statusText+error);
-        }).done(function(success){
-            console.log(success)
-            removeLoading();
-            loadSelect('level1',success)
+                });
+                str +=  '</ul>'
+            }
+
         });
+        loadSelect('level1',level_1);
+        loadSelect('level2',level_2);
+        $('#loadCategories').html(str);
+        removeLoading();
     }
 
-    function getCategoriesLevel2(){
+    function getAllCategories(){
         loading();
-        $.getJSON('{{route('allcategorieslevel2')}}', function(data){
-
+        $.getJSON('{{route('allcategorieslevel1')}}', function(data){
+            
         }).fail(function(code, statusText, error){
             notification("error", code.responseText +statusText+error);
+            removeLoading();
         }).done(function(success){
             removeLoading();
-            loadSelect('level2',success)
+            console.log(success)
+            if(success.length > 0) fetchDataCategories(success);
         });
     }
 </script>
