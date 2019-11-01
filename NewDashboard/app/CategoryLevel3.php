@@ -3,7 +3,6 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
 class CategoryLevel3 extends Model
 {
     protected $table = "categories_level_3";
@@ -11,7 +10,6 @@ class CategoryLevel3 extends Model
     protected $fillable = [
         'category_name', 'categoryLvl2'
     ];
-
     public function meta(){
     	return $this->morphOne('App\Meta', 'metaable');
     }

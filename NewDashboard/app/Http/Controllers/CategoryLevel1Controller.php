@@ -75,6 +75,7 @@ class CategoryLevel1Controller extends ApiController
     {
         $categorieslevel1->meta()->delete();
         $categorieslevel1->delete();
+        $categorieslevel1->deleteMorphResidual();
         return $this->successResponse($categorieslevel1->category_name.' has been deleted', 200);
     }
 }
