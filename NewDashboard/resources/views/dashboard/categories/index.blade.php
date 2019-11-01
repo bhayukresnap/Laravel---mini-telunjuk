@@ -1,5 +1,16 @@
 @extends('dashboard.layout.template')
 @section('body')
+    <style type="text/css">
+        i{
+            cursor: pointer;
+        }
+        .colorDanger{
+            color:#eb4034;
+        }
+        .colorDanger:hover{
+            color:#bd352b;
+        }
+    </style>
 	<div class="block-header">
 	    <div class="row clearfix">
 	        <div class="col-md-6 col-sm-12">
@@ -328,9 +339,9 @@
         let str = '';
         const level_1 = [],level_2 = [];
         $(json).each(function(index,value){
-            str +=  '<li>'
-            str +=      '<span>'+value.category_name+'</span>'
-            str +=  '</li>'
+            str +=  '<li class="level1parent" data-index="'+value.id+'">'
+            str +=      '<span>'+value.category_name+'</span>&nbsp;&nbsp;&nbsp;'
+            str +=      '<i class="fa fa-close colorDanger" onclick="deleteCategory('+value.id+',\'{{route("deletecategorieslevel1",":id")}}\',\'level1parent\')">&nbsp;</i>'
             let temp = {
                 id: value.id,
                 category_name:value.category_name,
@@ -339,9 +350,9 @@
             if(value.manylevel2.length > 0){
                 str +=  '<ul>'
                 $(value.manylevel2).each(function(index2, value2){
-                    str +=  '<li>'
-                    str +=      '<span>'+value2.category_name+'</span>'
-                    str +=  '</li>'
+                    str +=  '<li class="level2parent" data-index="'+value2.id+'">'
+                    str +=      '<span>'+value2.category_name+'</span>&nbsp;&nbsp;&nbsp;'
+                    str +=      '<i class="fa fa-close colorDanger" onclick="deleteCategory('+value2.id+',\'{{route("deletecategorieslevel2",":id")}}\',\'level2parent\')">&nbsp;</i>'
                     let temp = {
                         id: value2.id,
                         category_name:value2.category_name,
@@ -350,16 +361,18 @@
                     if(value2.manylevel3.length > 0){
                         str +=  '<ul>'
                         $(value2.manylevel3).each(function(index3,value3){
-                            str +=  '<li>'
-                            str +=      '<span>'+value3.category_name+'</span>'
+                            str +=  '<li class="level3parent" data-index="'+value3.id+'">'
+                            str +=      '<span>'+value3.category_name+'</span>&nbsp;&nbsp;&nbsp;'
+                            str +=      '<i class="fa fa-close colorDanger" onclick="deleteCategory('+value3.id+',\'{{route("deletecategorieslevel3",":id")}}\',\'level3parent\')">&nbsp;</i>'
                             str +=  '</li>'
                         });
                         str +=  '</ul>'
                     }
-
+                    str +=  '</li>'
                 });
                 str +=  '</ul>'
             }
+            str +=  '</li>'
 
         });
         loadSelect('level1',level_1);
@@ -381,5 +394,31 @@
             if(success.length > 0) fetchDataCategories(success);
         });
     }
+
+    function deleteCategory(id,url,parentId){
+        loading();
+        url = url.replace(":id",id);
+        $.ajax({
+            url: url,
+            type: 'delete',
+            success: function(success) {
+                $.each(success, function(status, responseStatus){
+                    $.each(this, function(key,value){
+                        notification(status, value)
+                    });
+                    if(responseStatus == 200){
+                        $('li[data-index="'+id+'"].'+parentId).remove();
+                    }
+                });
+                removeLoading();
+            },
+            error: function(code, statusText, error){
+                notification("error", code.responseText +statusText+error);
+                removeLoading();
+            }
+        });
+        
+    }
+
 </script>
 @endsection

@@ -4,8 +4,68 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0cfd1568f204839c7e1352aeae92c0bc",
+    "content-hash": "5af77a1b9371968d29775fc94b4a5bbc",
     "packages": [
+        {
+            "name": "cesargb/laravel-cascade-delete",
+            "version": "v0.6.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cesargb/laravel-cascade-delete.git",
+                "reference": "c927b42ed4c35cb4a711e657801cd763c8532d6f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cesargb/laravel-cascade-delete/zipball/c927b42ed4c35cb4a711e657801cd763c8532d6f",
+                "reference": "c927b42ed4c35cb4a711e657801cd763c8532d6f",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/console": "~5.5.45|~5.8|^6.0",
+                "illuminate/database": "~5.5.45|~5.8|^6.0",
+                "illuminate/support": "~5.5.45|~5.8|^6.0",
+                "php": "^7.1"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.14",
+                "orchestra/testbench": "^3.5.5|^3.8|^4.0",
+                "phpunit/phpunit": "^7.0|^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Cesargb\\Database\\Support\\CascadeDeleteServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Cesargb\\Database\\Support\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Cesar Garcia",
+                    "email": "cesargb@gmail.com"
+                }
+            ],
+            "description": "Cascading eliminations implemented in polymorphic relationships for the Laravel apps",
+            "keywords": [
+                "cascade",
+                "delete",
+                "elocuent",
+                "laravel",
+                "polymorphic",
+                "relation",
+                "residual"
+            ],
+            "time": "2019-09-05T15:15:59+00:00"
+        },
         {
             "name": "dnoegel/php-xdg-base-dir",
             "version": "0.1",

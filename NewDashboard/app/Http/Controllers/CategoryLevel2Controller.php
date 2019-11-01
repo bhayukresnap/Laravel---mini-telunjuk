@@ -57,10 +57,10 @@ class CategoryLevel2Controller extends ApiController
     /**
      * Display the specified resource.
      *
-     * @param  \App\CategoryLevel2  $categoryLevel2
+     * @param  \App\CategoryLevel2  $categorieslevel2
      * @return \Illuminate\Http\Response
      */
-    public function show(CategoryLevel2 $categoryLevel2)
+    public function show(CategoryLevel2 $categorieslevel2)
     {
         //
     }
@@ -68,10 +68,10 @@ class CategoryLevel2Controller extends ApiController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\CategoryLevel2  $categoryLevel2
+     * @param  \App\CategoryLevel2  $categorieslevel2
      * @return \Illuminate\Http\Response
      */
-    public function edit(CategoryLevel2 $categoryLevel2)
+    public function edit(CategoryLevel2 $categorieslevel2)
     {
         //
     }
@@ -80,10 +80,10 @@ class CategoryLevel2Controller extends ApiController
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\CategoryLevel2  $categoryLevel2
+     * @param  \App\CategoryLevel2  $categorieslevel2
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, CategoryLevel2 $categoryLevel2)
+    public function update(Request $request, CategoryLevel2 $categorieslevel2)
     {
         //
     }
@@ -91,11 +91,13 @@ class CategoryLevel2Controller extends ApiController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\CategoryLevel2  $categoryLevel2
+     * @param  \App\CategoryLevel2  $categorieslevel2
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CategoryLevel2 $categoryLevel2)
+    public function destroy(CategoryLevel2 $categorieslevel2)
     {
-        //
+        $categorieslevel2->meta()->delete();
+        $categorieslevel2->delete();
+        return $this->successResponse($categorieslevel2->category_name.' has been deleted', 200);
     }
 }

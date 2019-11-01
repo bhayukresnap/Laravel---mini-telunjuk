@@ -53,26 +53,28 @@ class CategoryLevel1Controller extends ApiController
     }
 
     
-    public function show(CategoryLevel1 $categoryLevel1)
+    public function show(CategoryLevel1 $categorieslevel1)
+    {
+        return $categorieslevel1->with('meta')->whereId($categorieslevel1->id)->get();
+    }
+
+    
+    public function edit(CategoryLevel1 $categorieslevel1)
     {
         //
     }
 
     
-    public function edit(CategoryLevel1 $categoryLevel1)
+    public function update(Request $request, CategoryLevel1 $categorieslevel1)
     {
         //
     }
 
     
-    public function update(Request $request, CategoryLevel1 $categoryLevel1)
+    public function destroy(CategoryLevel1 $categorieslevel1)
     {
-        //
-    }
-
-    
-    public function destroy(CategoryLevel1 $categoryLevel1)
-    {
-        //
+        $categorieslevel1->meta()->delete();
+        $categorieslevel1->delete();
+        return $this->successResponse($categorieslevel1->category_name.' has been deleted', 200);
     }
 }

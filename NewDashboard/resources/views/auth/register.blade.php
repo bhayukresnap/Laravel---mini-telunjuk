@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 <meta name="description" content="Oculux Bootstrap 4x admin is super flexible, powerful, clean &amp; modern responsive admin dashboard with unlimited possibilities.">
 <meta name="author" content="GetBootstrap, design by: puffintheme.com">
-<link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+<link rel="icon" href="/img/favicon.ico" type="image/x-icon">
 <link rel="stylesheet" type="text/css" href="{{asset('css/all.css')}}">
 </head>
 <body class="theme-cyan font-montserrat">
@@ -36,7 +36,7 @@
 <div class="auth-main particles_js">
     <div class="auth_div vivify popIn">
         <div class="auth_brand">
-            <a class="navbar-brand" href="javascript:void(0);"><img src="/images/icon.svg" width="30" height="30" class="d-inline-block align-top mr-2" alt="">Oculux</a>                                                
+            <a class="navbar-brand" href="javascript:void(0);"><img src="/img/icon.svg" width="30" height="30" class="d-inline-block align-top mr-2" alt="">Oculux</a>                                                
         </div>
         <div class="card">
             <div class="body">
