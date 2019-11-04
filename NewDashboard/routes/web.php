@@ -18,6 +18,7 @@ Route::middleware(['auth'])->group(function(){
 		Route::get('tags','TagController@view')->name('tags');
 		Route::get('images','ImageController@view')->name('images');
 		Route::get('categories','CategoryLevel1Controller@view')->name('categories');
+		Route::get('categories','CategoryLevel1Controller@view')->name('categories');
 	});
 
 	Route::resource('images', 'ImageController')->names([

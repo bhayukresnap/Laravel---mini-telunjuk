@@ -266,6 +266,8 @@
                     });
                     if(responseStatus == 200){
                         get_alltag();
+                        $('input#path_url').val('');
+                        $('input#title').val('');
                         $('input#alt').val('');
                         $('#addtag input[name="noindex"][value="false"]').prop('checked','true');
                         $('#modaladdTag').modal('hide');

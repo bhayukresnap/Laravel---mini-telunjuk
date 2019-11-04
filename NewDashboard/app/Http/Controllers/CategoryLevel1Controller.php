@@ -65,9 +65,30 @@ class CategoryLevel1Controller extends ApiController
     }
 
     
-    public function update(Request $request, CategoryLevel1 $categorieslevel1)
+    public function update(Request $req, CategoryLevel1 $categorieslevel1)
     {
-        //
+        $validator_cat = Validator::make($req->all(),[
+            'category_name' => 'required|unique:categories_level_1,category_name,'. $categorieslevel1->id,
+            'path_url'=>'required|unique:metas,path_url,'. $categorieslevel1->meta->id
+        ]);
+        if($validator_cat->passes()){
+            $categorieslevel1->update([
+                'category_name' => $req->category_name,
+            ]);
+
+            $categorieslevel1->meta()->update([
+                'meta_title' => $req->meta_title,
+                'meta_description'=> $req->meta_description,
+                'canonical' => $req->canonical,
+                'noindex' => $req->noindex,
+                'json_ld' => $req->json_ld,
+                'path_url' => $req->path_url,
+            ]);
+
+            return $this->successResponse($categorieslevel1->category_name. ' has been updated!', 200);
+        }else{
+            return $this->errorResponse($validator_cat->errors()->all(), 406);
+        }
     }
 
     

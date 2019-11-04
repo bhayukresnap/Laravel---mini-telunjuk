@@ -138,19 +138,14 @@
 						<li>
 							<a href=""><i class="icon-book-open"></i><span>Blog</span></a>
 						</li>
-						<li>
-							<a href="#Contact" class="has-arrow"><i class="fa fa-dropbox"></i><span>Product</span></a>
-							<ul>
-								<li><a href="app-contact.html">Create product</a></li>
-								<li><a href="app-contact2.html">All products</a></li>
-							</ul>
-						</li>
+						<li><a href="#Contact"><i class="fa fa-dropbox"></i><span>Product</span></a></li>
 						<li><a href="{{route('categories')}}"><i class="icon-layers"></i><span>Categories</span></a></li>
 						<li>
 							<a href="{{route('images')}}"><i class="fa fa-image"></i><span>Images</span></a>
 						
 						</li>
 						<li><a href="{{route('tags')}}"><i class="fa fa-tags"></i><span>Tags</span></a></li>
+						<li><a href="#"><i class="fa fa-sun-o"></i><span>Brand</span></a></li>
 						<li class="header">Developer</li>
 						<li class=""><a href="{{route('clearCache')}}"><i class="fa fa-eraser"></i><span>Clear Cache</span></a></li>
 						<li class=""><a href="#"><i class="fa fa-users"></i><span>Customer (Maintenance)</span></a></li>

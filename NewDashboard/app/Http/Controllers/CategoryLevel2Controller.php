@@ -62,38 +62,36 @@ class CategoryLevel2Controller extends ApiController
      */
     public function show(CategoryLevel2 $categorieslevel2)
     {
-        //
+        return $categorieslevel2->with('meta')->whereId($categorieslevel2->id)->get();
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\CategoryLevel2  $categorieslevel2
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(CategoryLevel2 $categorieslevel2)
+    public function update(Request $req, CategoryLevel2 $categorieslevel2)
     {
-        //
+        $validator_cat = Validator::make($req->all(),[
+            'category_name' => 'required|unique:categories_level_2,category_name,'. $categorieslevel2->id,
+            'path_url'=>'required|unique:metas,path_url,'. $categorieslevel2->meta->id
+        ]);
+        if($validator_cat->passes()){
+            $categorieslevel2->update([
+                'category_name' => $req->category_name,
+                'categoryLvl1' => $req->categoryLvl1,
+            ]);
+
+            $categorieslevel2->meta()->update([
+                'meta_title' => $req->meta_title,
+                'meta_description'=> $req->meta_description,
+                'canonical' => $req->canonical,
+                'noindex' => $req->noindex,
+                'json_ld' => $req->json_ld,
+                'path_url' => $req->path_url,
+            ]);
+
+            return $this->successResponse($categorieslevel2->category_name. ' has been updated!', 200);
+        }else{
+            return $this->errorResponse($validator_cat->errors()->all(), 406);
+        }
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\CategoryLevel2  $categorieslevel2
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, CategoryLevel2 $categorieslevel2)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\CategoryLevel2  $categorieslevel2
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(CategoryLevel2 $categorieslevel2)
     {
         $categorieslevel2->meta()->delete();

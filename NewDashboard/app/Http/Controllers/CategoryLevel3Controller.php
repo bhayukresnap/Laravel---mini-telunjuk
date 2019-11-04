@@ -76,7 +76,7 @@ class CategoryLevel3Controller extends ApiController
      */
     public function show(CategoryLevel3 $categorieslevel3)
     {
-        //
+        return $categorieslevel3->with('meta')->whereId($categorieslevel3->id)->get();
     }
 
     /**
@@ -97,9 +97,31 @@ class CategoryLevel3Controller extends ApiController
      * @param  \App\CategoryLevel3  $categorieslevel3
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, CategoryLevel3 $categorieslevel3)
+    public function update(Request $req, CategoryLevel3 $categorieslevel3)
     {
-        //
+        $validator_cat = Validator::make($req->all(),[
+            'category_name' => 'required|unique:categories_level_3,category_name,'. $categorieslevel3->id,
+            'path_url'=>'required|unique:metas,path_url,'. $categorieslevel3->meta->id
+        ]);
+        if($validator_cat->passes()){
+            $categorieslevel3->update([
+                'category_name' => $req->category_name,
+                'categoryLvl2' => $req->categoryLvl2,
+            ]);
+
+            $categorieslevel3->meta()->update([
+                'meta_title' => $req->meta_title,
+                'meta_description'=> $req->meta_description,
+                'canonical' => $req->canonical,
+                'noindex' => $req->noindex,
+                'json_ld' => $req->json_ld,
+                'path_url' => $req->path_url,
+            ]);
+
+            return $this->successResponse($categorieslevel3->category_name. ' has been updated!', 200);
+        }else{
+            return $this->errorResponse($validator_cat->errors()->all(), 406);
+        }
     }
 
     /**
