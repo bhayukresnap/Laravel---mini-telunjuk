@@ -277,7 +277,7 @@
         });
     });
 
-    function deleteTag(id,index){
+    function deleteTag(id){
         loading();
         let url = "{{ route("deletetag", ":id") }}";
         url = url.replace(":id",id);

@@ -134,18 +134,13 @@
 					<ul id="main-menu" class="metismenu">
 						<li class="header">Main</li>
 						<li class=""><a href="{{route('home')}}"><i class="icon-home"></i><span>Dashboard</span></a></li>
-						<li class=""><a href="{{route('home')}}"><i class="icon-envelope"></i><span>Email (Maintenance)</span></a></li>
-						<li>
-							<a href=""><i class="icon-book-open"></i><span>Blog</span></a>
-						</li>
-						<li><a href="#Contact"><i class="fa fa-dropbox"></i><span>Product</span></a></li>
+						{{-- <li class=""><a href="{{route('home')}}"><i class="icon-envelope"></i><span>Email (Maintenance)</span></a></li> --}}
+						<li><a href=""><i class="icon-book-open"></i><span>Blogs</span></a></li>
+						<li><a href="#Contact"><i class="fa fa-dropbox"></i><span>Products</span></a></li>
+						<li><a href="{{route('images')}}"><i class="fa fa-image"></i><span>Images</span></a></li>
 						<li><a href="{{route('categories')}}"><i class="icon-layers"></i><span>Categories</span></a></li>
-						<li>
-							<a href="{{route('images')}}"><i class="fa fa-image"></i><span>Images</span></a>
-						
-						</li>
 						<li><a href="{{route('tags')}}"><i class="fa fa-tags"></i><span>Tags</span></a></li>
-						<li><a href="#"><i class="fa fa-sun-o"></i><span>Brand</span></a></li>
+						<li><a href="{{route('brands')}}"><i class="fa fa-sun-o"></i><span>Brands</span></a></li>
 						<li class="header">Developer</li>
 						<li class=""><a href="{{route('clearCache')}}"><i class="fa fa-eraser"></i><span>Clear Cache</span></a></li>
 						<li class=""><a href="#"><i class="fa fa-users"></i><span>Customer (Maintenance)</span></a></li>

@@ -37,12 +37,6 @@
     </div>
 </div>
 
-
-<div class="modal fade"></div>
-
-
-
-
 <!-- Modal Add Categories level 1-->
 <div class="modal fade" id="modalcatlevel1" tabindex="-1" role="dialog" aria-labelledby="modaladdTagLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -565,8 +559,6 @@
             removeLoading();
             showModalUpdateLevel1(success[0], '#'+funct)
         });
-
-        
     }
 
     function loadSelect(id,json){

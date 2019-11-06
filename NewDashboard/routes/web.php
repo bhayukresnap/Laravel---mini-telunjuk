@@ -18,7 +18,7 @@ Route::middleware(['auth'])->group(function(){
 		Route::get('tags','TagController@view')->name('tags');
 		Route::get('images','ImageController@view')->name('images');
 		Route::get('categories','CategoryLevel1Controller@view')->name('categories');
-		Route::get('categories','CategoryLevel1Controller@view')->name('categories');
+		Route::get('brand','BrandController@view')->name('brands');
 	});
 
 	Route::resource('images', 'ImageController')->names([
@@ -31,6 +31,17 @@ Route::middleware(['auth'])->group(function(){
 		'create'=>'createimage',
 	]);
 	
+	Route::resource('brand', 'BrandController')->except(['edit','create'])->names([
+		'index'=>'allbrands',
+		'store'=>'addbrand',
+		'update'=>'updatebrand',
+		'destroy'=>'deletebrand',
+		'show'=>'viewbrand',
+		'edit'=>'editbrand',
+		'create'=>'createbrand',
+	]);
+
+
 	Route::resource('tags', 'TagController')->except([
 		'edit','create'
 	])->names([

@@ -25,7 +25,6 @@ class CategoryLevel1Controller extends ApiController
     public function create()
     {
     }
-
     
     public function store(Request $req)
     {

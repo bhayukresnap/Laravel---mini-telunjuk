@@ -11,4 +11,10 @@ class Image extends Model
     protected $fillable = [
         'path', 'alt',
     ];
+
+    public function images()
+    {
+        return $this->morphedByMany('App\Brand', 'taggable');
+    }
+
 }
