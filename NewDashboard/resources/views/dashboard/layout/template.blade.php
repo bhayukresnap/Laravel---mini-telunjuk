@@ -10,8 +10,8 @@
 	<meta name="keywords" content="admin template, Oculux admin template, dashboard template, flat admin template, responsive admin template, web app, Light Dark version">
 	<meta name="author" content="GetBootstrap, design by: puffintheme.com">
 	<link rel="icon" href="/img/favicon.ico" type="image/x-icon">
-	<link rel="stylesheet" type="text/css" href="{{asset('css/all.css')}}">
-	<script src="{{asset('js/all.js')}}"></script>
+	<link rel="stylesheet" type="text/css" href="{{asset('/css/all.css')}}">
+	<script src="{{asset('/js/all.js')}}"></script>
 </head>
 <body class="theme-cyan font-montserrat">
 	<!-- Page Loader -->
@@ -137,7 +137,7 @@
 						{{-- <li class=""><a href="{{route('home')}}"><i class="icon-envelope"></i><span>Email (Maintenance)</span></a></li> --}}
 						<li><a href="{{route('allblogs')}}"><i class="icon-book-open"></i><span>Blogs</span></a></li>
 						<li><a href="#Contact"><i class="fa fa-dropbox"></i><span>Products</span></a></li>
-						<li><a href="{{route('images')}}"><i class="fa fa-image"></i><span>Images</span></a></li>
+						<li><a href="{{route('filemanager')}}?type=image" target="_blank"><i class="fa fa-image"></i><span>Images</span></a></li>
 						<li><a href="{{route('categories')}}"><i class="icon-layers"></i><span>Categories</span></a></li>
 						<li><a href="{{route('tags')}}"><i class="fa fa-tags"></i><span>Tags</span></a></li>
 						<li><a href="{{route('brands')}}"><i class="fa fa-sun-o"></i><span>Brands</span></a></li>
@@ -162,6 +162,5 @@
 		    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
 		});			
 	</script>
-	@yield('script')
 </body>
 </html>

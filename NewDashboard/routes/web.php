@@ -11,6 +11,13 @@
 |
 */
 Auth::routes();
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/laravel-filemanager', '\UniSharp\LaravelFilemanager\Controllers\LfmController@show')->name('filemanager');
+    Route::post('/laravel-filemanager/upload', '\UniSharp\LaravelFilemanager\Controllers\UploadController@upload');
+    // list all lfm routes here...
+});
+
 Route::middleware(['auth'])->group(function(){
 	Route::get('/','HomeController@index')->name('home');
 

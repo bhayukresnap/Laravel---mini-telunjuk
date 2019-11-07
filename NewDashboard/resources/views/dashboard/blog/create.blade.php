@@ -16,17 +16,31 @@
 </div>
 <div class="container">
 	<form class="row">
-		<div class="col-12 mb-4">
-			<label>Featured images</label>
-			<input type="file" id="image" name="path" class="dropify"  autocomplete="off" data-allowed-file-extensions="png jpeg jpg">
-		</div>
+		<label class="col-12">Featured images</label>
 		<div class="col-6">
+			<img id="previewFeaturedImage" src="https://via.placeholder.com/450x250">
+		</div>
+		<div class="col-6 mb-4">
+			<div class="input-group">
+				<span class="input-group-btn">
+					<a id="lfm" data-input="thumbnail" data-preview="previewFeaturedImage" class="btn btn-primary form-control">
+						<i class="fa fa-picture-o"></i> Choose
+					</a>
+				</span>
+				<input id="thumbnail" class="form-control thumbnail_path" type="text" name="filepath" readonly="readonly">
+			</div>
+			<br>
+			<label>Alt featured Image</label>
+			<input type="text" name="" class="form-control" placeholder="">
+		</div>
+
+		<div class="col-6 mt-4">
 			<div class="form-group">
 				<label>Slug</label>
 				<input id="path_url" name="path_url" class="form-control slug"  autocomplete="off" readonly="readonly"></input>
 			</div>
 		</div>
-		<div class="col-6">
+		<div class="col-6 mt-4">
 			<div class="form-group">
 				<label>Published at</label>
 				<div class="input-group mb-3">                                        
@@ -76,33 +90,20 @@
 					<span><i></i>False</span>
 				</label>
 			</div>
-			{{-- <div class="form-group">
-				<label>is Active: </label>
-				<label class="fancy-radio">
-					<input type="radio" name="visibility" value="true" required="" data-parsley-multiple="noindex" checked>
-					<span><i></i>True</span>
-				</label>
-				<label class="fancy-radio">
-					<input type="radio" name="visibility" value="false" data-parsley-multiple="noindex">
-					<span><i></i>False</span>
-				</label>
-			</div> --}}
 		</div>
 	</form>
 </div>
-
-@endsection
-@section('script')
+<script src="{{asset('/vendor/laravel-filemanager/js/stand-alone-button.js')}}"></script>
 <script type="text/javascript" src="{{asset('/vendor/ckeditor/ckeditor.js')}}"></script>
 <script type="text/javascript" src="{{asset('/vendor/ckeditor/styles.js')}}"></script>
 <script type="text/javascript" src="{{asset('/vendor/ckeditor/config.js')}}"></script>
 <script>
-	var options = {
-    filebrowserImageBrowseUrl: '/laravel-filemanager',
-    // filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token=',
-    filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
-    // filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token='
-  };
+	$('#lfm').filemanager('image');
+	const options = {
+		filebrowserImageBrowseUrl: '/laravel-filemanager?type=image',
+		filebrowserBrowseUrl: '/laravel-filemanager?type=files',
+	};
 	CKEDITOR.replace('editor1',options);
+	console.log($('#thumbnail').val());
 </script>
 @endsection
