@@ -27,7 +27,6 @@ mix.scripts([
 	'resources/vendor/toastr/toastr.min.js',
 	'resources/assets/bundles/c3.bundle.js',
 	'resources/vendor/dropify/js/dropify.min.js',
-	'resources/vendor/ckeditor/ckeditor.js',
 	'resources/assets/js/pages/forms/dropify.js',
 	'resources/assets/bundles/mainscripts.bundle.js',
 	'resources/assets/js/index.js',

@@ -18,7 +18,16 @@ Route::middleware(['auth'])->group(function(){
 		Route::get('tags','TagController@view')->name('tags');
 		Route::get('images','ImageController@view')->name('images');
 		Route::get('categories','CategoryLevel1Controller@view')->name('categories');
-		Route::get('brand','BrandController@view')->name('brands');
+		Route::get('brands','BrandController@view')->name('brands');
+		Route::resource('blogs', 'BlogController')->names([
+			'index'=>'allblogs',
+			'store'=>'addblog',
+			'update'=>'updateblog',
+			'destroy'=>'deleteblog',
+			'show'=>'viewblog',
+			'edit'=>'editblog',
+			'create'=>'createblog',
+		]);
 	});
 
 	Route::resource('images', 'ImageController')->names([
