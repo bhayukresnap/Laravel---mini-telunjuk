@@ -21,18 +21,14 @@ CKEDITOR.stylesSet.add( 'default', [
 	// These styles are already available in the "Format" drop-down list ("format" plugin),
 	// so they are not needed here by default. You may enable them to avoid
 	// placing the "Format" combo in the toolbar, maintaining the same features.
-	/*
+	
 	{ name: 'Paragraph',		element: 'p' },
-	{ name: 'Heading 1',		element: 'h1' },
-	{ name: 'Heading 2',		element: 'h2' },
-	{ name: 'Heading 3',		element: 'h3' },
-	{ name: 'Heading 4',		element: 'h4' },
-	{ name: 'Heading 5',		element: 'h5' },
-	{ name: 'Heading 6',		element: 'h6' },
-	{ name: 'Preformatted Text',element: 'pre' },
 	{ name: 'Address',			element: 'address' },
-	*/
-
+	
+	{ name: 'Display-5',  element: 'h2', attributes: { 'class': 'display-5' } },
+    { name: 'Display-6',  element: 'h2', attributes: { 'class': 'display-6' } },
+    { name: 'Display-7',  element: 'h3', attributes: { 'class': 'display-7' } },
+    { name: 'Display-8',  element: 'h4', attributes: { 'class': 'display-8' } },
 	{ name: 'Italic Title',		element: 'h2', styles: { 'font-style': 'italic' } },
 	{ name: 'Subtitle',			element: 'h3', styles: { 'color': '#aaa', 'font-style': 'italic' } },
 	{
@@ -50,14 +46,14 @@ CKEDITOR.stylesSet.add( 'default', [
 	// These are core styles available as toolbar buttons. You may opt enabling
 	// some of them in the Styles drop-down list, removing them from the toolbar.
 	// (This requires the "stylescombo" plugin.)
-	/*
+	
 	{ name: 'Strong',			element: 'strong', overrides: 'b' },
 	{ name: 'Emphasis',			element: 'em'	, overrides: 'i' },
 	{ name: 'Underline',		element: 'u' },
 	{ name: 'Strikethrough',	element: 'strike' },
 	{ name: 'Subscript',		element: 'sub' },
 	{ name: 'Superscript',		element: 'sup' },
-	*/
+	
 
 	{ name: 'Marker',			element: 'span', attributes: { 'class': 'marker' } },
 

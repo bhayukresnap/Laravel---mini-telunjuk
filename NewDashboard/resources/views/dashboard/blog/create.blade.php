@@ -99,9 +99,9 @@
 <script>
 	var options = {
     filebrowserImageBrowseUrl: '/laravel-filemanager',
-    //filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token=',
-    //filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
-    //filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token='
+    // filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token=',
+    filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
+    // filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token='
   };
 	CKEDITOR.replace('editor1',options);
 </script>
