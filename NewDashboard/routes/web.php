@@ -23,7 +23,7 @@ Route::middleware(['auth'])->group(function(){
 
 	Route::prefix('page')->group(function(){
 		Route::get('tags','TagController@view')->name('tags');
-		Route::get('images','ImageController@view')->name('images');
+		// Route::get('images','ImageController@view')->name('images');
 		Route::get('categories','CategoryLevel1Controller@view')->name('categories');
 		Route::get('brands','BrandController@view')->name('brands');
 		Route::resource('blogs', 'BlogController')->names([
@@ -37,15 +37,15 @@ Route::middleware(['auth'])->group(function(){
 		]);
 	});
 
-	Route::resource('images', 'ImageController')->names([
-		'index'=>'allimages',
-		'store'=>'addimage',
-		'update'=>'updateimage',
-		'destroy'=>'deleteimage',
-		'show'=>'viewimage',
-		'edit'=>'editimage',
-		'create'=>'createimage',
-	]);
+	// Route::resource('images', 'ImageController')->names([
+	// 	'index'=>'allimages',
+	// 	'store'=>'addimage',
+	// 	'update'=>'updateimage',
+	// 	'destroy'=>'deleteimage',
+	// 	'show'=>'viewimage',
+	// 	'edit'=>'editimage',
+	// 	'create'=>'createimage',
+	// ]);
 	
 	Route::resource('brand', 'BrandController')->except(['edit','create'])->names([
 		'index'=>'allbrands',

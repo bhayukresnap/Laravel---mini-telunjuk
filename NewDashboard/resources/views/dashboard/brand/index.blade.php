@@ -44,7 +44,7 @@
                     @csrf
                     <div class="form-group">
                         <label>Slug</label>
-                        <input id="path_url" name="path_url" class="form-control slug"  autocomplete="off" readonly="readonly"></input>
+                        <input id="path_url" name="path_url" class="form-control slug"  autocomplete="off"></input>
                     </div>
                     <div class="form-group">
                         <label>Brand Name</label>
@@ -100,7 +100,7 @@
                     <div class="form-group">
                         <label>Slug</label>
                         <input type="hidden" id="id" readonly="readonly">
-                        <input id="path_url" name="path_url" class="form-control slug"  autocomplete="off" readonly="readonly"></input>
+                        <input id="path_url" name="path_url" class="form-control slug"  autocomplete="off"></input>
                     </div>
                     <div class="form-group">
                         <label>Brand Name</label>

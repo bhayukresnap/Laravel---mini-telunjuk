@@ -1,5 +1,5 @@
 $(function () {
-    $('.js-basic-example').DataTable();
+    $('#blogTable').DataTable();
 
     //Exportable table
     $('.js-exportable').DataTable({
