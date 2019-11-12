@@ -26,6 +26,7 @@ Route::middleware(['auth'])->group(function(){
 		// Route::get('images','ImageController@view')->name('images');
 		Route::get('categories','CategoryLevel1Controller@view')->name('categories');
 		Route::get('brands','BrandController@view')->name('brands');
+		Route::get('stores','StoreController@view')->name('stores');
 		Route::resource('blogs', 'BlogController')->names([
 			'index'=>'allblogs',
 			'store'=>'addblog',
@@ -53,8 +54,14 @@ Route::middleware(['auth'])->group(function(){
 		'update'=>'updatebrand',
 		'destroy'=>'deletebrand',
 		'show'=>'viewbrand',
-		'edit'=>'editbrand',
-		'create'=>'createbrand',
+	]);
+
+	Route::resource('stores', 'StoreController')->except(['edit','create'])->names([
+		'index'=>'allstores',
+		'store'=>'addstore',
+		'update'=>'updatestore',
+		'destroy'=>'deletestore',
+		'show'=>'viewstore',
 	]);
 
 

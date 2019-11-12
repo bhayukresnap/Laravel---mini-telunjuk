@@ -141,6 +141,7 @@
 						<li><a href="{{route('categories')}}"><i class="icon-layers"></i><span>Categories</span></a></li>
 						<li><a href="{{route('tags')}}"><i class="fa fa-tags"></i><span>Tags</span></a></li>
 						<li><a href="{{route('brands')}}"><i class="fa fa-sun-o"></i><span>Brands</span></a></li>
+						<li><a href="{{route('stores')}}"><i class="fa fa-institution"></i><span>Store</span></a></li>
 						<li class="header">Developer</li>
 						<li class=""><a href="{{route('clearCache')}}"><i class="fa fa-eraser"></i><span>Clear Config</span></a></li>
 						<li class=""><a href="#"><i class="fa fa-users"></i><span>Customer (Maintenance)</span></a></li>
