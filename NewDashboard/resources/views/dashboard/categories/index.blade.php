@@ -67,6 +67,10 @@
                         <input type="text" id="alt" name="meta_description" class="form-control"  autocomplete="off">
                     </div>
                     <div class="form-group">
+                        <label>Meta Keyword</label>
+                        <input autocomplete="off" type="text" id="alt" name="meta_keyword" class="form-control"  autocomplete="off">
+                    </div>
+                    <div class="form-group">
                         <label>Canonical</label>
                         <input type="text" id="alt" name="canonical" class="form-control"  autocomplete="off">
                     </div>
@@ -124,6 +128,10 @@
                     <div class="form-group">
                         <label>Meta Description</label>
                         <input type="text" id="alt" name="meta_description" class="form-control"  autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <label>Meta Keyword</label>
+                        <input autocomplete="off" type="text" id="alt" name="meta_keyword" class="form-control"  autocomplete="off">
                     </div>
                     <div class="form-group">
                         <label>Canonical</label>
@@ -184,6 +192,10 @@
                         <input type="text" id="alt" name="meta_description" class="form-control"  autocomplete="off">
                     </div>
                     <div class="form-group">
+                        <label>Meta Keyword</label>
+                        <input autocomplete="off" type="text" id="alt" name="meta_keyword" class="form-control"  autocomplete="off">
+                    </div>
+                    <div class="form-group">
                         <label>Canonical</label>
                         <input type="text" id="alt" name="canonical" class="form-control"  autocomplete="off">
                     </div>
@@ -239,6 +251,10 @@
                     <div class="form-group">
                         <label>Meta Description</label>
                         <input type="text" id="alt" name="meta_description" class="form-control"  autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <label>Meta Keyword</label>
+                        <input autocomplete="off" type="text" id="alt" name="meta_keyword" class="form-control"  autocomplete="off">
                     </div>
                     <div class="form-group">
                         <label>Canonical</label>
@@ -301,6 +317,10 @@
                         <input type="text" id="alt" name="meta_description" class="form-control"  autocomplete="off">
                     </div>
                     <div class="form-group">
+                        <label>Meta Keyword</label>
+                        <input autocomplete="off" type="text" id="alt" name="meta_keyword" class="form-control"  autocomplete="off">
+                    </div>
+                    <div class="form-group">
                         <label>Canonical</label>
                         <input type="text" id="alt" name="canonical" class="form-control"  autocomplete="off">
                     </div>
@@ -359,6 +379,10 @@
                     <div class="form-group">
                         <label>Meta Description</label>
                         <input type="text" id="alt" name="meta_description" class="form-control"  autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <label>Meta Keyword</label>
+                        <input autocomplete="off" type="text" id="alt" name="meta_keyword" class="form-control"  autocomplete="off">
                     </div>
                     <div class="form-group">
                         <label>Canonical</label>
@@ -503,6 +527,7 @@
         $(funct+' input[name="category_name"]').val(value.category_name);
         $(funct+' input[name="meta_title"]').val(value.meta.meta_title);
         $(funct+' input[name="meta_description"]').val(value.meta.meta_description);
+        $(funct+' input[name="meta_keyword"]').val(value.meta.meta_keyword);
         $(funct+' input[name="canonical"]').val(value.meta.canonical);
         $(funct+' textarea[name="json_ld"]').val(value.meta.json_ld);
         $(funct+' input[name="noindex"][value="'+value.meta.noindex+'"]').prop('checked','true');

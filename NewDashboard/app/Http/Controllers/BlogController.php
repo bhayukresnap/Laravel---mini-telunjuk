@@ -60,6 +60,7 @@ class BlogController extends ApiController
             $meta->metaable_id = $blog->id;
             $meta->meta_title = $req->meta_title;
             $meta->meta_description = $req->meta_description;
+            $meta->meta_keyword = $req->meta_keyword;
             $meta->body_html = $req->body_html;
             $meta->canonical = $req->canonical;
             $meta->noindex = $req->noindex;
@@ -124,6 +125,7 @@ class BlogController extends ApiController
             $blog->meta()->update([
                 'meta_title' => $req->meta_title,
                 'meta_description'=> $req->meta_description,
+                'meta_keyword' => $req->meta_keyword,
                 'canonical' => $req->canonical,
                 'body_html' => $req->input('body_html'),
                 'noindex' => $req->noindex,

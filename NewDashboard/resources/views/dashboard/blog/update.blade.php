@@ -71,14 +71,18 @@
 				<input autocomplete="off" type="text" id="alt" name="meta_description" class="form-control"  autocomplete="off" value="{{$blog->meta->meta_description}}">
 			</div>
 			<div class="form-group">
-				<label>Canonical</label>
-				<input autocomplete="off" type="text" id="alt" name="canonical" class="form-control"  autocomplete="off" value="{{$blog->meta->canonical}}">
+				<label>Meta keyword</label>
+				<input autocomplete="off" type="text" id="alt" name="meta_keyword" class="form-control"  autocomplete="off" value="{{$blog->meta->meta_keyword}}">
 			</div>
 		</div>
 		<div class="col-6">
 			<div class="form-group">
 				<label>JSON LD</label>
 				<textarea id="alt" name="json_ld" class="form-control"  autocomplete="off">{{$blog->meta->json_ld}}</textarea>
+			</div>
+			<div class="form-group">
+				<label>Canonical</label>
+				<input autocomplete="off" type="text" id="alt" name="canonical" class="form-control"  autocomplete="off" value="{{$blog->meta->canonical}}">
 			</div>
 			<div class="form-group">
 				<label>No Index: </label>

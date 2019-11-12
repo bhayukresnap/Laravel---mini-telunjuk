@@ -40,6 +40,7 @@ class CategoryLevel1Controller extends ApiController
             $meta->metaable_id = $cat->id;
             $meta->meta_title = $req->meta_title;
             $meta->meta_description = $req->meta_description;
+            $meta->meta_keyword = $req->meta_keyword;
             $meta->canonical = $req->canonical;
             $meta->noindex = $req->noindex;
             $meta->json_ld = $req->json_ld;
@@ -78,6 +79,7 @@ class CategoryLevel1Controller extends ApiController
             $categorieslevel1->meta()->update([
                 'meta_title' => $req->meta_title,
                 'meta_description'=> $req->meta_description,
+                'meta_keyword' => $req->meta_keyword,
                 'canonical' => $req->canonical,
                 'noindex' => $req->noindex,
                 'json_ld' => $req->json_ld,

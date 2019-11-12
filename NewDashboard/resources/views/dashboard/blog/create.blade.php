@@ -71,8 +71,8 @@
 				<input autocomplete="off" type="text" id="alt" name="meta_description" class="form-control"  autocomplete="off">
 			</div>
 			<div class="form-group">
-				<label>Canonical</label>
-				<input autocomplete="off" type="text" id="alt" name="canonical" class="form-control"  autocomplete="off">
+				<label>Meta Keyword</label>
+				<input autocomplete="off" type="text" id="alt" name="meta_keyword" class="form-control"  autocomplete="off">
 			</div>
 		</div>
 		<div class="col-6">
@@ -81,13 +81,17 @@
 				<textarea id="alt" name="json_ld" class="form-control"  autocomplete="off"></textarea>
 			</div>
 			<div class="form-group">
+				<label>Canonical</label>
+				<input autocomplete="off" type="text" id="alt" name="canonical" class="form-control"  autocomplete="off">
+			</div>
+			<div class="form-group">
 				<label>No Index: </label>
 				<label class="fancy-radio">
-					<input autocomplete="off" type="radio" name="noindex" value="true" required="" data-parsley-multiple="noindex">
+					<input autocomplete="off" type="radio" name="noindex" value="true" data-parsley-multiple="noindex">
 					<span><i></i>True</span>
 				</label>
 				<label class="fancy-radio">
-					<input autocomplete="off" type="radio" name="noindex" value="false" data-parsley-multiple="noindex">
+					<input autocomplete="off" type="radio" name="noindex" value="false" data-parsley-multiple="noindex" checked="">
 					<span><i></i>False</span>
 				</label>
 			</div>

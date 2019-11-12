@@ -44,12 +44,12 @@
             <td>{{$no}}</td>
             <td style="width: 150px;"><img src="{{$blog->featuredImage}}" class="img-thumbnail"></td>
             <td>{{$blog->title}}</td>
-            <td>{{$blog->updated_at->diffForHumans()}}</td>
+            <td>{{$blog->meta->updated_at->diffForHumans()}}</td>
             <td>{{$blog->created_at->diffForHumans()}}</td>
             <td>{{$blog->published_at}}</td>
             <td>
-                <a href="{{route('editblog',$blog->id)}}"><i class="fa fa-edit text-success">&nbsp;</i></a>
-                <i class="fa fa-close text-danger" onclick="deleteBlog({{$blog->id}})">&nbsp;</i>
+                <a href="{{route('editblog',$blog->id)}}"><i class="fa fa-edit fa-lg text-success">&nbsp;</i></a>
+                <i class="fa fa-close fa-lg text-danger" onclick="deleteBlog({{$blog->id}})">&nbsp;</i>
             </td>
         </tr>
         <?php $no++ ?>

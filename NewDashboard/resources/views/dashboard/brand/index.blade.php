@@ -59,6 +59,10 @@
                         <input type="text" id="alt" name="meta_description" class="form-control"  autocomplete="off">
                     </div>
                     <div class="form-group">
+                        <label>Meta Keyword</label>
+                        <input type="text" id="alt" name="meta_keyword" class="form-control"  autocomplete="off">
+                    </div>
+                    <div class="form-group">
                         <label>Canonical</label>
                         <input type="text" id="alt" name="canonical" class="form-control"  autocomplete="off">
                     </div>
@@ -117,6 +121,10 @@
                     <div class="form-group">
                         <label>Canonical</label>
                         <input type="text" id="alt" name="canonical" class="form-control"  autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <label>Meta Keyword</label>
+                        <input type="text" id="alt" name="meta_keyword" class="form-control"  autocomplete="off">
                     </div>
                     <div class="form-group">
                         <label>JSON LD</label>
@@ -220,6 +228,7 @@
         $('#updateBrand'+' input[name="brandName"]').val(value.brandName);
         $('#updateBrand'+' input[name="meta_title"]').val(value.meta.meta_title);
         $('#updateBrand'+' input[name="meta_description"]').val(value.meta.meta_description);
+        $('#updateBrand'+' input[name="meta_keyword"]').val(value.meta.meta_keyword);
         $('#updateBrand'+' input[name="canonical"]').val(value.meta.canonical);
         $('#updateBrand'+' textarea[name="json_ld"]').val(value.meta.json_ld);
         $('#updateBrand'+' input[name="noindex"][value="'+value.meta.noindex+'"]').prop('checked','true');
