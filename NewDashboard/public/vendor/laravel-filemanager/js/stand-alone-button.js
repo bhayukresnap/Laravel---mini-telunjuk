@@ -22,9 +22,10 @@
         // set or change the preview image src
         items.forEach(function (item) {
           target_preview.append(
-            // $('<img>').attr('src', item.thumb_url).attr('class','img-fluid')
-            $('#previewFeaturedImage').attr('src', item.url).attr('class','img-fluid')
+            //$('<img>').attr('src', item.thumb_url).attr('class','img-fluid')
+            $(target_preview).attr('src', item.url).attr('class','img-fluid mb-2')
           );
+          console.log(item)
         });
         // trigger change event
         target_preview.trigger('change');

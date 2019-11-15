@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 use App\Blog;
-use Validator;
+use App\Tag;
+use App\CategoryLevel3;
 use App\Meta;
+use App\Image;
+use Validator;
+
 use Illuminate\Http\File;
 use Illuminate\Http\Request;
 use App\Http\Controllers\ApiController;
@@ -28,7 +32,7 @@ class BlogController extends ApiController
      */
     public function create()
     {
-        return view('dashboard.blog.create');
+        return view('dashboard.blog.create',['tags'=>Tag::all()]);
     }
 
     /**
@@ -48,15 +52,16 @@ class BlogController extends ApiController
             'published_at'=> 'required',
 
         ]);
-
+        
         if($validator_blog->passes()){
             $blog = new Blog;
             $blog->title = $req->title;
-            $blog->featuredImage = $req->featuredImage;
-            $blog->alt = $req->alt;
             $blog->published_at = $req->published_at;
+            $thumbnail = new Image;
+            $thumbnail->imageable_id = $blog->id;
+            $thumbnail->featuredImage = $req->featuredImage;
+            $thumbnail->alt = $req->alt;
             $meta = new Meta;
-            $blog->save();
             $meta->metaable_id = $blog->id;
             $meta->meta_title = $req->meta_title;
             $meta->meta_description = $req->meta_description;
@@ -66,7 +71,10 @@ class BlogController extends ApiController
             $meta->noindex = $req->noindex;
             $meta->json_ld = $req->json_ld;
             $meta->path_url = $req->path_url;
+            $blog->save();
+            $blog->tags()->sync($req->tag);
             $blog->meta()->save($meta);
+            $blog->thumbnail()->save($thumbnail);
             return $this->successResponse('Your blog has been saved!', 200);
         }else{
             return $this->errorResponse($validator_blog->errors()->all(), 406);
@@ -92,7 +100,7 @@ class BlogController extends ApiController
      */
     public function edit(Blog $blog)
     {
-        return view('dashboard.blog.update', compact('blog'));
+        return view('dashboard.blog.update', ['tags' => Tag::all(), 'blog'=>$blog]);
     }
 
     /**
@@ -117,11 +125,14 @@ class BlogController extends ApiController
         if($validator_blog->passes()){
             $blog->update([
                 'title'=> $req->title,
-                'featuredImage' => $req->featuredImage,
-                'alt'=> $req->alt,
                 'published_at'=> $req->published_at,
             ]);
 
+            $blog->tags()->sync($req->tag);
+            $blog->thumbnail()->update([
+                'featuredImage' => $req->featuredImage,
+                'alt'=> $req->alt,
+            ]);
             $blog->meta()->update([
                 'meta_title' => $req->meta_title,
                 'meta_description'=> $req->meta_description,
@@ -138,16 +149,10 @@ class BlogController extends ApiController
         }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Blog  $blog
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Blog $blog)
     {
-        $blog->meta()->delete();
         $blog->delete();
+        $blog->deleteMorphResidual();
         return $this->successResponse($blog->title.' has been deleted', 200);
     }
 }

@@ -36,6 +36,16 @@ Route::middleware(['auth'])->group(function(){
 			'edit'=>'editblog',
 			'create'=>'createblog',
 		]);
+
+		Route::resource('products', 'ProductController')->names([
+			'index'=>'allproducts',
+			'store'=>'addproduct',
+			'update'=>'updateproduct',
+			'destroy'=>'deleteproduct',
+			'show'=>'viewproduct',
+			'edit'=>'editproduct',
+			'create'=>'createproduct',
+		]);
 	});
 
 	// Route::resource('images', 'ImageController')->names([

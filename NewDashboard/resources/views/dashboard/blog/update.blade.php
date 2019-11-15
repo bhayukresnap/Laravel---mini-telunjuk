@@ -18,7 +18,7 @@
 	<form class="row" id="updateblog">
 		<label class="col-12">Featured images</label>
 		<div class="col-6">
-			<img id="previewFeaturedImage" src="{{$blog->featuredImage}}" class="img-fluid">
+			<img id="previewFeaturedImage" src="{{$blog->thumbnail->featuredImage}}" class="img-fluid">
 		</div>
 		<div class="col-6 mb-4">
 			<div class="input-group">
@@ -27,11 +27,24 @@
 						<i class="fa fa-picture-o"></i> Choose
 					</a>
 				</span>
-				<input autocomplete="off" id="thumbnail" class="form-control thumbnail_path" type="text" name="featuredImage" readonly="readonly" value="{{$blog->featuredImage}}">
+				<input autocomplete="off" id="thumbnail" class="form-control thumbnail_path" type="text" name="featuredImage" readonly="readonly" value="{{$blog->thumbnail->featuredImage}}">
 			</div>
 			<br>
-			<label>Alt featured Image</label>
-			<input autocomplete="off" type="text" name="alt" class="form-control" placeholder="" value="{{$blog->alt}}">
+			<div class="form-group">
+				<label>Alt featured Image</label>
+				<input autocomplete="off" type="text" name="alt" class="form-control" placeholder="" value="{{$blog->thumbnail->alt}}">
+			</div>
+
+			<div class="form-group">
+				<label>Tag</label>
+				<div class="multiselect_div">
+					<select id="selectTag" name="tag[]" class="multiselect-custom" multiple="multiple">
+						@foreach($tags as $tag)
+							<option value="{{$tag->id}}">{{$tag->tagname}}</option>
+						@endforeach
+					</select>
+				</div>
+			</div>
 		</div>
 
 		<div class="col-6 mt-4">
@@ -107,6 +120,13 @@
 <script type="text/javascript" src="{{asset('/vendor/ckeditor/styles.js')}}"></script>
 <script type="text/javascript" src="{{asset('/vendor/ckeditor/config.js')}}"></script>
 <script>
+	const tagtemp = [];
+	$('#selectTag').multiselect();
+	@foreach($blog->tags as $blogTag)
+		tagtemp.push({{$blogTag->id}})
+	@endforeach
+	$('#selectTag').val(tagtemp)
+	$('#selectTag').multiselect('refresh');
 	$('#lfm').filemanager('image');
 	const options = {
 		filebrowserImageBrowseUrl: '/laravel-filemanager?type=image',

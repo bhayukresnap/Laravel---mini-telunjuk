@@ -4,6 +4,17 @@
     i:hover{
         cursor: pointer;
     }
+    ul#listTags{
+        padding: 0;
+        margin:0;
+        width:150px;
+    }
+   .eachTag{
+    background-color: #28A744;
+    color: white;
+    padding: 2px;
+    font-size: 10px;
+   }
 </style>
 <div class="block-header">
     <div class="row clearfix">
@@ -12,13 +23,10 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{route('home')}}">Oculux</a></li>
-                    <li class="breadcrumb-item"><a href="#">Images</a></li>
+                    <li class="breadcrumb-item"><a href="#">Blog</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Oculux Blog</li>
                 </ol>
             </nav>
-        </div>            
-        <div class="col-md-6 col-sm-12 text-right hidden-xs">
-            <a href="{{route('createblog')}}" class="btn btn-sm btn-primary btn-round" title=""><i class="fa fa-cloud-upload"></i> Create blog</a>
         </div>
     </div>
 </div>
@@ -42,7 +50,7 @@
         @foreach($blogs as $blog)
         <tr data-index-blog = "{{$blog->id}}">
             <td>{{$no}}</td>
-            <td style="width: 150px;"><img src="{{$blog->featuredImage}}" class="img-thumbnail"></td>
+            <td style="width: 150px;"><img src="{{$blog->thumbnail->featuredImage}}" class="img-fluid img-thumbnail" alt="{{$blog->thumbnail->alt}}"></td>
             <td>{{$blog->title}}</td>
             <td>{{$blog->meta->updated_at->diffForHumans()}}</td>
             <td>{{$blog->created_at->diffForHumans()}}</td>
@@ -58,6 +66,7 @@
 </table>
 
 <script type="text/javascript">
+    
     var blogTable = $('#blogTable').DataTable({
         "lengthMenu": [ [25, 50, 100, -1], [25, 50, 100, "All"] ]
     });

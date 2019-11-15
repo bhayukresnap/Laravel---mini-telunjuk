@@ -10,8 +10,10 @@ class CreateImagesTable extends Migration
     {
         Schema::create('images', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('path')->unique();
-            $table->string('alt');
+            $table->string('featuredImage');
+            $table->string('alt')->nullable();
+            $table->integer('imageable_id')->unsigned()->index();
+            $table->string('imageable_type');
             $table->timestamps();
         });
     }

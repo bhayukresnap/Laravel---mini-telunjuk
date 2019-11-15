@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Validator;
 use App\Store;
 use App\Meta;
+use App\Image;
 use Illuminate\Http\File;
 use Illuminate\Http\Request;
 use App\Http\Controllers\ApiController;
@@ -14,7 +15,7 @@ class StoreController extends ApiController
     }
     public function index()
     {
-        return $this->showAll(Store::orderBy('store_name','asc')->get());
+        return $this->showAll(Store::orderBy('store_name','asc')->with('thumbnail')->get());
     }
 
     public function create()
@@ -33,9 +34,11 @@ class StoreController extends ApiController
         if($validator_store->passes()){
             $store = new Store;
             $store->store_name = $req->store_name;
-            $store->store_logo = $req->store_logo;
+            $thumbnail = new Image;
+            $thumbnail->imageable_id = $store->id;
+            $thumbnail->featuredImage = $req->store_logo;
+            $thumbnail->alt = $req->alt;
             $meta = new Meta;
-            $store->save();
             $meta->metaable_id = $store->id;
             $meta->meta_title = $req->meta_title;
             $meta->meta_description = $req->meta_description;
@@ -44,7 +47,9 @@ class StoreController extends ApiController
             $meta->noindex = $req->noindex;
             $meta->json_ld = $req->json_ld;
             $meta->path_url = $req->path_url;
+            $store->save();
             $store->meta()->save($meta);
+            $store->thumbnail()->save($thumbnail);
             return $this->successResponse('Your store has been saved!', 200);
         }else{
             return $this->errorResponse($validator_store->errors()->all(), 406);
@@ -53,7 +58,7 @@ class StoreController extends ApiController
 
     public function show(Store $store)
     {
-        return $store->with('meta')->whereId($store->id)->get();
+        return $store->with(['meta','thumbnail'])->whereId($store->id)->get();
     }
 
     public function edit(Store $store)
@@ -70,9 +75,11 @@ class StoreController extends ApiController
         if($validator_store->passes()){
             $store->update([
                 'store_name' => $req->store_name,
-                'store_logo' => $req->store_logo,
             ]);
-
+            $store->thumbnail()->update([
+                'featuredImage' => $req->featuredImage,
+                'alt'=> $req->alt,
+            ]);
             $store->meta()->update([
                 'meta_title' => $req->meta_title,
                 'meta_description'=> $req->meta_description,
@@ -91,8 +98,8 @@ class StoreController extends ApiController
 
     public function destroy(Store $store)
     {
-        $store->meta()->delete();
         $store->delete();
+        $store->deleteMorphResidual();
         return $this->successResponse($store->store_name.' has been deleted', 200);
     }
 }

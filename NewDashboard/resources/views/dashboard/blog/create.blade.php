@@ -18,7 +18,7 @@
 	<form class="row" id="addblog">
 		<label class="col-12">Featured images</label>
 		<div class="col-6">
-			<img id="previewFeaturedImage" src="https://via.placeholder.com/450x250">
+			<img id="previewFeaturedImage" src="/img/450x250.png">
 		</div>
 		<div class="col-6 mb-4">
 			<div class="input-group">
@@ -30,8 +30,20 @@
 				<input autocomplete="off" id="thumbnail" class="form-control thumbnail_path" type="text" name="featuredImage" readonly="readonly">
 			</div>
 			<br>
-			<label>Alt featured Image</label>
-			<input autocomplete="off" type="text" name="alt" class="form-control" placeholder="">
+			<div class="form-group">
+				<label>Alt featured Image</label>
+				<input autocomplete="off" type="text" name="alt" class="form-control" placeholder="">
+			</div>
+			<div class="form-group">
+				<label>Tag</label>
+				<div class="multiselect_div">
+					<select id="selectTag" name="tag[]" class="multiselect-custom" multiple="multiple">
+						@foreach($tags as $tag)
+						<option value="{{$tag->id}}">{{$tag->tagname}}</option>
+						@endforeach
+					</select>
+				</div>
+			</div>
 		</div>
 
 		<div class="col-6 mt-4">
@@ -102,11 +114,16 @@
 		</div>
 	</form>
 </div>
+
+
+
 <script src="{{asset('/vendor/laravel-filemanager/js/stand-alone-button.js')}}"></script>
 <script type="text/javascript" src="{{asset('/vendor/ckeditor/ckeditor.js')}}"></script>
 <script type="text/javascript" src="{{asset('/vendor/ckeditor/styles.js')}}"></script>
 <script type="text/javascript" src="{{asset('/vendor/ckeditor/config.js')}}"></script>
 <script>
+$(document).ready(function(){
+	$('#selectTag').multiselect();
 	$('#lfm').filemanager('image');
 	const options = {
 		filebrowserImageBrowseUrl: '/laravel-filemanager?type=image',
@@ -117,7 +134,7 @@
 	function reloadPage(){
         location.reload(true);
     }
-
+});
 	$('form#addblog').submit(function(e){
 		$('#body_html').val(CKEDITOR.instances.editor1.getData());
 		loading();

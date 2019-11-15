@@ -135,8 +135,20 @@
 						<li class="header">Main</li>
 						<li class=""><a href="{{route('home')}}"><i class="icon-home"></i><span>Dashboard</span></a></li>
 						{{-- <li class=""><a href="{{route('home')}}"><i class="icon-envelope"></i><span>Email (Maintenance)</span></a></li> --}}
-						<li><a href="{{route('allblogs')}}"><i class="icon-book-open"></i><span>Blogs</span></a></li>
-						<li><a href="#Contact"><i class="fa fa-dropbox"></i><span>Products (Maintenance)</span></a></li>
+						<li>
+							<a href="#" class="has-arrow"><i class="icon-book-open"></i><span>Blogs</span></a></a>
+							<ul>
+	                            <li><a href="{{route('createblog')}}">Create blog post</a></li>
+	                            <li><a href="{{route('allblogs')}}">All blogs post</a></li>
+	                        </ul>
+						</li>
+						<li>
+							<a href="{{route('allproducts')}}" class="has-arrow"><i class="fa fa-dropbox"></i><span>Products</span></a>
+							<ul>
+	                            <li><a href="{{route('createproduct')}}">Create new product</a></li>
+	                            <li><a href="{{route('allproducts')}}">All products</a></li>
+	                        </ul>
+						</li>
 						<li><a href="{{route('filemanager')}}?type=image" target="_blank"><i class="fa fa-image"></i><span>Images</span></a></li>
 						<li><a href="{{route('categories')}}"><i class="icon-layers"></i><span>Categories</span></a></li>
 						<li><a href="{{route('tags')}}"><i class="fa fa-tags"></i><span>Tags</span></a></li>

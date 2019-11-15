@@ -19,8 +19,10 @@ class CreateProductsTable extends Migration
             $table->unsignedBigInteger('brandId')->index();
             $table->string('product_name');
             $table->string('product_description');
-            $table->longText('product_specification');
             $table->timestamps();
+
+            $table->foreign('categoryId')->references('id')->on('categories_level_3');
+            $table->foreign('brandId')->references('id')->on('brands');
         });
     }
 

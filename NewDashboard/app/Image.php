@@ -12,9 +12,7 @@ class Image extends Model
         'path', 'alt',
     ];
 
-    public function images()
-    {
-        return $this->morphedByMany('App\Brand', 'taggable');
+    public function imageable(){
+    	return $this->morphTo();
     }
-
 }

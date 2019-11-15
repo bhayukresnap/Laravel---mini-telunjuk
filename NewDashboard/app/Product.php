@@ -12,4 +12,18 @@ class Product extends Model
         'categoryId','brandId','product_name','product_description','product_specification'
     ];
     
+
+    public function meta(){
+    	return $this->morphOne('App\Meta', 'metaable');
+    }
+
+    public function belongsToCategory(){
+    	
+    }
+
+    public function tags()
+    {
+        return $this->morphToMany(Tag::class, 'taggable');
+    }
+
 }

@@ -58,6 +58,10 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <label>Alt</label>
+                        <input type="text" id="alt" name="alt" class="form-control"  autocomplete="off">
+                    </div>
+                    <div class="form-group">
                         <label>Meta Title</label>
                         <input type="text" id="alt" name="meta_title" class="form-control"  autocomplete="off">
                     </div>
@@ -125,8 +129,12 @@
                                     <i class="fa fa-picture-o"></i> Choose
                                 </a>
                             </span>
-                            <input autocomplete="off" id="logo_update" class="form-control thumbnail_path" type="text" name="store_logo" readonly="readonly">
+                            <input autocomplete="off" id="logo_update" class="form-control thumbnail_path" type="text" name="featuredImage" readonly="readonly">
                         </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Alt</label>
+                        <input type="text" id="alt" name="alt" class="form-control"  autocomplete="off">
                     </div>
                     <div class="form-group">
                         <label>Meta Title</label>
@@ -247,7 +255,8 @@
         $('#updateStore'+' #id').val(value.id);
         $('#updateStore'+' input[name="path_url"]').val(value.meta.path_url);        
         $('#updateStore'+' input[name="store_name"]').val(value.store_name);
-        $('#updateStore'+' input[name="store_logo"]').val(value.store_logo);
+        $('#updateStore'+' input[name="featuredImage"]').val(value.thumbnail.featuredImage);
+        $('#updateStore'+' input[name="alt"]').val(value.thumbnail.alt);
         $('#updateStore'+' input[name="meta_title"]').val(value.meta.meta_title);
         $('#updateStore'+' input[name="meta_description"]').val(value.meta.meta_description);
         $('#updateStore'+' input[name="meta_keyword"]').val(value.meta.meta_keyword);
@@ -275,7 +284,7 @@
         let str = '';
         $.each(json,function(index,value){
             str +=  '<div class="col-6 col-md-3 text-center" data-index="'+value.id+'">'
-            str +=      '<img src="'+value.store_logo+'" class="img-fluid mb-2">'
+            str +=      '<img src="'+value.thumbnail.featuredImage+'" class="img-fluid mb-2" alt="'+value.thumbnail.alt+'">'
            // str +=      '<p class="">'+value.store_name+'</p>'
             str +=      '<div class="form-group">'
             str +=      '<button class="btn btn-outline-success mx-2" onclick="showUpdateCategory('+value.id+')">Update</button>'
@@ -298,6 +307,7 @@
         }).done(function(success){
             removeLoading();
             if(success.length > 0) fetchDataBrands(success);
+            console.log(success)
         });
     }
 

@@ -16,4 +16,13 @@ class Tag extends Model
     	return $this->morphOne('App\Meta', 'metaable');
     }
 
+    public function blogs()
+    {
+        return $this->morphedByMany(Blog::class, 'taggable');
+    }
+
+    public function products()
+    {
+        return $this->morphedByMany(Product::class, 'taggable');
+    }
 }

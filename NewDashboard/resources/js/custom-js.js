@@ -15,3 +15,5 @@ function loading(){
 function removeLoading(){
 	$('#loading_bb').remove();
 }
+
+
