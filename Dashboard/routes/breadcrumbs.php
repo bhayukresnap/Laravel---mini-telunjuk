@@ -5,10 +5,15 @@ Breadcrumbs::for('dashboard.index', function ($trail) {
     $trail->push('Home', route('dashboard.index'));
 });
 
-// Home > About
+//Home > Store
 Breadcrumbs::for('stores', function ($trail) {
     $trail->parent('dashboard.index');
     $trail->push('Store', route('stores'));
+});
+
+Breadcrumbs::for('createstore', function ($trail) {
+    $trail->parent('stores');
+    $trail->push('Create Store', route('createstore'));
 });
 
 // Home > Blog

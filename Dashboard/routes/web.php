@@ -48,8 +48,9 @@ Route::prefix('/dashboard-panel')->group(function(){
 			'show'=>'viewbrand',
 		]);
 
-		Route::resource('stores', 'Dashboard\StoreController')->except(['edit','create'])->names([
+		Route::resource('stores', 'Dashboard\StoreController')->names([
 			'index'=>'stores',
+			'create'=>'createstore',
 			'store'=>'addstore',
 			'update'=>'updatestore',
 			'destroy'=>'deletestore',
@@ -98,13 +99,5 @@ Route::prefix('/dashboard-panel')->group(function(){
 
 		Route::get('/logout','Dashboard\IndexController@logout')->name('logout');
 		Route::get('/clear-cache', 'Dashboard\IndexController@clearCache')->name('clearCache');
-
-		Route::prefix('api')->group(function(){
-			Route::get('tags','TagController@view')->name('alltags');
-			Route::get('categories','CategoryLevel1Controller@view')->name('allcategories');
-			Route::get('brands','BrandController@view')->name('allbrands');
-			Route::get('stores','Dashboard\StoreController@view')->name('allstores');
-		});
-
 	});
 });

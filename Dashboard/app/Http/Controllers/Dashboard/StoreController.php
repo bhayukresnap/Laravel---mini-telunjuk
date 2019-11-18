@@ -10,9 +10,6 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\ApiController;
 class StoreController extends ApiController
 {
-    public function view(){
-        return $this->showAll(Store::orderBy('store_name','asc')->with('thumbnail')->get());
-    }
     public function index()
     {
         return view('dashboard.store.index',compact(['stores'=>Store::orderBy('store_name','asc')->with('thumbnail')->get()]));
@@ -20,7 +17,7 @@ class StoreController extends ApiController
 
     public function create()
     {
-        
+        return view('dashboard.store.create');
     }
 
     public function store(Request $req)

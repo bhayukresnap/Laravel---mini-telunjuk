@@ -10,7 +10,7 @@
 @section('body')
 <div class="row mb-2">
 	<div class="col-12">
-		<a href="#" data-toggle="modal" data-target="#createBrand" class="btn btn-sm btn-primary btn-round"><i class="fa fa-tags"></i> Add store</a>
+		<a href="{{route('createstore')}}" class="btn btn-sm btn-primary btn-round"><i class="fa fa-tags"></i> Add store</a>
 	</div>
 </div>
 
