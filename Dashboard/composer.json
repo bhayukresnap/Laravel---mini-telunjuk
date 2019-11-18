@@ -10,12 +10,13 @@
     "require": {
         "php": "^7.2",
         "cesargb/laravel-cascade-delete": "^0.6.0",
+        "davejamesmiller/laravel-breadcrumbs": "5.x",
         "fideloper/proxy": "^4.0",
+        "guzzlehttp/guzzle": "^6.3",
+        "intervention/image": "^2.5",
         "laravel/framework": "^6.2",
         "laravel/helpers": "^1.1",
         "laravel/tinker": "^1.0",
-        "guzzlehttp/guzzle": "^6.3",
-        "intervention/image": "^2.5",
         "unisharp/laravel-filemanager": "dev-master"
     },
     "require-dev": {

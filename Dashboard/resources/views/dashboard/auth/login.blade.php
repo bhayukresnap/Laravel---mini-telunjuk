@@ -18,35 +18,28 @@
 							<img alt="" src="/assets/img/logo-dark.png" class="toggle-none hidden-xs">
 						</div>
 						<div class="misc-box">   
-							<form role="form">
+							<form method="post" action="{{url('/dashboard-panel/login')}}">
+								@csrf
 								<div class="form-group">                                      
 									<label  for="exampleuser1">Username</label>
 									<div class="group-icon">
-										<input id="exampleuser1" type="text" placeholder="Username" class="form-control" required="">
+										<input id="exampleuser1" name="email" type="text" placeholder="Username" class="form-control" required="">
 										<span class="icon-user text-muted icon-input"></span>
 									</div>
 								</div>
 								<div class="form-group">
 									<label for="exampleInputPassword1">Password</label>
 									<div class="group-icon">
-										<input id="exampleInputPassword1" type="password" placeholder="Password" class="form-control">
+										<input id="exampleInputPassword1" name="password" type="password" placeholder="Password" class="form-control">
 										<span class="icon-lock text-muted icon-input"></span>
 									</div>
 								</div>
 								<div class="clearfix">
-									<div class="float-left">
-										<div class="checkbox checkbox-primary margin-r-5">
-											<input id="checkbox2" type="checkbox" checked="">
-											<label for="checkbox2"> Remember Me </label>
-										</div>
-									</div>
 									<div class="float-right">
 										<button type="submit" class="btn btn-block btn-primary btn-rounded box-shadow">Login</button>
 									</div>
 								</div>
 								<hr>
-								<p class="text-center">Need to Signup?</p>
-								<a href="page-register.html" class="btn btn-block btn-success btn-rounded box-shadow">Register Now</a>
 							</form>
 						</div>
 						<div class="text-center misc-footer">

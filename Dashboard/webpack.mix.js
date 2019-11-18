@@ -13,6 +13,7 @@ mix.scripts([
 	'resources/library/jquery/dist/jquery.min.js',
 	'resources/library/bootstrap/js/popper.min.js',
 	'resources/library/bootstrap/js/bootstrap.min.js',
+	'resources/library/ace-menu/ace-responsive-menu-min.js',
 	'resources/library/pace/pace.min.js',
 	'resources/library/jasny-bootstrap/js/jasny-bootstrap.min.js',
 	'resources/library/slimscroll/jquery.slimscroll.min.js',
