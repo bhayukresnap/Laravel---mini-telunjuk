@@ -16,6 +16,11 @@ Breadcrumbs::for('createstore', function ($trail) {
     $trail->push('Create Store', route('createstore'));
 });
 
+Breadcrumbs::for('editstore', function ($trail, $store) {
+    $trail->parent('stores');
+    $trail->push($store->store_name, route('editstore', $store->id));
+});
+
 // Home > Blog
 Breadcrumbs::for('blog', function ($trail) {
     $trail->parent('home');

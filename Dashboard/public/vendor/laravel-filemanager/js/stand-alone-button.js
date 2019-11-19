@@ -7,7 +7,7 @@
       var route_prefix = (options && options.prefix) ? options.prefix : '/laravel-filemanager';
       var target_input = $('#' + $(this).data('input'));
       var target_preview = $('#' + $(this).data('preview'));
-      window.open(route_prefix + '?type=' + type, 'FileManager', 'width=900,height=600');
+      window.open(route_prefix + '?type=' + type, 'FileManager', "width="+screen.availWidth+",height="+screen.availHeight);
       window.SetUrl = function (items) {
         var file_path = items.map(function (item) {
           return item.url;
@@ -22,7 +22,8 @@
         // set or change the preview image src
         items.forEach(function (item) {
           target_preview.append(
-            $('<img>').css('height', '5rem').attr('src', item.thumb_url)
+            // $('<img>').css('height', '5rem').attr('src', item.thumb_url)
+            $(target_preview).attr('src', item.url).attr('class','img-fluid mb-2')
           );
         });
 

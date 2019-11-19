@@ -52,6 +52,7 @@ Route::prefix('/dashboard-panel')->group(function(){
 			'index'=>'stores',
 			'create'=>'createstore',
 			'store'=>'addstore',
+			'edit'=>'editstore',
 			'update'=>'updatestore',
 			'destroy'=>'deletestore',
 			'show'=>'viewstore',

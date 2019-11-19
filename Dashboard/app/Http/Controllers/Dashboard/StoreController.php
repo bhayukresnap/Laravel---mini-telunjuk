@@ -12,7 +12,8 @@ class StoreController extends ApiController
 {
     public function index()
     {
-        return view('dashboard.store.index',compact(['stores'=>Store::orderBy('store_name','asc')->with('thumbnail')->get()]));
+        $stores = Store::orderBy('id','asc')->paginate(10);
+        return view('dashboard.store.index',compact(['stores']));
     }
 
     public function create()
@@ -26,8 +27,14 @@ class StoreController extends ApiController
             'store_name' => 'required|unique:stores,store_name',
             'store_logo' => 'required',
             'path_url'=>'required|unique:metas,path_url',
-
-        ]);
+        ],[
+            'store_name.required' => 'Store name is required',
+            'store_name.unique' => 'This store name has already been taken',
+            'store_logo.required'=> 'Store logo is required',
+            'path_url.required'=>'Slug is required',
+            'path_url.unique'=> 'This slug has already been taken'
+        ]
+    );
         if($validator_store->passes()){
             $store = new Store;
             $store->store_name = $req->store_name;
@@ -60,7 +67,7 @@ class StoreController extends ApiController
 
     public function edit(Store $store)
     {
-        //
+        return view('dashboard.store.update', ['store'=>$store]);
     }
 
     public function update(Request $req, Store $store)
@@ -68,13 +75,20 @@ class StoreController extends ApiController
         $validator_store = Validator::make($req->all(),[
             'store_name' => 'required|unique:stores,store_name,'. $store->id,
             'path_url'=>'required|unique:metas,path_url,'. $store->meta->id
-        ]);
+        ],[
+            'store_name.required' => 'Store name is required',
+            'store_name.unique' => 'This store name has already been taken',
+            'path_url.required'=>'Slug is required',
+            'path_url.unique'=> 'This slug has already been taken'
+        ]
+ 
+    );
         if($validator_store->passes()){
             $store->update([
                 'store_name' => $req->store_name,
             ]);
             $store->thumbnail()->update([
-                'featuredImage' => $req->featuredImage,
+                'featuredImage' => $req->store_logo,
                 'alt'=> $req->alt,
             ]);
             $store->meta()->update([
