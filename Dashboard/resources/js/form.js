@@ -1,3 +1,44 @@
+function ajaxError(code, statusText, error){
+    Swal.fire({
+        title: '<span style="text-transform:capitalize;">'+statusText+'!</span>',
+        text: 'Please try again later :)',
+        type: 'error',
+        confirmButtonClass: 'btn btn-primary btn-lg',
+        buttonsStyling: false
+    });
+    console.log(code.responseText)
+}
+
+function ajaxSuccess(success){
+    let type, text = [], str = '',statusCode;
+    $.each(success,function(status, responseStatus){
+        $.each(this,function(key,value){
+            type = status;
+            text.push(value);
+        });
+        if(responseStatus == 200){
+            statusCode = responseStatus;
+        }
+    });
+    $.map(text, function( n ) {
+        return str += '<div>'+n+'</div>';
+    }),
+    Swal.fire({
+        title: '<span style="text-transform:capitalize;">'+type+'!</span>',
+        html: str,
+        type: type,
+        confirmButtonClass: 'btn btn-space btn-lg btn-primary hover',
+        confirmButtonText: 'Ok',
+        buttonsStyling: false,
+        onClose: ()=>{
+            if(statusCode == 200){
+                refreshPage();
+            }
+        }
+    }); 
+}
+
+
 //Create
 $('form#add').submit(function(e){
     e.preventDefault();
@@ -15,39 +56,11 @@ $('form#add').submit(function(e){
                 cache: false,
                 processData: false,
                 error: function(code, statusText, error){
-                    Swal.fire({
-                        title: '<span style="text-transform:capitalize;">'+statusText+'!</span>',
-                        text: 'Please try again later :)',
-                        type: 'error',
-                        confirmButtonClass: 'btn btn-primary btn-lg',
-                        buttonsStyling: false
-                    });
-                    console.log(code.responseText)
+                    ajaxError(code, statusText, error);
                 },
                 success: function(success){
-                    let type, text = [], str = '';
-                    $.each(success,function(status, responseStatus){
-                        $.each(this,function(key,value){
-                            type = status;
-                            text.push(value);
-                        })
-                    });
-                    $.map(text, function( n ) {
-                        return str += '<div>'+n+'</div>';
-                    }),
-                    Swal.fire({
-                        title: '<span style="text-transform:capitalize;">'+type+'!</span>',
-                        html: str,
-                        type: type,
-                        confirmButtonClass: 'btn btn-space btn-lg btn-primary hover',
-                        confirmButtonText: 'Ok',
-                        buttonsStyling: false,
-                        onClose: ()=>{
-                            refreshPage();
-                        }
-                    }); 
-
-                }
+                    ajaxSuccess(success);
+                },
             })
         }
     });
@@ -83,45 +96,11 @@ $('.btn-delete').on('click',function(){
                             url: data.url,
                             type: 'delete',
                             error: function(code, statusText, error){
-                                Swal.fire({
-                                    title: '<span style="text-transform:capitalize;">'+statusText+'!</span>',
-                                    text: 'Please try again later :)',
-                                    type: 'error',
-                                    confirmButtonClass: 'btn btn-primary btn-lg',
-                                    buttonsStyling: false
-                                });
-                                console.log(code.responseText)
+                                ajaxError(code, statusText, error);
                             },
                             success: function(success){
-                                let type, text = [], str = '', statusCode;
-                                $.each(success,function(status, responseStatus){
-                                    $.each(this,function(key,value){
-                                        type = status;
-                                        text.push(value);
-                                    });
-                                    if(responseStatus == 200){
-                                        statusCode = responseStatus
-                                    }
-                                });
-                                $.map(text, function( n ) {
-                                    return str += '<div>'+n+'</div>';
-                                }),
-                                Swal.fire({
-                                    title: '<span style="text-transform:capitalize;">'+type+'!</span>',
-                                    html: str,
-                                    type: type,
-                                    confirmButtonClass: 'btn btn-space btn-lg btn-primary hover',
-                                    confirmButtonText: 'Ok',
-                                    buttonsStyling: false,
-                                    onClose: ()=>{
-                                        if(statusCode == 200){
-                                            refreshPage();
-                                        }
-                                        console.log(statusCode)
-                                    }
-                                }); 
-
-                            }
+                                ajaxSuccess(success);
+                            },
                         })
                     }
                 })
@@ -143,39 +122,11 @@ $('form#update').submit(function(e){
                 type: 'put',
                 data: $(this).serialize(),
                 error: function(code, statusText, error){
-                    Swal.fire({
-                        title: '<span style="text-transform:capitalize;">'+statusText+'!</span>',
-                        text: 'Please try again later :)',
-                        type: 'error',
-                        confirmButtonClass: 'btn btn-primary btn-lg',
-                        buttonsStyling: false
-                    });
-                    console.log(code.responseText)
+                    ajaxError(code, statusText, error);
                 },
                 success: function(success){
-                    let type, text = [], str = '';
-                    $.each(success,function(status, responseStatus){
-                        $.each(this,function(key,value){
-                            type = status;
-                            text.push(value);
-                        })
-                    });
-                    $.map(text, function( n ) {
-                        return str += '<div>'+n+'</div>';
-                    }),
-                    Swal.fire({
-                        title: '<span style="text-transform:capitalize;">'+type+'!</span>',
-                        html: str,
-                        type: type,
-                        confirmButtonClass: 'btn btn-space btn-lg btn-primary hover',
-                        confirmButtonText: 'Ok',
-                        buttonsStyling: false,
-                        onClose: ()=>{
-                            refreshPage();
-                        }
-                    }); 
-
-                }
+                    ajaxSuccess(success);
+                },
             })
         }
     });

@@ -20,7 +20,6 @@ mix.scripts([
 	'resources/library/slimscroll/jquery.slimscroll.min.js',
 	'resources/library/nano-scroll/jquery.nanoscroller.min.js',
 	'resources/library/metisMenu/metisMenu.min.js',
-	'resources/library/ajax-form/form.js',
 	'resources/library/sweet-alerts2/sweetalert2.min.js'
 ], 'public/assets/js/dashboard-library.js').version();
 

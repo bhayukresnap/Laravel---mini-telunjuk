@@ -3,9 +3,9 @@
 <head>
 	<title></title>
 	<meta name="robots" content="noindex"/>
-	<link rel="stylesheet" type="text/css" href="/assets/css/dashboard-library.css">
-	<link rel="stylesheet" type="text/css" href="/assets/css/dashboard-custom.css">
-	<script type="text/javascript" src="/assets/js/dashboard-library.js"></script>
+	<link rel="stylesheet" type="text/css" href="{{mix('/assets/css/dashboard-library.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{mix('/assets/css/dashboard-custom.css')}}">
+	<script type="text/javascript" src="{{mix('/assets/js/dashboard-library.js')}}"></script>
 </head>
 <body>
 	<div class="misc-wrapper">
@@ -50,6 +50,6 @@
 			</div>
 		</div>
 	</div>
-	<script type="text/javascript" src="/assets/js/dashboard-custom.js"></script>
+	<script src="{{mix('/assets/js/dashboard-custom.js')}}"></script>
 </body>
 </html>

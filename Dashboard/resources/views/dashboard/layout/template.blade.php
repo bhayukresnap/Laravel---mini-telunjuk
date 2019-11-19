@@ -7,9 +7,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="robots" content="noindex"/>
 	<meta name="csrf-token" content="{{ csrf_token() }}">
-	<link rel="stylesheet" type="text/css" href="/assets/css/dashboard-library.css">
-	<link rel="stylesheet" type="text/css" href="/assets/css/dashboard-custom.css">
-	<script type="text/javascript" src="/assets/js/dashboard-library.js"></script>
+	<link rel="stylesheet" type="text/css" href="{{mix('/assets/css/dashboard-library.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{mix('/assets/css/dashboard-custom.css')}}">
+	<script type="text/javascript" src="{{mix('/assets/js/dashboard-library.js')}}"></script>
 	@yield('css')
 </head>
 <body class="horizontal">
@@ -209,7 +209,7 @@
 			<span>Copyright &copy; 2018 FixedPlus</span>
 		</footer>
 	</section>
-        <script src="/assets/js/dashboard-custom.js"></script>
+        <script src="{{mix('/assets/js/dashboard-custom.js')}}"></script>
 	@yield('script')
 </body>
 </html>
