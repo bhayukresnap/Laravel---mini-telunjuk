@@ -36,6 +36,7 @@
 
 })(jQuery);
 
+//Create
 $('form#add').submit(function(e){
     e.preventDefault();
     Swal.fire({
@@ -53,13 +54,13 @@ $('form#add').submit(function(e){
                 processData: false,
                 error: function(code, statusText, error){
                     Swal.fire({
-                        title: statusText,
+                        title: '<span style="text-transform:capitalize;">'+statusText+'!</span>',
                         text: 'Please try again later :)',
                         type: 'error',
                         confirmButtonClass: 'btn btn-primary btn-lg',
                         buttonsStyling: false
                     });
-                    console.log(code)
+                    console.log(code.responseText)
                 },
                 success: function(success){
                     let type, text = [], str = '';
@@ -92,7 +93,7 @@ $('form#add').submit(function(e){
     return false;
 });
 
-
+//Delete
 $('.btn-delete').on('click',function(){
     const data = $(this).data('list');
     data.url = data.url.replace(":id",data.id);
@@ -121,13 +122,13 @@ $('.btn-delete').on('click',function(){
                             type: 'delete',
                             error: function(code, statusText, error){
                                 Swal.fire({
-                                    title: code.responseText,
+                                    title: '<span style="text-transform:capitalize;">'+statusText+'!</span>',
                                     text: 'Please try again later :)',
                                     type: 'error',
                                     confirmButtonClass: 'btn btn-primary btn-lg',
                                     buttonsStyling: false
                                 });
-                                console.log(code)
+                                console.log(code.responseText)
                             },
                             success: function(success){
                                 let type, text = [], str = '', statusCode;
@@ -167,7 +168,7 @@ $('.btn-delete').on('click',function(){
     }); 
 });
 
-
+//Update
 $('form#update').submit(function(e){
     e.preventDefault();
     Swal.fire({
@@ -181,13 +182,13 @@ $('form#update').submit(function(e){
                 data: $(this).serialize(),
                 error: function(code, statusText, error){
                     Swal.fire({
-                        title: code.responseText,
+                        title: '<span style="text-transform:capitalize;">'+statusText+'!</span>',
                         text: 'Please try again later :)',
                         type: 'error',
                         confirmButtonClass: 'btn btn-primary btn-lg',
                         buttonsStyling: false
                     });
-                    console.log(code)
+                    console.log(code.responseText)
                 },
                 success: function(success){
                     let type, text = [], str = '';

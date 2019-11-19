@@ -16,13 +16,13 @@ $('form#add').submit(function(e){
                 processData: false,
                 error: function(code, statusText, error){
                     Swal.fire({
-                        title: statusText,
+                        title: '<span style="text-transform:capitalize;">'+statusText+'!</span>',
                         text: 'Please try again later :)',
                         type: 'error',
                         confirmButtonClass: 'btn btn-primary btn-lg',
                         buttonsStyling: false
                     });
-                    console.log(code)
+                    console.log(code.responseText)
                 },
                 success: function(success){
                     let type, text = [], str = '';
@@ -84,13 +84,13 @@ $('.btn-delete').on('click',function(){
                             type: 'delete',
                             error: function(code, statusText, error){
                                 Swal.fire({
-                                    title: code.responseText,
+                                    title: '<span style="text-transform:capitalize;">'+statusText+'!</span>',
                                     text: 'Please try again later :)',
                                     type: 'error',
                                     confirmButtonClass: 'btn btn-primary btn-lg',
                                     buttonsStyling: false
                                 });
-                                console.log(code)
+                                console.log(code.responseText)
                             },
                             success: function(success){
                                 let type, text = [], str = '', statusCode;
@@ -144,13 +144,13 @@ $('form#update').submit(function(e){
                 data: $(this).serialize(),
                 error: function(code, statusText, error){
                     Swal.fire({
-                        title: code.responseText,
+                        title: '<span style="text-transform:capitalize;">'+statusText+'!</span>',
                         text: 'Please try again later :)',
                         type: 'error',
                         confirmButtonClass: 'btn btn-primary btn-lg',
                         buttonsStyling: false
                     });
-                    console.log(code)
+                    console.log(code.responseText)
                 },
                 success: function(success){
                     let type, text = [], str = '';
