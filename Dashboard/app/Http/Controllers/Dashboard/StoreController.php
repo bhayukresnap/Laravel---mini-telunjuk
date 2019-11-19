@@ -60,9 +60,13 @@ class StoreController extends ApiController
         }
     }
 
-    public function show(Store $store)
+    public function show($slug)
     {
-        return $store->with(['meta','thumbnail'])->whereId($store->id)->get();
+        $store = Store::whereHas('meta',function($q) use ($slug){
+            $q->where('path_url', $slug);
+        })->get();
+
+        return response()->json($store); 
     }
 
     public function edit(Store $store)
