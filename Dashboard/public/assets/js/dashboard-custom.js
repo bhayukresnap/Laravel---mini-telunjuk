@@ -23,7 +23,7 @@
         items.forEach(function (item) {
           target_preview.append(
             // $('<img>').css('height', '5rem').attr('src', item.thumb_url)
-            $(target_preview).attr('src', item.url).attr('class','img-fluid mb-2')
+            $(target_preview).attr('src', item.url).attr('class','img-fluid mb-3')
           );
         });
 
@@ -165,6 +165,59 @@ $('.btn-delete').on('click',function(){
             });
         },        
     }); 
+});
+
+
+$('form#update').submit(function(e){
+    e.preventDefault();
+    Swal.fire({
+        title: 'Please wait!',
+        onOpen: ()=>{
+            Swal.showLoading();
+            $.ajax({
+                async:true,
+                url: $(this).attr('action'),
+                type: 'put',
+                data: $(this).serialize(),
+                error: function(code, statusText, error){
+                    Swal.fire({
+                        title: code.responseText,
+                        text: 'Please try again later :)',
+                        type: 'error',
+                        confirmButtonClass: 'btn btn-primary btn-lg',
+                        buttonsStyling: false
+                    });
+                    console.log(code)
+                },
+                success: function(success){
+                    let type, text = [], str = '';
+                    $.each(success,function(status, responseStatus){
+                        $.each(this,function(key,value){
+                            type = status;
+                            text.push(value);
+                        })
+                    });
+                    $.map(text, function( n ) {
+                        return str += '<div>'+n+'</div>';
+                    }),
+                    Swal.fire({
+                        title: '<span style="text-transform:capitalize;">'+type+'!</span>',
+                        html: str,
+                        type: type,
+                        confirmButtonClass: 'btn btn-space btn-lg btn-primary hover',
+                        confirmButtonText: 'Ok',
+                        buttonsStyling: false,
+                        onClose: ()=>{
+                            refreshPage();
+                        }
+                    }); 
+
+                }
+            })
+        }
+    });
+
+    return false;
 });
 (function($) {
     "use strict";

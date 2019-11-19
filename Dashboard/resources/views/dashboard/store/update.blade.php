@@ -9,7 +9,7 @@
 @endsection
 
 @section('body')
-<form class="row" id="updateStore">
+<form class="row" id="update" action="{{route('updatestore', $store->id)}}">
 	@csrf
 	<div class="col-12 text-right">
 		<div class="form-group">
@@ -55,56 +55,5 @@
 
 <script type="text/javascript">
 	updateMeta('#updateMeta','{{$store->meta->path_url}}','{{$store->meta->meta_title}}','{{$store->meta->meta_description}}','{{$store->meta->meta_keyword}}','{{$store->meta->canonical}}','{{$store->meta->json_ld}}','{{$store->meta->noindex}}');
-	$('form#updateStore').submit(function(e){
-		e.preventDefault();
-		Swal.fire({
-			title: 'Please wait!',
-			onOpen: ()=>{
-				Swal.showLoading();
-				$.ajax({
-					async:true,
-					url: '{{route('updatestore', $store->id)}}',
-					type: 'put',
-                	data: $(this).serialize(),
-					error: function(code, statusText, error){
-						Swal.fire({
-							title: code.responseText,
-							text: 'Please try again later :)',
-							type: 'error',
-							confirmButtonClass: 'btn btn-primary btn-lg',
-							buttonsStyling: false
-						});
-						console.log(code)
-					},
-					success: function(success){
-						let type, text = [], str = '';
-						$.each(success,function(status, responseStatus){
-							$.each(this,function(key,value){
-								type = status;
-								text.push(value);
-							})
-						});
-						$.map(text, function( n ) {
-							return str += '<div>'+n+'</div>';
-						}),
-						Swal.fire({
-							title: '<span style="text-transform:capitalize;">'+type+'!</span>',
-							html: str,
-							type: type,
-							confirmButtonClass: 'btn btn-space btn-lg btn-primary hover',
-							confirmButtonText: 'Ok',
-							buttonsStyling: false,
-							onClose: ()=>{
-								refreshPage();
-							}
-						});	
-
-					}
-				})
-			}
-		});
-
-		return false;
-	});
 </script>
 @endsection

@@ -23,7 +23,7 @@
         items.forEach(function (item) {
           target_preview.append(
             // $('<img>').css('height', '5rem').attr('src', item.thumb_url)
-            $(target_preview).attr('src', item.url).attr('class','img-fluid mb-2')
+            $(target_preview).attr('src', item.url).attr('class','img-fluid mb-3')
           );
         });
 
