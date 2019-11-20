@@ -88,7 +88,7 @@ class TagController extends ApiController
     public function destroy(Tag $tag)
     {
         $tag->delete();
-        $store->deleteMorphResidual();
+        $tag->deleteMorphResidual();
         return $this->successResponse($tag->tagname.' has been deleted', 200);
     }
 }
