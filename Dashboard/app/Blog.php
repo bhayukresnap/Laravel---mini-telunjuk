@@ -12,7 +12,7 @@ class Blog extends Model
     protected $fillable = [
         'title','body','featuredImage','published_at'
     ];
-    protected $cascadeDeleteMorph = ['meta','tags','thumbnail'];
+    protected $cascadeDeleteMorph = ['meta','tags','image'];
     public function meta(){
     	return $this->morphOne('App\Meta', 'metaable');
     }
@@ -22,7 +22,7 @@ class Blog extends Model
         return $this->morphToMany(Tag::class, 'taggable');
     }
 
-    public function thumbnail(){
-        return $this->morphOne('App\Image', 'imageable');
+    public function image(){
+        return $this->morphOne('App\Thumbnail', 'imageable');
     }
 }

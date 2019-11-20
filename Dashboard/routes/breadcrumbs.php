@@ -21,6 +21,41 @@ Breadcrumbs::for('editstore', function ($trail, $store) {
     $trail->push($store->store_name, route('editstore', $store->id));
 });
 
+
+//Home > Brand
+Breadcrumbs::for('brands', function ($trail) {
+    $trail->parent('dashboard.index');
+    $trail->push('Brand', route('brands'));
+});
+
+Breadcrumbs::for('createbrand', function ($trail) {
+    $trail->parent('brands');
+    $trail->push('Create Brand', route('createbrand'));
+});
+
+Breadcrumbs::for('editbrand', function ($trail, $brand) {
+    $trail->parent('brands');
+    $trail->push($brand->brandName, route('editbrand', $brand->id));
+});
+
+//Home > Tag
+Breadcrumbs::for('tags', function ($trail) {
+    $trail->parent('dashboard.index');
+    $trail->push('Tag', route('tags'));
+});
+
+Breadcrumbs::for('createtag', function ($trail) {
+    $trail->parent('tags');
+    $trail->push('Create Tag', route('createtag'));
+});
+
+Breadcrumbs::for('edittag', function ($trail, $tag) {
+    $trail->parent('tags');
+    $trail->push($tag->tagname, route('edittag', $tag->id));
+});
+
+
+
 // Home > Blog
 Breadcrumbs::for('blog', function ($trail) {
     $trail->parent('home');

@@ -10,21 +10,15 @@
       window.open(route_prefix + '?type=' + type, 'FileManager', "width="+screen.availWidth+",height="+screen.availHeight);
       window.SetUrl = function (items) {
         var file_path = items.map(function (item) {
-          return item.url;
+          // set the value of the desired input to image url
+        target_input.val('').val(item.url).trigger('change');   
         }).join(',');
-
-        // set the value of the desired input to image url
-        target_input.val('').val(file_path).trigger('change');
-
         // clear previous preview
         target_preview.html('');
-
+        console.log(items)
         // set or change the preview image src
         items.forEach(function (item) {
-          target_preview.append(
-            // $('<img>').css('height', '5rem').attr('src', item.thumb_url)
-            $(target_preview).attr('src', item.url).attr('class','img-fluid mb-3')
-          );
+          $(target_preview).attr('src', item.url).attr('class','img-fluid mb-3')
         });
 
         // trigger change event

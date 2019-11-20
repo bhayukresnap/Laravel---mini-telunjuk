@@ -5,7 +5,7 @@ use App\Blog;
 use App\Tag;
 use App\CategoryLevel3;
 use App\Meta;
-use App\Image;
+use App\Thumbnail;
 use Validator;
 
 use Illuminate\Http\File;

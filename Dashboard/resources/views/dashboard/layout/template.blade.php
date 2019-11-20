@@ -182,17 +182,17 @@
 					</ul>
 				</li>		
 				<li>
-					<a href="{{url('/dashboard-panel/laravel-filemanager')}}"><i class="fa fa-image"></i> <span class="toggle-none">Images <span class="fa arrow"></span></span></a>
+					<a href="{{url('/dashboard-panel/laravel-filemanager?type=image')}}"><i class="fa fa-image"></i> <span class="toggle-none">Images <span class="fa arrow"></span></span></a>
 				</li>
 				<li>
 					<a href="#"><i class="icon-layers"></i> <span class="toggle-none">Categories <span class="fa arrow"></span></span></a>
 				</li>	
 				<li>
-					<a  href="#"><i class="fa fa-tags"></i> <span class="toggle-none">Tags <span class="fa arrow"></span></span></a>
+					<a  href="{{route('tags')}}"><i class="fa fa-tags"></i> <span class="toggle-none">Tags <span class="fa arrow"></span></span></a>
 				
 				</li>
 				<li>
-					<a href="#"><i class="icon-handbag"></i>Brands</a>
+					<a href="{{route('brands')}}"><i class="icon-handbag"></i>Brands</a>
 				</li>
 				<li>
 					<a href="{{route('stores')}}"><i class="icon-briefcase"></i>Store</a>

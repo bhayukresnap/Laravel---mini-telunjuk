@@ -1,0 +1,3 @@
+Javascript & CSS Cache using Laravel Mix
+
+Data is automatically cached for every 15 minutes

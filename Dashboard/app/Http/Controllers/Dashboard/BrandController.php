@@ -9,12 +9,10 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\ApiController;
 class BrandController extends ApiController
 {
-    public function view(){
-        return view('dashboard.brand.index');
-    }
     public function index()
     {
-        return $this->showAll(Brand::orderBy('brandName','asc')->get());
+        $brands = Brand::orderBy('id','asc')->paginate(25);
+        return view('dashboard.brand.index',compact(['brands']));
     }
 
     /**
@@ -24,6 +22,7 @@ class BrandController extends ApiController
      */
     public function create()
     {
+        return view('dashboard.brand.create');
     }
 
     /**
@@ -52,7 +51,7 @@ class BrandController extends ApiController
             $meta->json_ld = $req->json_ld;
             $meta->path_url = $req->path_url;
             $brand->meta()->save($meta);
-            return $this->successResponse('Your category has been saved!', 200);
+            return $this->successResponse('Your brand has been saved!', 200);
         }else{
             return $this->errorResponse($validator_brand->errors()->all(), 406);
         }
@@ -77,7 +76,7 @@ class BrandController extends ApiController
      */
     public function edit(Brand $brand)
     {
-        //
+        return view('dashboard.brand.update', ['brand'=>$brand]);
     }
 
     /**

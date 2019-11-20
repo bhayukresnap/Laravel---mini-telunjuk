@@ -23,14 +23,14 @@
 			</div>
 			<div class="card-body row">
 				<div class="col-6">
-					<img id="previewFeaturedImage" src="{{$store->thumbnail->featuredImage}}" class="img-fluid mb-2">
+					<img id="previewFeaturedImage" src="{{$store->image->original}}" class="img-fluid mb-2">
 					<div class="input-group">
 						<span class="input-group-btn">
-							<a data-input="thumbnail" data-preview="previewFeaturedImage" class="btn btn-primary form-control thumbnail_image">
+							<a data-input="originalPath" data-preview="previewFeaturedImage" data-thumbs="thumbnailPath" class="btn btn-primary form-control thumbnail_image">
 								<i class="fa fa-picture-o">&nbsp;</i> Choose
 							</a>
 						</span>
-						<input autocomplete="off" id="thumbnail" class="form-control thumbnail_path" required type="text" name="store_logo" readonly="readonly" value="{{$store->thumbnail->featuredImage}}">
+						<input autocomplete="off" id="originalPath" class="form-control" required type="text" name="original" readonly="readonly" value="{{$store->image->original}}">
 					</div>
 				</div>
 				<div class="col-6">
@@ -40,7 +40,7 @@
 					</div>
 					<div class="form-group">
 						<label>Alt img</label>
-						<input type="text" name="alt" class="form-control" required value="{{$store->thumbnail->alt}}">
+						<input type="text" name="alt" class="form-control" required value="{{$store->image->alt}}">
 					</div>
 				</div>
 			</div>

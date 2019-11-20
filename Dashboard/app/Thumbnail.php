@@ -4,12 +4,12 @@ namespace App;
 use App\Transformers\ImageTransformer;
 use Illuminate\Database\Eloquent\Model;
 
-class Image extends Model
+class Thumbnail extends Model
 {
-    protected $table = "images";
+    protected $table = "thumbnails";
     protected $primaryKey = "id";
     protected $fillable = [
-        'path', 'alt',
+        'original', 'alt',
     ];
 
     public function imageable(){

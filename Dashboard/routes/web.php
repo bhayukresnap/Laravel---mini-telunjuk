@@ -40,12 +40,14 @@ Route::prefix('/dashboard-panel')->group(function(){
 			'create'=>'createproduct',
 		]);
 
-		Route::resource('brand', 'Dashboard\BrandController')->except(['edit','create'])->names([
+		Route::resource('brands', 'Dashboard\BrandController')->names([
 			'index'=>'brands',
 			'store'=>'addbrand',
 			'update'=>'updatebrand',
 			'destroy'=>'deletebrand',
 			'show'=>'viewbrand',
+			'edit'=>'editbrand',
+			'create'=>'createbrand',
 		]);
 
 		Route::resource('stores', 'Dashboard\StoreController')->names([
@@ -59,14 +61,14 @@ Route::prefix('/dashboard-panel')->group(function(){
 		]);
 
 
-		Route::resource('tags', 'Dashboard\TagController')->except([
-			'edit','create'
-		])->names([
+		Route::resource('tags', 'Dashboard\TagController')->names([
 			'index'=>'tags',
 			'store'=>'addtag',
 			'update'=>'updatetag',
 			'destroy'=>'deletetag',
-			'show'=>'viewtag'
+			'show'=>'viewtag',
+			'edit'=>'edittag',
+			'create'=>'createtag',
 		]);
 
 		Route::resource('categorieslevel1', 'Dashboard\CategoryLevel1Controller')->except([

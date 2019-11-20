@@ -11,17 +11,17 @@ use App\Http\Controllers\ApiController;
 
 class TagController extends ApiController
 {
-    public function view(){
-        return view('dashboard.tags.index');
-    }
-
     public function index()
     {
-        // $tag = Tag::with('meta')->orderBy('id','desc')->get();
-        // return response()->json(['data'=>$tag,'code'=>200]);
-        $tag = Tag::all();
-        return $this->showAll($tag);
+        $tags = Tag::orderBy('id','asc')->paginate(25);
+        return view('dashboard.tag.index',compact(['tags']));
     }
+
+    public function create()
+    {
+        return view('dashboard.tag.create');
+    }
+
     public function store(Request $req)
     {
         $validator_tag = Validator::make($req->all(),[
@@ -43,7 +43,6 @@ class TagController extends ApiController
             $meta->path_url = $req->path_url;
             $tag->meta()->save($meta);
             return $this->successResponse('Your tag has been saved!', 200);
-            //return $this->successResponse('Your tag has been saved!', 200);
         }else{
             return $this->errorResponse($validator_tag->errors()->all(), 406);
         }
@@ -56,7 +55,7 @@ class TagController extends ApiController
 
     public function edit(Tag $tag)
     {
-        //
+       return view('dashboard.tag.update', ['tag'=>$tag]);
     }
 
     public function update(Request $req, Tag $tag)
