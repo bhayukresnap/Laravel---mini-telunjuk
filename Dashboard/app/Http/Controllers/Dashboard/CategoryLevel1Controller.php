@@ -11,19 +11,16 @@ use App\Http\Controllers\ApiController;
 class CategoryLevel1Controller extends ApiController
 {
   	
-	public function view(){
-		return view('dashboard.categories.index');
-	}
-
     public function index()
     {
-        $cat = CategoryLevel1::with('manylevel2.manylevel3')->get();
-        return $this->showAll($cat);
+        $cat = CategoryLevel1::orderBy('id','asc')->get();
+        return view('dashboard.category.index',['categories'=>$cat]);
     }
 
    
     public function create()
     {
+        return view('dashboard.category.create_level_1');
     }
     
     public function store(Request $req)
@@ -61,7 +58,7 @@ class CategoryLevel1Controller extends ApiController
     
     public function edit(CategoryLevel1 $categorieslevel1)
     {
-        //
+        return view('dashboard.category.update_level_1',['category'=>$categorieslevel1]);
     }
 
     

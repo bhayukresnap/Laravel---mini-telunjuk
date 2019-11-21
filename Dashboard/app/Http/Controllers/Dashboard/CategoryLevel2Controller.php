@@ -3,24 +3,17 @@
 namespace App\Http\Controllers\Dashboard;
 
 use Validator;
+use App\CategoryLevel1;
 use App\CategoryLevel2;
 use App\Meta;
 use Illuminate\Http\File;
 use Illuminate\Http\Request;
 use App\Http\Controllers\ApiController;
 class CategoryLevel2Controller extends ApiController
-{
-    
-    public function index()
-    {
-        $cat = CategoryLevel2::all();
-        return $this->showAll($cat);
-    }
-
-    
+{ 
     public function create()
     {
-        
+        return view('dashboard.category.create_level_2',['category_level_1'=> CategoryLevel1::all()]);
     }
 
     public function store(Request $req)
@@ -55,12 +48,11 @@ class CategoryLevel2Controller extends ApiController
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\CategoryLevel2  $categorieslevel2
-     * @return \Illuminate\Http\Response
-     */
+    public function edit(CategoryLevel2 $categorieslevel2)
+    {
+        return view('dashboard.category.update_level_2',['category'=>$categorieslevel2,'category_level_1'=> CategoryLevel1::all()]);
+    }
+
     public function show(CategoryLevel2 $categorieslevel2)
     {
         return $categorieslevel2->with('meta')->whereId($categorieslevel2->id)->get();

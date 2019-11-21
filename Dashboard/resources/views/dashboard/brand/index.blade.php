@@ -41,7 +41,7 @@
 							<td>{{$brand->meta->updated_at->diffForHumans()}}</td>
 							<td>
 								<a href="{{route('editbrand',$brand->id)}}" class="btn btn-sm btn-success"><i class="fa fa-edit"></i> Update</a>
-								<a href="#" class="btn btn-sm btn-danger btn-delete" data-list='{"name":"{{$brand->store_name}}", "id":"{{$brand->id}}","url":"{{route("deletebrand",":id")}}"}'><i class="fa fa-trash"></i> Delete</a>
+								<a href="#" class="btn btn-sm btn-danger btn-delete" data-list='{"name":"{{$brand->store_name}}", "url":"{{route("deletebrand",$brand->id)}}"}'><i class="fa fa-trash"></i> Delete</a>
 							</td>
 						</tr>
 						<?php $no++; ?>

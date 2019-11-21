@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use Validator;
+use App\CategoryLevel2;
 use App\CategoryLevel3;
 use App\Meta;
 use Illuminate\Http\File;
@@ -11,32 +12,11 @@ use App\Http\Controllers\ApiController;
 
 class CategoryLevel3Controller extends ApiController
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        return view('dashboard.category.create_level_3',['category_level_2'=> CategoryLevel2::all()]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $req)
     {
         $validator_cat = Validator::make($req->all(),[
@@ -68,36 +48,16 @@ class CategoryLevel3Controller extends ApiController
             return $this->errorResponse($validator_cat->errors()->all(), 406);
         }
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\CategoryLevel3  $categorieslevel3
-     * @return \Illuminate\Http\Response
-     */
     public function show(CategoryLevel3 $categorieslevel3)
     {
         return $categorieslevel3->with('meta')->whereId($categorieslevel3->id)->get();
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\CategoryLevel3  $categorieslevel3
-     * @return \Illuminate\Http\Response
-     */
     public function edit(CategoryLevel3 $categorieslevel3)
     {
-        //
+        return view('dashboard.category.update_level_3',['category'=>$categorieslevel3,'category_level_2'=> CategoryLevel2::all()]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\CategoryLevel3  $categorieslevel3
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $req, CategoryLevel3 $categorieslevel3)
     {
         $validator_cat = Validator::make($req->all(),[
@@ -126,12 +86,6 @@ class CategoryLevel3Controller extends ApiController
         }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\CategoryLevel3  $categorieslevel3
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(CategoryLevel3 $categorieslevel3)
     {
         $categorieslevel3->delete();

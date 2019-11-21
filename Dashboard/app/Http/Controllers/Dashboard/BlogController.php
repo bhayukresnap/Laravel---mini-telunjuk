@@ -21,7 +21,7 @@ class BlogController extends ApiController
      */
     public function index()
     {
-        $blogs = Blog::all();
+        $blogs = Blog::paginate(25);
         return view('dashboard.blog.index', compact('blogs'));
     }
 
@@ -32,7 +32,7 @@ class BlogController extends ApiController
      */
     public function create()
     {
-        return view('dashboard.blog.create',['tags'=>Tag::all()]);
+        return view('dashboard.blog.create',['tags'=>Tag::all(),'category'=>CategoryLevel3::all()]);
     }
 
     /**

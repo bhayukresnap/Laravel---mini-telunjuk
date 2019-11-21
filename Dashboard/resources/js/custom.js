@@ -60,6 +60,8 @@
         headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
     }); 
 
+    //form.js // global function for delete
+    deleteData('.btn-delete');
 })(jQuery);
 
 function createMeta(x){

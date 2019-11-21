@@ -42,7 +42,7 @@
 							<td>{{$tag->meta->updated_at->diffForHumans()}}</td>
 							<td>
 								<a href="{{route('edittag',$tag->id)}}" class="btn btn-sm btn-success"><i class="fa fa-edit"></i> Update</a>
-								<a href="#" class="btn btn-sm btn-danger btn-delete" data-list='{"name":"{{$tag->tagname}}", "id":"{{$tag->id}}","url":"{{route("deletetag",":id")}}"}'><i class="fa fa-trash"></i> Delete</a>
+								<a href="#" class="btn btn-sm btn-danger btn-delete" data-list='{"name":"{{$tag->tagname}}","url":"{{route("deletetag",$tag->id)}}"}'><i class="fa fa-trash"></i> Delete</a>
 							</td>
 						</tr>
 						<?php $no++; ?>

@@ -101,45 +101,45 @@ $('form#add').submit(function(e){
 });
 
 //Delete
-$('.btn-delete').on('click',function(){
-    const data = $(this).data('list');
-    data.url = data.url.replace(":id",data.id);
-    console.log(data)
-    Swal.fire({
-        title: 'Are you sure',
-        text: 'Do you want to delete '+data.name+'?',
-        type: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        cancelButtonText: 'Cancel',
-        confirmButtonText: 'Delete',
-        confirmButtonClass: 'btn btn-space btn-lg btn-success hover',
-        cancelButtonClass: 'btn btn-space btn-lg btn-danger hover',
-        buttonsStyling: false,
-        allowOutsideClick: false,
-        preConfirm: function() {
-            return new Promise(function(resolve) {
-                Swal.fire({
-                    title: 'Please wait!',
-                    onOpen: ()=>{
-                        Swal.showLoading();
-                        $.ajax({
-                            url: data.url,
-                            type: 'delete',
-                            error: function(code, statusText, error){
-                                ajaxError(code, statusText, error);
-                            },
-                            success: function(success){
-                                ajaxSuccess(success);
-                            },
-                        })
-                    }
-                })
-            });
-        },        
-    }); 
-});
+function deleteData(target){
+    $(target).on('click',function(){
+        const data = $(this).data('list');
+        Swal.fire({
+            title: 'Are you sure',
+            text: 'Do you want to delete '+data.name+'?',
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            cancelButtonText: 'Cancel',
+            confirmButtonText: 'Delete',
+            confirmButtonClass: 'btn btn-space btn-lg btn-success hover',
+            cancelButtonClass: 'btn btn-space btn-lg btn-danger hover',
+            buttonsStyling: false,
+            allowOutsideClick: false,
+            preConfirm: function() {
+                return new Promise(function(resolve) {
+                    Swal.fire({
+                        title: 'Please wait!',
+                        onOpen: ()=>{
+                            Swal.showLoading();
+                            $.ajax({
+                                url: data.url,
+                                type: 'delete',
+                                error: function(code, statusText, error){
+                                    ajaxError(code, statusText, error);
+                                },
+                                success: function(success){
+                                    ajaxSuccess(success);
+                                },
+                            })
+                        }
+                    })
+                });
+            },        
+        }); 
+    });
+}
 
 //Update
 $('form#update').submit(function(e){
@@ -227,6 +227,8 @@ $('form#update').submit(function(e){
         headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
     }); 
 
+    //form.js // global function for delete
+    deleteData('.btn-delete');
 })(jQuery);
 
 function createMeta(x){

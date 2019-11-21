@@ -71,33 +71,31 @@ Route::prefix('/dashboard-panel')->group(function(){
 			'create'=>'createtag',
 		]);
 
-		Route::resource('categorieslevel1', 'Dashboard\CategoryLevel1Controller')->except([
-			'edit','create'
-		])->names([
+		Route::resource('categorieslevel1', 'Dashboard\CategoryLevel1Controller')->names([
 			'index'=>'categorieslevel1',
 			'store'=>'addcategorieslevel1',
 			'update'=>'updatecategorieslevel1',
 			'destroy'=>'deletecategorieslevel1',
-			'show'=>'viewcategorieslevel1'
+			'show'=>'viewcategorieslevel1',
+			'edit'=>'editcategorieslevel1',
+			'create'=>'createcategorieslevel1',
 		]);
-		Route::resource('categorieslevel2', 'Dashboard\CategoryLevel2Controller')->except([
-			'edit','create'
-		])->names([
-			'index'=>'categorieslevel2',
+		Route::resource('categorieslevel2', 'Dashboard\CategoryLevel2Controller')->except(['index'])->names([
 			'store'=>'addcategorieslevel2',
 			'update'=>'updatecategorieslevel2',
 			'destroy'=>'deletecategorieslevel2',
-			'show'=>'viewcategorieslevel2'
+			'show'=>'viewcategorieslevel2',
+			'edit'=>'editcategorieslevel2',
+			'create'=>'createcategorieslevel2',
 		]);
 
-		Route::resource('categorieslevel3', 'Dashboard\CategoryLevel3Controller')->except([
-			'edit','create'
-		])->names([
-			'index'=>'categorieslevel3',
+		Route::resource('categorieslevel3', 'Dashboard\CategoryLevel3Controller')->except(['index'])->names([
 			'store'=>'addcategorieslevel3',
 			'update'=>'updatecategorieslevel3',
 			'destroy'=>'deletecategorieslevel3',
-			'show'=>'viewcategorieslevel3'
+			'show'=>'viewcategorieslevel3',
+			'edit'=>'editcategorieslevel3',
+			'create'=>'createcategorieslevel3',
 		]);
 
 		Route::get('/logout','Dashboard\IndexController@logout')->name('logout');

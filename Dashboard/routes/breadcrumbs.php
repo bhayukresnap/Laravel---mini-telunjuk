@@ -2,7 +2,7 @@
 
 // Home
 Breadcrumbs::for('dashboard.index', function ($trail) {
-    $trail->push('Home', route('dashboard.index'));
+    $trail->push('Dashboard', route('dashboard.index'));
 });
 
 //Home > Store
@@ -54,22 +54,34 @@ Breadcrumbs::for('edittag', function ($trail, $tag) {
     $trail->push($tag->tagname, route('edittag', $tag->id));
 });
 
-
-
-// Home > Blog
-Breadcrumbs::for('blog', function ($trail) {
-    $trail->parent('home');
-    $trail->push('Blog', route('blog'));
+//Home > Category
+Breadcrumbs::for('categories', function ($trail) {
+    $trail->parent('dashboard.index');
+    $trail->push('Categories', route('categorieslevel1'));
 });
 
-// Home > Blog > [Category]
-Breadcrumbs::for('category', function ($trail, $category) {
-    $trail->parent('blog');
-    $trail->push($category->title, route('category', $category->id));
+Breadcrumbs::for('createcategorieslevel1', function ($trail) {
+    $trail->parent('categories');
+    $trail->push('Create categories level 1', route('createcategorieslevel1'));
 });
 
-// Home > Blog > [Category] > [Post]
-Breadcrumbs::for('post', function ($trail, $post) {
-    $trail->parent('category', $post->category);
-    $trail->push($post->title, route('post', $post->id));
+Breadcrumbs::for('editcategorieslevel1', function ($trail, $category) {
+    $trail->parent('categories');
+    $trail->push($category->category_name, route('editcategorieslevel1', $category->id));
+});
+
+Breadcrumbs::for('editcategorieslevel2', function ($trail, $category) {
+    $trail->parent('editcategorieslevel1', $category->belongsLevel1);
+    $trail->push($category->category_name, route('editcategorieslevel2', $category->id));
+});
+
+Breadcrumbs::for('editcategorieslevel3', function ($trail, $level3breadcrumbs) {
+    $trail->parent('editcategorieslevel2', $level3breadcrumbs->belongsLevel2);
+    $trail->push($level3breadcrumbs->category_name, route('editcategorieslevel3', $level3breadcrumbs->id));
+});
+
+//Home > Blog
+Breadcrumbs::for('blogs', function ($trail) {
+    $trail->parent('dashboard.index');
+    $trail->push('Blog', route('blogs'));
 });

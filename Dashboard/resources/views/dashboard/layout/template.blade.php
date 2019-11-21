@@ -168,11 +168,7 @@
 			<ul id="respMenu" class="ace-responsive-menu" data-menu-style="horizontal">
 				<li><a href="{{route('dashboard.index')}}"><i class="fa fa-home"></i> Dashboard</a></li>						
 				<li>
-					<a  href="#"><i class="fa fa-book"></i> Blog</a>
-					<ul>
-						<li><a href="app-calendar.html">Create Blog</a></li>
-						<li><a href="app-chat.html">All Blogs</a></li>
-					</ul>
+					<a  href="{{route('blogs')}}"><i class="fa fa-book"></i> Blog</a>
 				</li>
 				<li>
 					<a  href="#"><i class="fa fa-inbox"></i>Product</a>
@@ -185,7 +181,7 @@
 					<a href="{{url('/dashboard-panel/laravel-filemanager?type=image')}}"><i class="fa fa-image"></i> <span class="toggle-none">Images <span class="fa arrow"></span></span></a>
 				</li>
 				<li>
-					<a href="#"><i class="icon-layers"></i> <span class="toggle-none">Categories <span class="fa arrow"></span></span></a>
+					<a href="{{route('categorieslevel1')}}"><i class="icon-layers"></i> <span class="toggle-none">Categories <span class="fa arrow"></span></span></a>
 				</li>	
 				<li>
 					<a  href="{{route('tags')}}"><i class="fa fa-tags"></i> <span class="toggle-none">Tags <span class="fa arrow"></span></span></a>

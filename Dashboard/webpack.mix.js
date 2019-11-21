@@ -2,7 +2,11 @@ const mix = require('laravel-mix');
 
 mix.styles([
     'resources/library/bootstrap/css/bootstrap.min.css',
-    'resources/library/sweet-alerts2/sweetalert2.min.css'
+    'resources/library/sweet-alerts2/sweetalert2.min.css',
+    'resources/library/js-tree/dist/themes/default/style.css',
+    'resources/library/jquery-multiselect/jquery.multiselect.css',
+    'resources/library/bootstrap-daterangepicker/daterangepicker.css',
+    'resources/library/summernote/summernote.css'
 ], 'public/assets/css/dashboard-library.css').version();
 
 mix.styles([
@@ -20,7 +24,12 @@ mix.scripts([
 	'resources/library/slimscroll/jquery.slimscroll.min.js',
 	'resources/library/nano-scroll/jquery.nanoscroller.min.js',
 	'resources/library/metisMenu/metisMenu.min.js',
-	'resources/library/sweet-alerts2/sweetalert2.min.js'
+	'resources/library/sweet-alerts2/sweetalert2.min.js',
+	'resources/library/js-tree/dist/jstree.min.js',
+	'resources/library/jquery-multiselect/jquery.multiselect.js',
+	'resources/library/bootstrap-daterangepicker/moment.js',
+	'resources/library/bootstrap-daterangepicker/daterangepicker.js',
+	'resources/library/summernote/summernote.js'
 ], 'public/assets/js/dashboard-library.js').version();
 
 mix.scripts([

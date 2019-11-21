@@ -46,7 +46,7 @@
 							<td>{{$store->meta->updated_at->diffForHumans()}}</td>
 							<td>
 								<a href="{{route('editstore',$store->id)}}" class="btn btn-sm btn-success"><i class="fa fa-edit"></i> Update</a>
-								<a href="#" class="btn btn-sm btn-danger btn-delete" data-list='{"name":"{{$store->store_name}}", "id":"{{$store->id}}","url":"{{route("deletestore",":id")}}"}'><i class="fa fa-trash"></i> Delete</a>
+								<a href="#" class="btn btn-sm btn-danger btn-delete" data-list='{"name":"{{$store->store_name}}","url":"{{route("deletestore",$store->id)}}"}'><i class="fa fa-trash"></i> Delete</a>
 							</td>
 						</tr>
 						<?php $no++; ?>

@@ -16,7 +16,7 @@ class CreateBlogsTable extends Migration
         Schema::create('blogs', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('title');
-            $table->date('published_at');
+            $table->dateTime('published_at');
             $table->timestamps();
         });
     }
