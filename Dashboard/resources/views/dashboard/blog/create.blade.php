@@ -17,7 +17,7 @@
 			<button type="submit" class="btn btn-primary">Save</button>
 		</div>
 	</div>
-	<div class="col-sm-7">
+	<div class="col-sm-8">
 		<div class="card">
 			<div class="card-header card-default">
 				Create blog
@@ -47,7 +47,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-5">
+	<div class="col-4">
 		<div class="card">
 			<div class="card-body">
 				<img id="previewFeaturedImage" src="/assets/img/noimg.jpg" class="img-fluid mb-2">
