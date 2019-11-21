@@ -32,7 +32,7 @@ class BlogController extends ApiController
      */
     public function create()
     {
-        return view('dashboard.blog.create',['tags'=>Tag::all(),'category'=>CategoryLevel3::all()]);
+        return view('dashboard.blog.create',['tags'=>Tag::all(),'categories'=>CategoryLevel3::all()]);
     }
 
     /**

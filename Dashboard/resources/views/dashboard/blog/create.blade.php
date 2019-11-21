@@ -68,6 +68,9 @@
 					<label>Category</label>
 					<select name="category" class="form-control" required>
 						<option disabled selected>--Select--</option>
+						@foreach($categories as $category)
+							<option value="{{$category->id}}">{{$category->category_name}}</option>
+						@endforeach
 					</select>
 				</div>
 				<div class="form-group">
