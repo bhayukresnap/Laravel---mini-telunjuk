@@ -3,7 +3,7 @@
 @section('breadcrumb')
 <div class="col-12 align-self-center">
 	<ol class="breadcrumb">
-		{{ Breadcrumbs::render('createblog') }}
+		{{ Breadcrumbs::render('editblog', $blog) }}
 	</ol>
 </div>
 @endsection

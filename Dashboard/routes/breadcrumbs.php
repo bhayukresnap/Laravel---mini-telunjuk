@@ -90,3 +90,8 @@ Breadcrumbs::for('createblog', function ($trail) {
     $trail->parent('blogs');
     $trail->push('Create blog', route('createblog'));
 });
+
+Breadcrumbs::for('editblog', function ($trail, $blog) {
+    $trail->parent('blogs');
+    $trail->push($blog->title, route('editblog', $blog->id));
+});
