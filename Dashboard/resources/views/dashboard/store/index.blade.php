@@ -39,7 +39,7 @@
 						<tr>
 							<td>{{$no}}</td>
 							<td>
-								<img src="{{$store->image->original}}" width="100px" alt="{{$store->image->alt}}">
+								<img src="{{$store->thumbnail->original}}" width="100px" alt="{{$store->thumbnail->alt}}">
 							</td>
 							<td>{{$store->store_name}}</td>
 							<td>{{$store->meta->created_at->diffForHumans()}}</td>

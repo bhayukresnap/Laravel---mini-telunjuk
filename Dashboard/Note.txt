@@ -1,3 +1,6 @@
 Javascript & CSS Cache using Laravel Mix
 
 Data is automatically cached for every 15 minutes
+
+Change timezone server on Laravel Folder - Done
+Change timezone server on Server - Not yet

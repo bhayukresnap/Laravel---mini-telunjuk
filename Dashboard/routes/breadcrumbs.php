@@ -85,3 +85,8 @@ Breadcrumbs::for('blogs', function ($trail) {
     $trail->parent('dashboard.index');
     $trail->push('Blog', route('blogs'));
 });
+
+Breadcrumbs::for('createblog', function ($trail) {
+    $trail->parent('blogs');
+    $trail->push('Create blog', route('createblog'));
+});

@@ -12,11 +12,11 @@ class Store extends Model
     protected $fillable = [
         'store_name'
     ];
-    protected $cascadeDeleteMorph = ['meta','image'];
+    protected $cascadeDeleteMorph = ['meta','thumbnail'];
     public function meta(){
     	return $this->morphOne('App\Meta', 'metaable');
     }
-    public function image(){
+    public function thumbnail(){
         return $this->morphOne('App\Thumbnail', 'imageable');
     }
 }

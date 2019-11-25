@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Dashboard;
 use App\Blog;
 use App\Tag;
-use App\CategoryLevel3;
 use App\Meta;
 use App\Thumbnail;
 use Validator;
@@ -32,7 +31,7 @@ class BlogController extends ApiController
      */
     public function create()
     {
-        return view('dashboard.blog.create',['tags'=>Tag::all(),'categories'=>CategoryLevel3::all()]);
+        return view('dashboard.blog.create',['tags'=>Tag::all()]);
     }
 
     /**
@@ -46,20 +45,27 @@ class BlogController extends ApiController
         $validator_blog = Validator::make($req->all(),[
             'title' => 'required|unique:blogs,title',
             'path_url'=>'required|unique:metas,path_url',
-            'featuredImage'=>'required',
+            'original'=>'required',
             'alt'=>'required',
+            'tag'=>'required',
             'body_html'=>'required',
             'published_at'=> 'required',
-
-        ]);
+        ],
+            [
+                'title.required'=>'Page title is required',
+                'body_html.required' =>'Body is required',
+                'original.required'=>'Thumbnail image is required',
+                'tag.required'=> 'Tag is required'
+            ]
+    );
         
         if($validator_blog->passes()){
             $blog = new Blog;
             $blog->title = $req->title;
             $blog->published_at = $req->published_at;
-            $thumbnail = new Image;
+            $thumbnail = new Thumbnail;
             $thumbnail->imageable_id = $blog->id;
-            $thumbnail->featuredImage = $req->featuredImage;
+            $thumbnail->original = $req->original;
             $thumbnail->alt = $req->alt;
             $meta = new Meta;
             $meta->metaable_id = $blog->id;
@@ -115,8 +121,9 @@ class BlogController extends ApiController
         $validator_blog = Validator::make($req->all(),[
             'title' => 'required|unique:blogs,title,'.$blog->id,
             'path_url'=>'required|unique:metas,path_url,'.$blog->meta->id,
-            'featuredImage'=>'required',
+            'original'=>'required',
             'alt'=>'required',
+            'tag'=>'required',
             'body_html'=>'required',
             'published_at'=> 'required',
 
@@ -130,7 +137,7 @@ class BlogController extends ApiController
 
             $blog->tags()->sync($req->tag);
             $blog->thumbnail()->update([
-                'featuredImage' => $req->featuredImage,
+                'original' => $req->original,
                 'alt'=> $req->alt,
             ]);
             $blog->meta()->update([
