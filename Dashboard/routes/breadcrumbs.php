@@ -5,7 +5,7 @@ Breadcrumbs::for('dashboard.index', function ($trail) {
     $trail->push('Dashboard', route('dashboard.index'));
 });
 
-//Home > Store
+//Dashboard > Store
 Breadcrumbs::for('stores', function ($trail) {
     $trail->parent('dashboard.index');
     $trail->push('Store', route('stores'));
@@ -22,7 +22,7 @@ Breadcrumbs::for('editstore', function ($trail, $store) {
 });
 
 
-//Home > Brand
+//Dashboard > Brand
 Breadcrumbs::for('brands', function ($trail) {
     $trail->parent('dashboard.index');
     $trail->push('Brand', route('brands'));
@@ -38,7 +38,7 @@ Breadcrumbs::for('editbrand', function ($trail, $brand) {
     $trail->push($brand->brandName, route('editbrand', $brand->id));
 });
 
-//Home > Tag
+//Dashboard > Tag
 Breadcrumbs::for('tags', function ($trail) {
     $trail->parent('dashboard.index');
     $trail->push('Tag', route('tags'));
@@ -54,7 +54,7 @@ Breadcrumbs::for('edittag', function ($trail, $tag) {
     $trail->push($tag->tagname, route('edittag', $tag->id));
 });
 
-//Home > Category
+//Dashboard > Category
 Breadcrumbs::for('categories', function ($trail) {
     $trail->parent('dashboard.index');
     $trail->push('Categories', route('categorieslevel1'));
@@ -80,10 +80,15 @@ Breadcrumbs::for('editcategorieslevel3', function ($trail, $level3breadcrumbs) {
     $trail->push($level3breadcrumbs->category_name, route('editcategorieslevel3', $level3breadcrumbs->id));
 });
 
-//Home > Blog
+//Dashboard > Blog
 Breadcrumbs::for('blogs', function ($trail) {
     $trail->parent('dashboard.index');
     $trail->push('Blog', route('blogs'));
+});
+
+Breadcrumbs::for('searchblog', function ($trail) {
+    $trail->parent('blogs');
+    $trail->push('Search blog', route('searchblog'));
 });
 
 Breadcrumbs::for('createblog', function ($trail) {
@@ -94,4 +99,15 @@ Breadcrumbs::for('createblog', function ($trail) {
 Breadcrumbs::for('editblog', function ($trail, $blog) {
     $trail->parent('blogs');
     $trail->push($blog->title, route('editblog', $blog->id));
+});
+
+//Dashboard > Product
+Breadcrumbs::for('products', function ($trail) {
+    $trail->parent('dashboard.index');
+    $trail->push('Product', route('products'));
+});
+
+Breadcrumbs::for('createproduct', function ($trail) {
+    $trail->parent('products');
+    $trail->push('Create Product', route('createproduct'));
 });

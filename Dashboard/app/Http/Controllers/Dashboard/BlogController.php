@@ -13,33 +13,34 @@ use App\Http\Controllers\ApiController;
 
 class BlogController extends ApiController
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         $blogs = Blog::paginate(25);
         return view('dashboard.blog.index', compact('blogs'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         return view('dashboard.blog.create',['tags'=>Tag::all()]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    public function search(Request $req){
+
+        $empty_result = view('dashboard.blog.search',['req'=>$req]);
+
+        if(empty($req->q)){
+            $req->q = '';
+            return $empty_result;
+        }
+        
+        $blogs = Blog::whereLike(['title', 'meta.path_url'], $req->q)->get();
+        if(count($blogs) == 0){
+            return $empty_result;
+        }
+
+        return view('dashboard.blog.search', ['blogs'=>$blogs, 'req'=>$req]);
+    }
     public function store(Request $req)
     {
         $validator_blog = Validator::make($req->all(),[

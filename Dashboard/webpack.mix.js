@@ -29,7 +29,8 @@ mix.scripts([
 	'resources/library/jquery-multiselect/jquery.multiselect.js',
 	'resources/library/bootstrap-daterangepicker/moment.js',
 	'resources/library/bootstrap-daterangepicker/daterangepicker.js',
-	'resources/library/summernote/summernote.js'
+	'resources/library/summernote/summernote.js',
+	'resources/library/accounting/accounting.min.js'
 ], 'public/assets/js/dashboard-library.js').version();
 
 mix.scripts([

@@ -53,15 +53,40 @@
     createMeta('#createMeta');
     $('input').attr('autocomplete','off');
     $('textarea').attr('autocomplete','off');
-    $( "input#path_url" ).on( "keyup", function(event) {
-        $(this).val(convertToSlug($(this).val()))
-    });
     $.ajaxSetup({
         headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
     }); 
 
     //form.js // global function for delete
     deleteData('.btn-delete');
+
+
+    $('#selectTag').multiselect({
+            columns  : 1,
+            search   : true,
+            selectAll: true,
+            texts    : {
+                placeholder: '--Select--',
+            }
+        });
+    $('.summernote').summernote({
+        height:'400px',
+        callbacks: {
+            onKeyup: function(e) {
+              $('input[name="body_html"]').val($(this).summernote('code'));
+            }
+          }
+    });
+    $('input[name="published_at"]').daterangepicker({
+        singleDatePicker: true,
+        showDropdowns: true,
+        timePicker: true,
+        timePicker24Hour:true,
+        locale: {
+            format: 'YYYY/MM/DD HH:mm:ss'
+          },
+    });
+    
 })(jQuery);
 
 function createMeta(x){
@@ -109,6 +134,9 @@ function createMeta(x){
         str +=      '</div>'
         str +=  '</div>'
         $(x).html(str);
+        $( "input#path_url" ).on( "keyup", function(event) {
+            $(this).val(convertToSlug($(this).val()))
+        });
     }
 
     function updateMeta(target,path_url,meta_title,meta_description,meta_keyword,canonical,json_ld,noindex){

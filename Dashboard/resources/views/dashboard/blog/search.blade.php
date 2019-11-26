@@ -3,37 +3,31 @@
 @section('breadcrumb')
 <div class="col-12 align-self-center">
 	<ol class="breadcrumb">
-		{{ Breadcrumbs::render('blogs') }}
+		{{ Breadcrumbs::render('searchblog') }}
 	</ol>
 </div>
 @endsection
 
 @section('body')
-<div class="row mb-2">
-	<div class="col-12">
-		<a href="{{route('createblog')}}" class="btn btn-sm btn-primary btn-round"><i class="fa fa-tags"></i> Add blog</a>
-	</div>
-</div>
 
-@if(count($blogs)>0)
+
 <div class="row">
 	<div class="col-sm-12">
 		<div class="card">
-			<div class="card-header card-default">
-				<h3>Blog</h3>
+			<div class="card-header card-default text-center">
+				<h1 style="text-transform: none;">You are searching for "{{$req->q}}"</h3>
 			</div>
 			<div class="card-body">
 				<div class="row">
 					<form class="col-6" method="get" action="{{route('searchblog')}}">
-						
 						<div class="form-group">
 							<label>Search</label>
-							<input type="text" name="q" class="form-control" placeholder="Title or Slug">
-							<small class="text-muted">A block of help text that breaks onto a new line and may extend beyond one line.</small>
+							<input type="text" name="q" class="form-control" placeholder="Title or Slug" value="{{$req->q}}">
 						</div>
 					</form>
 				</div>
 				<br>
+				@if(isset($blogs))
 				<table class="table">
 					<thead>
 						<tr>
@@ -66,11 +60,16 @@
 						<?php $no++; ?>
 						@endforeach
 					</tbody>
-				</table>
-				{{ $blogs->links() }}
+				</table>	
+				@else
+				<div class="col-12">
+					<h3 class="text-center"><b>Results not found!</b></h3>
+				</div>
+				@endif
 			</div>
 		</div>
 	</div>
+	
 </div>
-@endif
+
 @endsection

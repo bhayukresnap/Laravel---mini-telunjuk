@@ -20,6 +20,7 @@ Route::prefix('/dashboard-panel')->group(function(){
 		    \UniSharp\LaravelFilemanager\Lfm::routes();
 		});
 		Route::get('/','Dashboard\IndexController@index')->name('dashboard.index');
+		Route::get('/blogs/search', 'Dashboard\BlogController@search')->name('searchblog');
 		Route::resource('blogs', 'Dashboard\BlogController')->names([
 			'index'=>'blogs',
 			'store'=>'addblog',
@@ -28,7 +29,7 @@ Route::prefix('/dashboard-panel')->group(function(){
 			'show'=>'viewblog',
 			'edit'=>'editblog',
 			'create'=>'createblog',
-		]);
+		]);		
 
 		Route::resource('products', 'Dashboard\ProductController')->names([
 			'index'=>'products',

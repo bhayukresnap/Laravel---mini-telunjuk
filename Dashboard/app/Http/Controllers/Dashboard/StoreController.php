@@ -58,7 +58,7 @@ class StoreController extends ApiController
             $meta->path_url = $req->path_url;
             $store->save();
             $store->meta()->save($meta);
-            $store->image()->save($thumbnail);
+            $store->thumbnail()->save($thumbnail);
             //Cache::put('stores',$store,Carbon::now());
             return $this->successResponse('Your store has been saved!', 200);
         }else{
@@ -97,7 +97,7 @@ class StoreController extends ApiController
             $store->update([
                 'store_name' => $req->store_name,
             ]);
-            $store->image()->update([
+            $store->thumbnail()->update([
                 'original' => $req->original,
                 'alt'=> $req->alt,
             ]);

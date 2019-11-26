@@ -92,30 +92,6 @@
 	
 
 <script type="text/javascript">
-	$('#selectTag').multiselect({
-        	columns  : 1,
-		    search   : true,
-		    selectAll: true,
-		    texts    : {
-		        placeholder: '--Select--',
-		    }
-        });
-	$('.summernote').summernote({
-		height:'400px',
-		callbacks: {
-		    onKeyup: function(e) {
-		      $('input[name="body_html"]').val($(this).summernote('code'));
-		    }
-		  }
-	});
-	$('input[name="published_at"]').daterangepicker({
-		singleDatePicker: true,
-		showDropdowns: true,
-		timePicker: true,
-		timePicker24Hour:true,
-		locale: {
-		    format: 'YYYY/MM/DD HH:mm:ss'
-		  },
-	});
+	
 </script>
 @endsection
