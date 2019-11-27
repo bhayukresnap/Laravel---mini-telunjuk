@@ -24,7 +24,7 @@ class ProductController extends ApiController
 
     public function store(Request $req)
     {
-        return $req->file;
+        return $req->original;
     }
 
     public function show(Product $product)

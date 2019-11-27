@@ -9,11 +9,24 @@
 @endsection
 
 @section('body')
-<form class="row" id="add" action="{{route('addproduct')}}">
+<form class="row" method="post" action="{{route('addproduct')}}">
 	@csrf
 	<div class="col-12 text-right">
 		<div class="form-group">
 			<button type="submit" class="btn btn-primary">Save</button>
+		</div>
+	</div>
+	<div class="col-12">
+		<div class="card">
+			<div class="card-header card-default">
+				Image product
+			</div>
+			<div class="card-body row" id="imageProduct">
+
+			</div>
+			<div class="card-footer">
+				<button type="button" class="btn btn-outline-info" onclick="addImage()">Add image</button>
+			</div>
 		</div>
 	</div>
 	<div class="col-sm-8">
@@ -63,7 +76,7 @@
 	<div class="col-4">
 		<div class="card">
 			<div class="card-body">
-				
+
 				<div class="form-group">
 					<label>Brand</label>
 					<select name="brand" class="form-control">
@@ -91,10 +104,38 @@
 
 @section('script')
 <script type="text/javascript">
+	$('.currency').on('blur',function(){
+		$(this).val(accounting.formatMoney($(this).val(), 'Rp '))
+		$(this).siblings('input.final').val(accounting.unformat($(this).val()));
+	});
 
-$('.currency').on('blur',function(){
-	$(this).val(accounting.formatMoney($(this).val(), 'Rp '))
-	$(this).siblings('input.final').val(accounting.unformat($(this).val()));
-});
+	var image_count = 1;
+
+	function removeImage(index){
+		$('[data-index-image="'+index+'"]').remove();
+	}
+
+	function addImage(){
+		let str = '';
+		str +=	'<div class="col-6 col-md-3 mb-4" data-index-image="'+image_count+'">'
+		str +=		'<img id="previewFeaturedImage_'+image_count+'" src="/assets/img/noimg.jpg" class="img-fluid mb-2">'
+		str +=		'<div class="input-group">'
+		str +=			'<span class="input-group-btn">'
+		str +=			'<a data-input="originalPath_'+image_count+'" data-preview="previewFeaturedImage_'+image_count+'" data-thumbs="thumbnailPath_'+image_count+'" class="btn btn-primary form-control thumbnail_image">'
+		str +=					'<i class="fa fa-picture-o">&nbsp;</i> Choose'
+		str +=			'</a>'
+		str +=			'</span>'
+		str +=			'<input autocomplete="off" id="originalPath_'+image_count+'" class="form-control" required type="text" name="original[]" readonly="readonly">'
+		str +=		'</div>'
+		str +=		'<p class="text-danger" onclick="removeImage('+image_count+')"><i class="fa fa-close"></i>Remove</p>'
+		str +=	'</div>'
+		$('#imageProduct').append(str);
+		image_count++;
+		$('.thumbnail_image').filemanager('image');
+	}
+	$('input#path_url').attr('readonly','readonly');
+	$('input[name="product_name"], input[name="product_description"]').on( "keyup", function(event) {
+        $('input#path_url').val(convertToSlug(($('input[name="product_name"]').val() + ' ' + $('input[name="product_description"]').val())));
+    });
 </script>
 @endsection
