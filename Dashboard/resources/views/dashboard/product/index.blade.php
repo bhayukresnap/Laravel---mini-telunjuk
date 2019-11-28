@@ -14,15 +14,25 @@
 		<a href="{{route('createproduct')}}" class="btn btn-sm btn-primary btn-round"><i class="fa fa-tags"></i> Add product</a>
 	</div>
 </div>
-
-@if(count($products) > 0)
+@if(count($products)>0)
 <div class="row">
 	<div class="col-sm-12">
 		<div class="card">
 			<div class="card-header card-default">
-				<h3>Product</h3>
+				<h3>Blog</h3>
 			</div>
 			<div class="card-body">
+				<div class="row">
+					<form class="col-6" method="get" action="{{route('searchblog')}}">
+						
+						<div class="form-group">
+							<label>Search</label>
+							<input type="text" name="q" class="form-control" placeholder="Title or Slug">
+							<small class="text-muted">A block of help text that breaks onto a new line and may extend beyond one line.</small>
+						</div>
+					</form>
+				</div>
+				<br>
 				<table class="table">
 					<thead>
 						<tr>
@@ -31,7 +41,6 @@
 							<th>Title</th>
 							<th>Created at</th>
 							<th>Last Modified</th>
-							<th>Published at</th>
 							<th>Action</th>
 						</tr>
 					</thead>
@@ -41,12 +50,11 @@
 						<tr>
 							<td>{{$no}}</td>
 							<td>
-								<img src="{{$product->thumbnail->original}}" width="100px" alt="{{$product->thumbnail->alt}}">
+								<img src="{{$product->thumbnail->first()->original}}" width="100px" alt="{{$product->thumbnail->first()->alt}}">
 							</td>
-							<td>{{$product->title}}</td>
+							<td>{{$product->product_name}}</td>
 							<td>{{$product->meta->created_at->diffForHumans()}}</td>
 							<td>{{$product->meta->updated_at->diffForHumans()}}</td>
-							<td>{{$product->getPublishedTime($product->published_at)}}</td>
 							<td>
 								<a href="{{route('editblog',$product->id)}}" class="btn btn-sm btn-success"><i class="fa fa-edit"></i> Update</a>
 								<a href="#" class="btn btn-sm btn-danger btn-delete" data-list='{"name":"{{$product->title}}","url":"{{route("deleteblog",$product->id)}}"}'><i class="fa fa-trash"></i> Delete</a>
@@ -62,5 +70,4 @@
 	</div>
 </div>
 @endif
-
 @endsection

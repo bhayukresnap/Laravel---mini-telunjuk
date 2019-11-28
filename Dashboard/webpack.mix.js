@@ -30,7 +30,7 @@ mix.scripts([
 	'resources/library/bootstrap-daterangepicker/moment.js',
 	'resources/library/bootstrap-daterangepicker/daterangepicker.js',
 	'resources/library/summernote/summernote.js',
-	'resources/library/accounting/accounting.min.js'
+	'resources/library/numeral/numeral.min.js'
 ], 'public/assets/js/dashboard-library.js').version();
 
 mix.scripts([

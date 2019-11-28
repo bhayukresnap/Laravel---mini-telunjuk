@@ -19,4 +19,7 @@ class Store extends Model
     public function thumbnail(){
         return $this->morphOne('App\Thumbnail', 'imageable');
     }
+    public function products(){
+        return $this->belongsToMany(Product::class, 'store_products');
+    }
 }
