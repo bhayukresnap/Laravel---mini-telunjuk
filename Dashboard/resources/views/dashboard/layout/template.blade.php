@@ -189,6 +189,9 @@
 				<li>
 					<a href="{{route('stores')}}"><i class="icon-briefcase"></i>Store</a>
 				</li>
+				<li>
+					<a href="#"><i class="fa fa-money"></i>Promotion (Under Development)</a>
+				</li>
 			</ul>
 		</nav>
 	</div>
