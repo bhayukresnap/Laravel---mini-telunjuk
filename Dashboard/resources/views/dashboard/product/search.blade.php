@@ -3,35 +3,31 @@
 @section('breadcrumb')
 <div class="col-12 align-self-center">
 	<ol class="breadcrumb">
-		{{ Breadcrumbs::render('products') }}
+		{{ Breadcrumbs::render('searchproduct') }}
 	</ol>
 </div>
 @endsection
 
 @section('body')
-<div class="row mb-2">
-	<div class="col-12">
-		<a href="{{route('createproduct')}}" class="btn btn-sm btn-primary btn-round"><i class="fa fa-tags"></i> Add product</a>
-	</div>
-</div>
-@if(count($products)>0)
+
+
 <div class="row">
 	<div class="col-sm-12">
 		<div class="card">
-			<div class="card-header card-default">
-				<h3>Product</h3>
+			<div class="card-header card-default text-center">
+				<h1 style="text-transform: none;">You are searching for "{{$req->q}}"</h3>
 			</div>
 			<div class="card-body">
 				<div class="row">
 					<form class="col-6" method="get" action="{{route('searchproduct')}}">
 						<div class="form-group">
 							<label>Search</label>
-							<input type="text" name="q" class="form-control" placeholder="Product name">
-							<small class="text-muted">A block of help text that breaks onto a new line and may extend beyond one line.</small>
+							<input type="text" name="q" class="form-control" placeholder="Title or Slug" value="{{$req->q}}">
 						</div>
 					</form>
 				</div>
 				<br>
+				@if(isset($products))
 				<table class="table">
 					<thead>
 						<tr>
@@ -55,18 +51,23 @@
 							<td>{{$product->meta->created_at->diffForHumans()}}</td>
 							<td>{{$product->meta->updated_at->diffForHumans()}}</td>
 							<td>
-								<a href="{{route('editproduct',$product->id)}}" class="btn btn-sm btn-success"><i class="fa fa-edit"></i> Update</a>
-								<a href="#" class="btn btn-sm btn-danger btn-delete" data-list='{"name":"{{$product->product_name}}","url":"{{route("deleteproduct",$product->id)}}"}'><i class="fa fa-trash"></i> Delete</a>
+								<a href="{{route('editblog',$product->id)}}" class="btn btn-sm btn-success"><i class="fa fa-edit"></i> Update</a>
+								<a href="#" class="btn btn-sm btn-danger btn-delete" data-list='{"name":"{{$product->product_name}}","url":"{{route("deleteblog",$product->id)}}"}'><i class="fa fa-trash"></i> Delete</a>
 							</td>
 						</tr>
 						<?php $no++; ?>
 						@endforeach
 					</tbody>
-				</table>
-				{{ $products->links() }}
+				</table>	
+				@else
+				<div class="col-12">
+					<h3 class="text-center"><b>Results not found!</b></h3>
+				</div>
+				@endif
 			</div>
 		</div>
 	</div>
+	
 </div>
-@endif
+
 @endsection

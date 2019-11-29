@@ -87,6 +87,14 @@
           },
     });
     
+    $('.currency-dashboard').on('focusout',function(){
+        $(this).val(formatRupiah($(this).val(), 'Rp '));
+        $(this).siblings('input.final').val($(this).val().replace(/\D/g,''));
+    });
+    $( ".currency-dashboard" ).on( "copy cut paste drop", function() {
+        return false;
+    });
+
 })(jQuery);
 
 function createMeta(x){

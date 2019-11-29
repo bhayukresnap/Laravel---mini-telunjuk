@@ -111,3 +111,13 @@ Breadcrumbs::for('createproduct', function ($trail) {
     $trail->parent('products');
     $trail->push('Create Product', route('createproduct'));
 });
+
+Breadcrumbs::for('searchproduct', function ($trail) {
+    $trail->parent('products');
+    $trail->push('Search products', route('searchproduct'));
+});
+
+Breadcrumbs::for('editproduct', function ($trail, $product) {
+    $trail->parent('products');
+    $trail->push($product->product_name, route('editproduct', $product->id));
+});

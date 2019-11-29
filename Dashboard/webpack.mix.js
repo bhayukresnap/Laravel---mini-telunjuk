@@ -29,13 +29,13 @@ mix.scripts([
 	'resources/library/jquery-multiselect/jquery.multiselect.js',
 	'resources/library/bootstrap-daterangepicker/moment.js',
 	'resources/library/bootstrap-daterangepicker/daterangepicker.js',
-	'resources/library/summernote/summernote.js',
-	'resources/library/numeral/numeral.min.js'
+	'resources/library/summernote/summernote.js'
 ], 'public/assets/js/dashboard-library.js').version();
 
 mix.scripts([
 	'public/vendor/laravel-filemanager/js/stand-alone-button.js',
 	'resources/js/form.js',
-	'resources/js/custom.js',
+	'resources/js/currency.js',
+	'resources/js/custom-dashboard.js',
 ], 'public/assets/js/dashboard-custom.js').version();
 

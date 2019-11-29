@@ -30,7 +30,7 @@ Route::prefix('/dashboard-panel')->group(function(){
 			'edit'=>'editblog',
 			'create'=>'createblog',
 		]);		
-
+		Route::get('/products/search', 'Dashboard\ProductController@search')->name('searchproduct');
 		Route::resource('products', 'Dashboard\ProductController')->names([
 			'index'=>'products',
 			'store'=>'addproduct',
