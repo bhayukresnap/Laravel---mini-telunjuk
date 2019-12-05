@@ -32,4 +32,7 @@ class Product extends Model
         return $this->morphToMany(Tag::class, 'taggable');
     }
 
+    public function brand(){
+        return $this->belongsTo('App\Brand','brandId','id');
+    }
 }

@@ -1,6 +1,25 @@
 <?php
 
-// Home
+Breadcrumbs::for('home', function ($trail) {
+    $trail->push('Home', route('home'));
+});
+
+Breadcrumbs::for('main-brands', function ($trail) {
+    $trail->parent('home');
+    $trail->push('Brand', route('main-brands'));
+});
+
+
+
+
+
+
+
+
+
+
+
+// Dashboard
 Breadcrumbs::for('dashboard.index', function ($trail) {
     $trail->push('Dashboard', route('dashboard.index'));
 });

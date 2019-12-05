@@ -25,6 +25,7 @@
 					<thead>
 						<tr>
 							<th>#</th>
+							<th>Thumbnail</th>
 							<th>Brand</th>
 							<th>Created at</th>
 							<th>Last Modified</th>
@@ -36,6 +37,7 @@
 						@foreach($brands as $brand)
 						<tr>
 							<td>{{$no}}</td>
+							<td class="text-center"><img src="{{$brand->thumbnail->original}}" class="img-fluid" width="40"></td>
 							<td>{{$brand->brandName}}</td>
 							<td>{{$brand->meta->created_at->diffForHumans()}}</td>
 							<td>{{$brand->meta->updated_at->diffForHumans()}}</td>

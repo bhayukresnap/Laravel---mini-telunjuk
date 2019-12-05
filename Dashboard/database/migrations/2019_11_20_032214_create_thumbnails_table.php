@@ -15,7 +15,7 @@ class CreateThumbnailsTable extends Migration
     {
         Schema::create('thumbnails', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('original');
+            $table->string('original')->nullable();
             $table->string('alt')->nullable();
             $table->integer('imageable_id')->unsigned()->index();
             $table->string('imageable_type');

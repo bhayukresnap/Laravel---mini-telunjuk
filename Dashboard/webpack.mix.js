@@ -39,3 +39,50 @@ mix.scripts([
 	'resources/js/custom-dashboard.js',
 ], 'public/assets/js/dashboard-custom.js').version();
 
+mix.styles([
+	'resources/main/plugins/font-awesome/css/font-awesome.min.css',
+	'resources/main/plugins/ps-icon/style.css',
+	'resources/main/plugins/bootstrap/dist/css/bootstrap.min.css',
+    'resources/main/plugins/owl-carousel/assets/owl.carousel.css',
+    'resources/main/plugins/jquery-bar-rating/dist/themes/fontawesome-stars.css',
+    'resources/main/plugins/slick/slick/slick.css',
+    'resources/main/plugins/bootstrap-select/dist/css/bootstrap-select.min.css',
+    'resources/main/plugins/Magnific-Popup/dist/magnific-popup.css',
+    'resources/main/plugins/jquery-ui/jquery-ui.min.css',
+    'resources/main/plugins/revolution/css/settings.css',
+    'resources/main/plugins/revolution/css/layers.css',
+    'resources/main/plugins/revolution/css/navigation.css'
+], 'public/assets/css/main-library.css').version();
+
+mix.styles([
+    'resources/main/css/style.css'
+], 'public/assets/css/main.css').version();
+
+mix.scripts([
+	'resources/main/plugins/jquery/dist/jquery.min.js',
+    'resources/main/plugins/bootstrap/dist/js/bootstrap.min.js',
+    'resources/main/plugins/jquery-bar-rating/dist/jquery.barrating.min.js',
+    'resources/main/plugins/owl-carousel/owl.carousel.min.js',
+    'resources/main/plugins/imagesloaded.pkgd.js',
+    'resources/main/plugins/isotope.pkgd.min.js',
+    'resources/main/plugins/bootstrap-select/dist/js/bootstrap-select.min.js',
+    'resources/main/plugins/jquery.matchHeight-min.js',
+    'resources/main/plugins/slick/slick/slick.min.js',
+    'resources/main/plugins/elevatezoom/jquery.elevatezoom.js',
+    'resources/main/plugins/Magnific-Popup/dist/jquery.magnific-popup.min.js',
+    'resources/main/plugins/jquery-ui/jquery-ui.min.js',
+    'resources/main/plugins/revolution/js/jquery.themepunch.tools.min.js',
+	'resources/main/plugins/revolution/js/jquery.themepunch.revolution.min.js',
+	'resources/main/plugins/revolution/js/extensions/revolution.extension.video.min.js',
+	'resources/main/plugins/revolution/js/extensions/revolution.extension.slideanims.min.js',
+	'resources/main/plugins/revolution/js/extensions/revolution.extension.layeranimation.min.js',
+	'resources/main/plugins/revolution/js/extensions/revolution.extension.navigation.min.js',
+	'resources/main/plugins/revolution/js/extensions/revolution.extension.parallax.min.js',
+	'resources/main/plugins/revolution/js/extensions/revolution.extension.actions.min.js',
+	'resources/main/plugins/revolution/js/extensions/revolution.extension.kenburn.min.js',
+	'resources/main/plugins/revolution/js/extensions/revolution.extension.migration.min.js'
+], 'public/assets/js/main-library.js').version();
+
+mix.scripts([
+	'resources/main/js/main.js',
+], 'public/assets/js/main.js').version();

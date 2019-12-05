@@ -11,6 +11,12 @@
 |
 */
 
+Route::middleware(['guest'])->group(function(){
+	Route::get('/','HomeController@index')->name('home');
+	Route::get('/brands','BrandController@index')->name('main-brands');
+	Route::get('/brands/{slug}', 'BrandController@landingPage')->name('main-plpBrand');
+});
+
 
 Route::prefix('/dashboard-panel')->group(function(){
 	Auth::routes();

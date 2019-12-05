@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 use Validator;
 use App\Brand;
 use App\Meta;
+use App\Thumbnail;
 use Illuminate\Http\File;
 use Illuminate\Http\Request;
 use App\Http\Controllers\ApiController;
@@ -35,13 +36,27 @@ class BrandController extends ApiController
     {
         $validator_brand = Validator::make($req->all(),[
             'brandName' => 'required|unique:brands,brandName',
+            'original' => 'required',
             'path_url'=>'required|unique:metas,path_url'
-        ]);
+        ],[
+            'brandName.required' => 'Store name is required',
+            'brandName.unique' => 'This store name has already been taken',
+            'original.required'=> 'Store logo is required',
+            'path_url.required'=>'Slug is required',
+            'path_url.unique'=> 'This slug has already been taken'
+        ]
+    );
         if($validator_brand->passes()){
             $brand = new Brand;
             $brand->brandName = $req->brandName;
             $meta = new Meta;
             $brand->save();
+            $thumbnail = new Thumbnail;
+            $thumbnail->imageable_id = $brand->id;
+            $thumbnail->original = $req->original;
+            $thumbnail->alt = $req->alt;
+            $brand->thumbnail()->save($thumbnail);
+
             $meta->metaable_id = $brand->id;
             $meta->meta_title = $req->meta_title;
             $meta->meta_description = $req->meta_description;
@@ -96,7 +111,10 @@ class BrandController extends ApiController
             $brand->update([
                 'brandName' => $req->brandName,
             ]);
-
+            $brand->thumbnail()->update([
+                'original' => $req->original,
+                'alt'=> $req->alt,
+            ]);
             $brand->meta()->update([
                 'meta_title' => $req->meta_title,
                 'meta_description'=> $req->meta_description,

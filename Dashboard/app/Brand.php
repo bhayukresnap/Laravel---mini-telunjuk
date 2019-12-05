@@ -12,8 +12,16 @@ class Brand extends Model
     protected $fillable = [
         'brandName',
     ];
-    protected $cascadeDeleteMorph = ['meta'];
+    protected $cascadeDeleteMorph = ['meta','thumbnail'];
     public function meta(){
     	return $this->morphOne('App\Meta', 'metaable');
     }
+    public function thumbnail(){
+        return $this->morphOne('App\Thumbnail', 'imageable');
+    }
+
+    public function products(){
+        return $this->hasMany('App\Product', 'brandId');
+    }
+
 }
