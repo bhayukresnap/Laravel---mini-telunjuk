@@ -9,6 +9,11 @@ Breadcrumbs::for('main-brands', function ($trail) {
     $trail->push('Brand', route('main-brands'));
 });
 
+Breadcrumbs::for('main-plpBrand', function ($trail, $brand) {
+    $trail->parent('main-brands');
+    $trail->push($brand->first()->brandName, route('main-plpBrand', $brand->first()->meta->path_url));
+});
+
 
 
 

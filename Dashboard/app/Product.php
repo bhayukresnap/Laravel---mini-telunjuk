@@ -1,7 +1,6 @@
 <?php
 
 namespace App;
-
 use Illuminate\Database\Eloquent\Model;
 use Cesargb\Database\Support\CascadeDelete;
 class Product extends Model
@@ -16,11 +15,11 @@ class Product extends Model
     protected $cascadeDeleteMorph = ['meta','tags','thumbnail'];
 
     public function meta(){
-    	return $this->morphOne('App\Meta', 'metaable');
+        return $this->morphOne('App\Meta', 'metaable');
     }
 
     public function stores(){
-    	return $this->belongsToMany(Store::class, 'store_products')->withPivot('original_price', 'current_price', 'url_destination');
+        return $this->belongsToMany(Store::class, 'store_products')->withPivot('original_price', 'current_price', 'url_destination');
     }
 
     public function thumbnail(){
@@ -34,5 +33,19 @@ class Product extends Model
 
     public function brand(){
         return $this->belongsTo('App\Brand','brandId','id');
+    }
+
+    public function lowestPrice($value){
+        $price = collect($this->stores)->map(function($item){
+            return ($item);
+        })->sortBy('pivot.original_price')->first();
+
+        $data = collect([
+            'store'=> $price->store_name,
+            'PriceAfter'=>'Rp '.number_format($price->pivot->original_price,0,',','.'),
+            'current'=>'Rp '.number_format($price->pivot->current_price,0,',','.')
+        ]);
+
+        return $data->get($value);
     }
 }

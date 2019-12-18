@@ -2489,16 +2489,16 @@ textarea.form-control {
       color: #8d8d8d; }
       .ps-shoe .ps-shoe__categories > a:hover {
         color: #2AC37D; }
-  .ps-shoe .ps-shoe__price {
+  .ps-shoe .ps-shoe__price, .ps-shoe__price {
     display: inline-block;
-    position: absolute;
-    top: 5px;
-    right: 10px;
+    position: relative;
+    /*top: 5px;
+    right: 10px;*/
     font-family: "Archivo Narrow", sans-serif;
-    font-size: 20px;
+    font-size: 18px;
     color: #5b5b5b; }
-    .ps-shoe .ps-shoe__price del {
-      font-size: 16px;
+    .ps-shoe .ps-shoe__price del, .ps-shoe__price del {
+      font-size: 14px;
       color: #bcbcbc; }
   .ps-shoe .ps-shoe__favorite {
     position: absolute;

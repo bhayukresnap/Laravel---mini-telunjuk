@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Brand;
+use App\Product;
 use Illuminate\Http\Request;
 
 class BrandController extends Controller
@@ -14,12 +15,16 @@ class BrandController extends Controller
 
 
     public function landingPage($slug){
-    	$brand = Brand::whereHas('meta',function($q) use ($slug){
-        	$q->where('path_url', $slug);
-        })->with('thumbnail')->get();
+        
 
-    	
+        $brand = Brand::whereHas('meta',function($q) use ($slug){
+            $q->where('path_url', $slug);
+        })->get();
 
-        return view('main.brand.landing',['brand'=>$brand]); 
+       
+
+        $products = Product::where('brandId', $brand->first()->id)->paginate(28);
+        
+        return view('main.brand.landing',['brand'=>$brand, 'products'=>$products]); 
     }
 }

@@ -8,15 +8,14 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <link href="apple-touch-icon.png" rel="apple-touch-icon">
-    <link href="favicon.png" rel="icon">
+    <link href="/favicon.png" rel="icon">
     <meta name="author" content="Nghia Minh Luong">
     <meta name="keywords" content="Default Description">
     <meta name="description" content="Default keyword">
-    <title>Sky - Homepage</title>
     <link href="https://fonts.googleapis.com/css?family=Archivo+Narrow:300,400,700%7CMontserrat:300,400,500,600,700,800,900" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="{{mix('assets/css/main-library.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{mix('assets/css/main.css')}}">
-    <script type="text/javascript" src="{{mix('assets/js/main-library.js')}}"></script>
+    <link rel="stylesheet" type="text/css" href="{{mix('/assets/css/main-library.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{mix('/assets/css/main.css')}}">
+    <script type="text/javascript" src="{{mix('/assets/js/main-library.js')}}"></script>
 </head>
 <body class="ps-loading">
 	<div class="header--sidebar"></div>
@@ -24,7 +23,7 @@
       <nav class="navigation">
         <div class="container-fluid">
           <div class="navigation__column left">
-            <div class="header__logo"><a class="ps-logo" href="{{route('home')}}"><img src="assets/img/logo.png" alt=""></a></div>
+            <div class="header__logo"><a class="ps-logo" href="{{route('home')}}"><img src="/assets/img/logo.png" alt=""></a></div>
           </div>
           <div class="navigation__column center">
                 <ul class="main-menu menu">
@@ -151,13 +150,13 @@
           </div>
         </div>
       </div>
-      <div class="ps-footer bg--cover" data-background="assets/img/background/parallax.jpg">
+      <div class="ps-footer bg--cover" data-background="/assets/img/background/parallax.jpg">
         <div class="ps-footer__content">
           <div class="ps-container">
             <div class="row">
                   <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 ">
                     <aside class="ps-widget--footer ps-widget--info">
-                      <header><a class="ps-logo" href="{{route('home')}}"><img src="assets/img/logo-white.png" alt=""></a>
+                      <header><a class="ps-logo" href="{{route('home')}}"><img src="/assets/img/logo-white.png" alt=""></a>
                         <h3 class="ps-widget__title">Address Office 1</h3>
                       </header>
                       <footer>
@@ -251,6 +250,6 @@
     </main>
     
 
-    <script type="text/javascript" src="{{mix('assets/js/main.js')}}"></script>
+    <script type="text/javascript" src="{{mix('/assets/js/main.js')}}"></script>
 </body>
 </html>
