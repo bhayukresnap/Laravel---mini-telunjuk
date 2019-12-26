@@ -7,9 +7,9 @@ use App\Tag;
 use App\Meta;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
-use App\Http\Controllers\ApiController;
+use App\Http\Controllers\DashboardController;
 
-class TagController extends ApiController
+class TagController extends DashboardController
 {
     public function index()
     {

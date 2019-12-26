@@ -11,10 +11,10 @@
 |
 */
 
-Route::middleware(['guest'])->group(function(){
-	Route::get('/','HomeController@index')->name('home');
-	Route::get('/brands','BrandController@index')->name('main-brands');
-	Route::get('/brands/{slug}', 'BrandController@landingPage')->name('main-plpBrand');
+Route::prefix('/')->group(function(){
+	Route::get('/','Main\HomeController@index')->name('home');
+	Route::get('/brands','Main\BrandController@index')->name('main-brands');
+	Route::get('/brands/{slug}', 'Main\BrandController@landingPage')->name('main-plpBrand');
 });
 
 

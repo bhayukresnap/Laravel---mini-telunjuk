@@ -251,5 +251,6 @@
     
 
     <script type="text/javascript" src="{{mix('/assets/js/main.js')}}"></script>
+    @yield('script')
 </body>
 </html>

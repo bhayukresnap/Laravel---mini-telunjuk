@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Auth\Access\AuthorizationException;
 
-class ApiController extends Controller
+class DashboardController extends Controller
 {
     use ApiResponser;
 

@@ -42,10 +42,9 @@ class Product extends Model
 
         $data = collect([
             'store'=> $price->store_name,
-            'PriceAfter'=>'Rp '.number_format($price->pivot->original_price,0,',','.'),
-            'current'=>'Rp '.number_format($price->pivot->current_price,0,',','.')
+            'PriceAfter'=>'Rp '.\AppHelper::instance()->moneyCurrency($price->pivot->original_price),
+            'current'=>'Rp '.\AppHelper::instance()->moneyCurrency($price->pivot->current_price)
         ]);
-
         return $data->get($value);
     }
 }

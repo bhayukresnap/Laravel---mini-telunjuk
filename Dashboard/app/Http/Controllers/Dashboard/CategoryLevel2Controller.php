@@ -8,8 +8,8 @@ use App\CategoryLevel2;
 use App\Meta;
 use Illuminate\Http\File;
 use Illuminate\Http\Request;
-use App\Http\Controllers\ApiController;
-class CategoryLevel2Controller extends ApiController
+use App\Http\Controllers\DashboardController;
+class CategoryLevel2Controller extends DashboardController
 { 
     public function create()
     {

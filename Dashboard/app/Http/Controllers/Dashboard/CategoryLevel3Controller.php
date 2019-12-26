@@ -8,9 +8,9 @@ use App\CategoryLevel3;
 use App\Meta;
 use Illuminate\Http\File;
 use Illuminate\Http\Request;
-use App\Http\Controllers\ApiController;
+use App\Http\Controllers\DashboardController;
 
-class CategoryLevel3Controller extends ApiController
+class CategoryLevel3Controller extends DashboardController
 {
     public function create()
     {

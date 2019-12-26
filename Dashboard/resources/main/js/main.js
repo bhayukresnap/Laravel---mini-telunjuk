@@ -671,6 +671,42 @@
         });
     }
 
+    const filter_list = 
+    [
+        {
+            filter_name: 'Nama (A-Z)',
+            path:'name_asc'
+        },
+        {
+            filter_name: 'Nama (Z-A)',
+            path:'name_desc'
+        },
+        {
+            filter_name: 'Harga terendah',
+            path: 'price_asc'
+        },
+        {
+            filter_name: 'Harga tertinggi',
+            path: 'price_desc'
+        }
+    ]
+
+    function appendFilter(x){
+        let str = '';
+        str +=  '<option value="" selected disabled>Sort By</option>'
+        $(x).each(function(index,item){
+            if(document.URL.indexOf(item.path) > -1){
+                str +=  '<option value="?filter='+(item.path)+'" selected>'+item.filter_name+'</option>'    
+            }else{
+                str +=  '<option value="?filter='+(item.path)+'">'+item.filter_name+'</option>'
+            }
+            
+        });
+        $('#main-filter').html(str);
+        $('#main-filter').on('change',function(){
+            window.location.assign($(this).val());
+        });
+    }
     $(document).ready(function() {
         backgroundImage();
         parallax();
@@ -678,8 +714,9 @@
         menuBtnToggle();
         subMenuToggle();
         owlCarousel($('.owl-slider'));
+        appendFilter(filter_list);
         //mapConfig();
-        // setHeightProduct();
+        //setHeightProduct();
         navigateOwlCarousel();
         countDown();
         masonry();

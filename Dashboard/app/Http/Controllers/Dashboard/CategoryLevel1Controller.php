@@ -7,8 +7,8 @@ use App\CategoryLevel1;
 use App\Meta;
 use Illuminate\Http\File;
 use Illuminate\Http\Request;
-use App\Http\Controllers\ApiController;
-class CategoryLevel1Controller extends ApiController
+use App\Http\Controllers\DashboardController;
+class CategoryLevel1Controller extends DashboardController
 {
   	
     public function index()

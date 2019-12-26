@@ -7,8 +7,8 @@ use App\Meta;
 use App\Thumbnail;
 use Illuminate\Http\File;
 use Illuminate\Http\Request;
-use App\Http\Controllers\ApiController;
-class BrandController extends ApiController
+use App\Http\Controllers\DashboardController;
+class BrandController extends DashboardController
 {
     public function index()
     {

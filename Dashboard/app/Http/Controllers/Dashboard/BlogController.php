@@ -9,9 +9,9 @@ use Validator;
 
 use Illuminate\Http\File;
 use Illuminate\Http\Request;
-use App\Http\Controllers\ApiController;
+use App\Http\Controllers\DashboardController;
 
-class BlogController extends ApiController
+class BlogController extends DashboardController
 {
 
     public function index()

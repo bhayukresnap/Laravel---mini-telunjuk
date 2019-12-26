@@ -9,8 +9,8 @@ use App\Meta;
 use App\Thumbnail;
 use Illuminate\Http\File;
 use Illuminate\Http\Request;
-use App\Http\Controllers\ApiController;
-class StoreController extends ApiController
+use App\Http\Controllers\DashboardController;
+class StoreController extends DashboardController
 {
     public function index()
     {
