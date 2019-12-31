@@ -7,8 +7,6 @@
 </ol>
 @endsection
 
-
-
 @section('body')
 <h1 class="text-center">Brand</h1>
 <div class="ps-products-wrap pt-80 pb-80">

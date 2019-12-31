@@ -13,6 +13,9 @@
 
 Route::prefix('/')->group(function(){
 	Route::get('/','Main\HomeController@index')->name('home');
+	Route::get('kantal', function(){
+		return "OK";
+	});
 	Route::get('/brands','Main\BrandController@index')->name('main-brands');
 	Route::get('/brands/{slug}', 'Main\BrandController@landingPage')->name('main-plpBrand');
 });

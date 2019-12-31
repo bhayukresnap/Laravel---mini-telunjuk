@@ -65,14 +65,14 @@
 					@foreach($stores as $store)
 					@if(isset($product->stores()->where('store_id',$store->id)->first()->pivot))
 						<?php
-							$original_price = $product->stores()->where('store_id',$store->id)->first()->pivot->original_price;
-							$current_price = $product->stores()->where('store_id',$store->id)->first()->pivot->current_price;
+							$price_before = $product->stores()->where('store_id',$store->id)->first()->pivot->price_before;
+							$price_after = $product->stores()->where('store_id',$store->id)->first()->pivot->price_after;
 							$url_destination = $product->stores()->where('store_id',$store->id)->first()->pivot->url_destination;
 						?>
 					@else
 						<?php
-							$original_price = null;
-							$current_price = null;
+							$price_before = null;
+							$price_after = null;
 							$url_destination = null;
 						?>
 					@endif
@@ -82,15 +82,15 @@
 						<br>
 						<small class="text-muted">Do not copy and paste, just type manually ex: 1200000</small>
 						<div class="input-group mb-2">
-							<span class="input-group-addon">Original price</span>
-							<input type="text" class="form-control currency-dashboard" required value="{{$original_price}}">
-							<input type="hidden" name="original_price[]" readonly class="final" value="{{$original_price}}">
+							<span class="input-group-addon">Price before</span>
+							<input type="text" class="form-control currency-dashboard" value="{{$price_before}}">
+							<input type="hidden" name="price_before[]" readonly class="final" value="{{$price_before}}">
 						</div>
 						<small class="text-muted">Do not copy and paste, just type manually ex: 1200000</small>
 						<div class="input-group mb-2">
-							<span class="input-group-addon">Current price</span>
-							<input type="text" class="form-control currency-dashboard" value="{{$current_price}}">
-							<input type="hidden" name="current_price[]" readonly class="final" value="{{$current_price}}">
+							<span class="input-group-addon">Price after</span>
+							<input type="text" class="form-control currency-dashboard" required value="{{$price_after}}">
+							<input type="hidden" name="price_after[]" readonly class="final" value="{{$price_after}}">
 						</div>
 						<div class="input-group mb-2">
 							<span class="input-group-addon">URL Destination</span>

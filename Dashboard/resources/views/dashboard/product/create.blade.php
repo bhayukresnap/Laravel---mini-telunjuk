@@ -62,15 +62,15 @@
 						<br>
 						<small class="text-muted">Do not copy and paste, just type manually ex: 1200000</small>
 						<div class="input-group mb-2">
-							<span class="input-group-addon">Original price</span>
-							<input type="text" class="form-control currency-dashboard" required>
-							<input type="hidden" name="original_price[]" readonly class="final">
+							<span class="input-group-addon">Price before</span>
+							<input type="text" class="form-control currency-dashboard">
+							<input type="hidden" name="price_before[]" readonly class="final">
 						</div>
 						<small class="text-muted">Do not copy and paste, just type manually ex: 1200000</small>
 						<div class="input-group mb-2">
-							<span class="input-group-addon">Current price</span>
-							<input type="text" class="form-control currency-dashboard">
-							<input type="hidden" name="current_price[]" readonly class="final">
+							<span class="input-group-addon">Price after</span>
+							<input type="text" class="form-control currency-dashboard" required>
+							<input type="hidden" name="price_after[]" readonly class="final">
 						</div>
 						<div class="input-group mb-2">
 							<span class="input-group-addon">URL Destination</span>

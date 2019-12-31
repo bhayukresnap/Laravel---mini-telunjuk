@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers\Dashboard;
-
 use Validator;
 use App\CategoryLevel1;
 use App\Meta;
+use App\Thumbnail;
 use Illuminate\Http\File;
 use Illuminate\Http\Request;
 use App\Http\Controllers\DashboardController;
@@ -27,13 +27,27 @@ class CategoryLevel1Controller extends DashboardController
     {
         $validator_cat = Validator::make($req->all(),[
             'category_name' => 'required|unique:categories_level_1,category_name',
+            'original' => 'required',
             'path_url'=>'required|unique:metas,path_url'
+        ],
+        [
+            'category_name.required' => 'Category name is required',
+            'category_name.unique'=>'This category name has been taken',
+            'path_url.required'=>'Slug is required',
+            'original.required'=>'Image is required'
         ]);
         if($validator_cat->passes()){
             $cat = new CategoryLevel1;
             $cat->category_name = $req->category_name;
             $meta = new Meta;
             $cat->save();
+
+            $thumbnail = new Thumbnail;
+            $thumbnail->imageable_id = $cat->id;
+            $thumbnail->original = $req->original;
+            $thumbnail->alt = $req->alt;
+            $cat->thumbnail()->save($thumbnail);
+
             $meta->metaable_id = $cat->id;
             $meta->meta_title = $req->meta_title;
             $meta->meta_description = $req->meta_description;
@@ -66,13 +80,26 @@ class CategoryLevel1Controller extends DashboardController
     {
         $validator_cat = Validator::make($req->all(),[
             'category_name' => 'required|unique:categories_level_1,category_name,'. $categorieslevel1->id,
+            'original' => 'required',
             'path_url'=>'required|unique:metas,path_url,'. $categorieslevel1->meta->id
-        ]);
+        ],
+        [
+            'category_name.required' => 'Category name is required',
+            'category_name.unique'=>'This category name has been taken',
+            'path_url.required'=>'Slug is required',
+            'original.required'=>'Image is required'
+        ]
+    );
         if($validator_cat->passes()){
             $categorieslevel1->update([
                 'category_name' => $req->category_name,
             ]);
 
+            $categorieslevel1->thumbnail()->update([
+                'original' => $req->original,
+                'alt'=> $req->alt,
+            ]);
+            
             $categorieslevel1->meta()->update([
                 'meta_title' => $req->meta_title,
                 'meta_description'=> $req->meta_description,

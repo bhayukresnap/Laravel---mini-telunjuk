@@ -12,11 +12,13 @@ class CategoryLevel2 extends Model
     protected $fillable = [
         'category_name', 'categoryLvl1'
     ];
-    protected $cascadeDeleteMorph = ['meta'];
+    protected $cascadeDeleteMorph = ['meta','thumbnail'];
     public function meta(){
     	return $this->morphOne('App\Meta', 'metaable');
     }
-
+    public function thumbnail(){
+        return $this->morphOne('App\Thumbnail', 'imageable');
+    }
     public function belongslevel1(){
     	return $this->belongsTo('App\CategoryLevel1','categoryLvl1','id');
     }

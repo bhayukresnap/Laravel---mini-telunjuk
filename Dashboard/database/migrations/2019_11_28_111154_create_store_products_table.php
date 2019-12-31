@@ -16,8 +16,8 @@ class CreateStoreProductsTable extends Migration
         Schema::create('store_products', function (Blueprint $table) {
             $table->unsignedBigInteger('store_id')->index();
             $table->unsignedBigInteger('product_id')->index();
-            $table->BigInteger('original_price')->nullable();
-            $table->BigInteger('current_price')->nullable();
+            $table->BigInteger('price_before')->nullable();
+            $table->BigInteger('price_after')->nullable();
             $table->longText('url_destination')->nullable();
             $table->timestamps();
             $table->foreign('store_id')->references('id')->on('stores')->onDelete('cascade');

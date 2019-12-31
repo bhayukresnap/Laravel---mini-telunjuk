@@ -50,8 +50,8 @@ class ProductController extends DashboardController
             'product_name'=>'required|unique:products,product_name',
             'brand'=>'required',
             'category'=>'required',
-            'original_price.*' => 'required|numeric',
-            'current_price.*' => 'nullable|numeric'
+            'price_after.*' => 'required|numeric',
+            'price_before.*' => 'nullable|numeric'
         ],[
             'original.*.required'=> 'Please fill all image fields!',
             'product_name.required'=>'Please check the product name',
@@ -60,8 +60,8 @@ class ProductController extends DashboardController
             'category.required'=> 'Please select the category',
             'path_url.required'=>'Slug is required',
             'path_url.unique'=> 'This slug has already been taken',
-            'original_price.*.numeric' => 'Only number is allowed for Original price',
-            'current_price.*.numeric' => 'Only number is allowed for Current price',
+            'price_after.*.numeric' => 'Only number is allowed for Original price',
+            'price_before.*.numeric' => 'Only number is allowed for Current price',
         ]);
 
         if($validator_product->passes()){
@@ -80,7 +80,7 @@ class ProductController extends DashboardController
             $product_array = [];
             for($x = 0; $x<count($req->store); $x++){
                 $item = [
-                    $req->store[$x] => ['original_price'=>$req->original_price[$x], 'current_price'=>  $req->current_price[$x], 'url_destination' => $req->link_store[$x]]
+                    $req->store[$x] => ['price_after'=>$req->price_after[$x], 'price_before'=>  $req->price_before[$x], 'url_destination' => $req->link_store[$x]]
                 ];
                 $product_array += $item;
             }
@@ -120,8 +120,8 @@ class ProductController extends DashboardController
             'product_name'=>'required|unique:products,product_name,'.$product->id,
             'brand'=>'required',
             'category'=>'required',
-            'original_price.*' => 'required|numeric',
-            'current_price.*' => 'nullable|numeric'
+            'price_after.*' => 'required|numeric',
+            'price_before.*' => 'nullable|numeric'
         ],[
             'original.*.required'=> 'Please fill all image fields!',
             'product_name.required'=>'Please check the product name',
@@ -130,8 +130,8 @@ class ProductController extends DashboardController
             'category.required'=> 'Please select the category',
             'path_url.required'=>'Slug is required',
             'path_url.unique'=> 'This slug has already been taken',
-            'original_price.*.numeric' => 'Only number is allowed for Original price',
-            'current_price.*.numeric' => 'Only number is allowed for Current price',
+            'price_after.*.numeric' => 'Only number is allowed for Original price',
+            'price_before.*.numeric' => 'Only number is allowed for Current price',
         ]);
 
          if($validator_product->passes()){
@@ -154,7 +154,7 @@ class ProductController extends DashboardController
             $product_array = [];
             for($x = 0; $x<count($req->store); $x++){
                 $item = [
-                    $req->store[$x] => ['original_price'=>$req->original_price[$x], 'current_price'=>  $req->current_price[$x], 'url_destination' => $req->link_store[$x]]
+                    $req->store[$x] => ['price_after'=>$req->price_after[$x], 'price_before'=>  $req->price_before[$x], 'url_destination' => $req->link_store[$x]]
                 ];
                 $product_array += $item;
             }

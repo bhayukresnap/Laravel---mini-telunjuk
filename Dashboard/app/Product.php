@@ -19,7 +19,7 @@ class Product extends Model
     }
 
     public function stores(){
-        return $this->belongsToMany(Store::class, 'store_products')->withPivot('original_price', 'current_price', 'url_destination');
+        return $this->belongsToMany(Store::class, 'store_products')->withPivot('price_after', 'price_before', 'url_destination');
     }
 
     public function thumbnail(){
@@ -38,12 +38,12 @@ class Product extends Model
     public function lowestPrice($value){
         $price = collect($this->stores)->map(function($item){
             return ($item);
-        })->sortBy('pivot.original_price')->first();
+        })->sortBy('pivot.price_after')->first();
 
         $data = collect([
             'store'=> $price->store_name,
-            'PriceAfter'=>'Rp '.\AppHelper::instance()->moneyCurrency($price->pivot->original_price),
-            'current'=>'Rp '.\AppHelper::instance()->moneyCurrency($price->pivot->current_price)
+            'PriceAfter'=>'Rp '.\AppHelper::instance()->moneyCurrency($price->pivot->price_after),
+            'PriceBefore'=> $price->pivot->price_before ? 'Rp '.\AppHelper::instance()->moneyCurrency($price->pivot->price_before) : null
         ]);
         return $data->get($value);
     }
