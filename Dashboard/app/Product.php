@@ -30,7 +30,9 @@ class Product extends Model
     {
         return $this->morphToMany(Tag::class, 'taggable');
     }
-
+    public function parentProduct(){
+        return $this->belongsTo('App\CategoryLevel3','categoryId','id');
+    }
     public function brand(){
         return $this->belongsTo('App\Brand','brandId','id');
     }

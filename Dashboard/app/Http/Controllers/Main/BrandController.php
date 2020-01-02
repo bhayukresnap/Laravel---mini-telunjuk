@@ -41,11 +41,10 @@ class BrandController extends MainController
             $products = collect([])->paginate(28);
             $sort = Product::all()->map(function($product){
                 return $product->stores->map(function($value) use ($product){
-                    return $value;
+                    return $value->pivot;
                 })->sortBy('pivot.original_price')->first();
-            })->sortByDesc('pivot.original_price')->map(function($item) use ($products){
-                $products->push(Product::find($item->pivot->product_id));
             });
+            return $sort;
         }else{
             $products = Product::where('brandId', $parent->first()->id)->paginate(28);
         }

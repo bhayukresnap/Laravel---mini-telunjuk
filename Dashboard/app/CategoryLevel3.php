@@ -22,5 +22,7 @@ class CategoryLevel3 extends Model
     public function belongslevel2(){
         return $this->belongsTo('App\CategoryLevel2','categoryLvl2','id');
     }
-
+    public function products(){
+        return $this->hasMany('App\Product', 'categoryId');
+    }
 }

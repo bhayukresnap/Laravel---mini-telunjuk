@@ -9,16 +9,21 @@ Breadcrumbs::for('main-brands', function ($trail) {
     $trail->push('Brand', route('main-brands'));
 });
 
-Breadcrumbs::for('main-plpBrand', function ($trail, $brand) {
+Breadcrumbs::for('main-plpbrand', function ($trail, $brand) {
     $trail->parent('main-brands');
-    $trail->push($brand->first()->brandName, route('main-plpBrand', $brand->first()->meta->path_url));
+    $trail->push($brand->first()->brandName, route('main-plpbrand', $brand->first()->meta->path_url));
 });
 
 
+Breadcrumbs::for('main-level1', function($trail){
+    $trail->parent('home');
+    $trail->push('Products', route('main-level1'));
+});
 
-
-
-
+Breadcrumbs::for('main-plplevel1', function ($trail, $category) {
+    $trail->parent('main-level1');
+    $trail->push($category->first()->category_name, route('main-plplevel1', $category->first()->meta->path_url));
+});
 
 
 

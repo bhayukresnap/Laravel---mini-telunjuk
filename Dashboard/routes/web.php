@@ -13,11 +13,10 @@
 
 Route::prefix('/')->group(function(){
 	Route::get('/','Main\HomeController@index')->name('home');
-	Route::get('kantal', function(){
-		return "OK";
-	});
+	Route::get('/products/', 'Main\CategoryController@indexLevel1')->name('main-level1');
+	Route::get('/products/{slug}', 'Main\CategoryController@landingLevel1')->name('main-plplevel1');
 	Route::get('/brands','Main\BrandController@index')->name('main-brands');
-	Route::get('/brands/{slug}', 'Main\BrandController@landingPage')->name('main-plpBrand');
+	Route::get('/brands/{slug}', 'Main\BrandController@landingPage')->name('main-plpbrand');
 });
 
 

@@ -16,3 +16,15 @@ Homestead.yaml
 Homestead.json
 /.vagrant
 .phpunit.result.cache
+Dashboard/resources/views/main/product/index.blade.php
+Dashboard/resources/views/main/index.blade.php
+Dashboard/resources/views/main/brand/landing.blade.php
+Dashboard/resources/views/main/brand/index.blade.php
+Dashboard/resources/views/category_level1/index.blade.php/product/index.blade.php
+Dashboard/resources/views/category_level1/index.blade.php/index.blade.php
+Dashboard/resources/views/category_level1/index.blade.php/brand/landing.blade.php
+Dashboard/resources/views/category_level1/index.blade.php/brand/index.blade.php
+Dashboard/resources/views/main/product/index.blade.php
+Dashboard/resources/views/main/index.blade.php
+Dashboard/resources/views/main/brand/landing.blade.php
+Dashboard/resources/views/main/brand/index.blade.php

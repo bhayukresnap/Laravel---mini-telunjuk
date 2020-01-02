@@ -15,7 +15,7 @@
 			@foreach($brands as $brand)
 			<div class="ps-product__column">
 				<div class="mb-30">
-					<a class="ps-shoe__name" href="{{route('main-plpBrand',$brand->meta->path_url)}}">
+					<a class="ps-shoe__name" href="{{route('main-plpbrand',$brand->meta->path_url)}}">
 						<img src="{{$brand->thumbnail->original}}" alt="{{$brand->thumbnail->alt}}" width="50">
 						<div class="ps-shoe__detail pt-10">
 							{{$brand->brandName}}

@@ -19,7 +19,7 @@
 								{{$product->product_name}}
 							</div>
 							<div class="ps-shoe__categories">
-								<a href="{{route('main-plpBrand',$product->brand->meta->path_url)}}">
+								<a href="{{route('main-plpbrand',$product->brand->meta->path_url)}}">
 									{{$product->brand->brandName}}
 								</a>
 							</div>
