@@ -2493,7 +2493,7 @@ textarea.form-control {
       .ps-shoe .ps-shoe__categories > a:hover {
         color: #2AC37D; }
   .ps-shoe .ps-shoe__price, .ps-shoe__price {
-    display: inline-block;
+    display: block;
     position: relative;
     /*top: 5px;
     right: 10px;*/
@@ -5580,7 +5580,7 @@ textarea.form-control {
 
 .ps-product--detail .ps-product__content .tab-list {
   margin-bottom: 20px;
-  text-align: center;
+  text-align: left;
   border-bottom: 1px solid #e5e5e5; }
   .ps-product--detail .ps-product__content .tab-list li {
     display: inline-block;

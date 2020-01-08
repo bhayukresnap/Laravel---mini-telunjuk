@@ -13,8 +13,12 @@
 
 Route::prefix('/')->group(function(){
 	Route::get('/','Main\HomeController@index')->name('home');
-	Route::get('/products/', 'Main\CategoryController@indexLevel1')->name('main-level1');
-	Route::get('/products/{slug}', 'Main\CategoryController@landingLevel1')->name('main-plplevel1');
+	Route::get('/cat/', 'Main\CategoryController@indexLevel1')->name('main-allcategories');
+	Route::get('/cat/{slug}', 'Main\CategoryController@landingLevel1')->name('main-plplevel1');
+	Route::get('/cat/{slug_level1}/{slug_level2}', 'Main\CategoryController@landingLevel2')->name('main-plplevel2');
+	Route::get('/cat/{slug_level1}/{slug_level2}/{slug_level3}', 'Main\CategoryController@landingLevel3')->name('main-plplevel3');
+	Route::get('/products/', 'Main\ProductController@index')->name('main-allproducts');
+	Route::get('/products/{slug}', 'Main\ProductController@pip')->name('main-product');
 	Route::get('/brands','Main\BrandController@index')->name('main-brands');
 	Route::get('/brands/{slug}', 'Main\BrandController@landingPage')->name('main-plpbrand');
 });

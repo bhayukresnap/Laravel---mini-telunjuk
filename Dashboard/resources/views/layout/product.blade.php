@@ -12,7 +12,7 @@
 			@foreach($products as $product)
 			<div class="ps-product__column">
 				<div class="mb-30">
-					<a class="ps-shoe__name" href="#">
+					<a class="ps-shoe__name" href="{{route('main-product',$product->meta->path_url)}}">
 						<img class="img-responsive" src="{{$product->thumbnail->first()->original}}" alt="{{$product->thumbnail->first()->alt}}">
 						<div class="ps-shoe__detail pt-10">
 							<div class="product_title">
@@ -33,13 +33,15 @@
 							<p class="ps-shoe__price">
 								{{$product->lowestPrice('PriceAfter')}}
 							</p>
-							<p>
+							<img src="{{$product->lowestPrice('store_image')->original}}" style="width: 50%;">
+							{{-- <p>
 								Termurah: {{$product->lowestPrice('store')}}
-							</p>
+							</p> --}}
 						</div>
 					</a>
 				</div>
 			</div>
+
 			@endforeach
 		</div>
 	</div>

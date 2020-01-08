@@ -3,12 +3,12 @@
 
 @section('breadcrumb')
 <ol class="breadcrumb">
-	{{ Breadcrumbs::render('main-level1') }}
+	{{ Breadcrumbs::render('main-allcategories') }}
 </ol>
 @endsection
 
 @section('body')
-<h1 class="text-center">Products</h1>
+<h1 class="text-center">Categories</h1>
 <div class="ps-section ps-home-blog pt-80 pb-80">
 	<div class="ps-container">
 		<div class="ps-section__content">

@@ -44,6 +44,8 @@ class Product extends Model
 
         $data = collect([
             'store'=> $price->store_name,
+            'store_image'=>$price->thumbnail,
+            'url'=> $price->pivot->url_destination,
             'PriceAfter'=>'Rp '.\AppHelper::instance()->moneyCurrency($price->pivot->price_after),
             'PriceBefore'=> $price->pivot->price_before ? 'Rp '.\AppHelper::instance()->moneyCurrency($price->pivot->price_before) : null
         ]);

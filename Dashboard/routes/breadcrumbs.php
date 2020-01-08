@@ -14,20 +14,35 @@ Breadcrumbs::for('main-plpbrand', function ($trail, $brand) {
     $trail->push($brand->first()->brandName, route('main-plpbrand', $brand->first()->meta->path_url));
 });
 
-
-Breadcrumbs::for('main-level1', function($trail){
+Breadcrumbs::for('main-allcategories', function($trail){
     $trail->parent('home');
-    $trail->push('Products', route('main-level1'));
+    $trail->push('Category', route('main-allcategories'));
 });
 
 Breadcrumbs::for('main-plplevel1', function ($trail, $category) {
-    $trail->parent('main-level1');
+    $trail->parent('main-allcategories');
     $trail->push($category->first()->category_name, route('main-plplevel1', $category->first()->meta->path_url));
 });
 
+Breadcrumbs::for('main-plplevel2', function ($trail, $category, $level1) {
+    $trail->parent('main-plplevel1',$level1);
+    $trail->push($category->first()->category_name, route('main-plplevel2', ['slug_level1'=>$level1->first()->meta->path_url,'slug_level2'=>$category->first()->meta->path_url]));
+});
 
+Breadcrumbs::for('main-plplevel3', function ($trail, $category, $level1, $level2) {
+    $trail->parent('main-plplevel2',$level2,$level1);
+    $trail->push($category->first()->category_name, route('main-plplevel3', ['slug_level1'=>$level1->first()->meta->path_url,'slug_level2'=>$level2->first()->meta->path_url,'slug_level3'=>$category->first()->meta->path_url]));
+});
 
+Breadcrumbs::for('main-allproducts', function($trail){
+    $trail->parent('home');
+    $trail->push('Product', route('main-allproducts'));
+});
 
+Breadcrumbs::for('main-product', function ($trail, $product) {
+    $trail->parent('main-allproducts');
+    $trail->push($product->first()->product_name, route('main-product', $product->first()->meta->path_url));
+});
 
 // Dashboard
 Breadcrumbs::for('dashboard.index', function ($trail) {

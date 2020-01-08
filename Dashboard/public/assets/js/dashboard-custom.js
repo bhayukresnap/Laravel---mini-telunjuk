@@ -302,13 +302,14 @@ function formatRupiah(angka, prefix) {
             }
           },
          toolbar: [
-            ['style', ['bold', 'italic', 'underline', 'clear']],
-    ['font', ['strikethrough', 'superscript', 'subscript']],
-    ['fontsize', ['fontsize']],
-    ['color', ['color']],
-    ['para', ['ul', 'ol', 'paragraph']],
-    ['height', ['height']],
-            ['popovers', ['lfm']],
+         ['style', ['style']],
+         ['font', ['bold', 'underline', 'clear']],
+         ['fontname', ['fontname']],
+         ['color', ['color']],
+         ['para', ['ul', 'ol', 'paragraph']],
+         ['table', ['table']],
+         ['popovers', ['lfm']],
+         ['view', ['fullscreen', 'codeview', 'help']],         
           ],
           buttons: {
             lfm: LFMButton

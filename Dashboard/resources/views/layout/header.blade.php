@@ -6,13 +6,8 @@
       </div>
       <div class="navigation__column center">
         <ul class="main-menu menu">
-          <li class="menu-item menu-item-has-children dropdown"><a href="{{route('home')}}">Home</a>
-            <ul class="sub-menu">
-              <li class="menu-item"><a href="{{route('home')}}">Homepage #1</a></li>
-              <li class="menu-item"><a href="#">Homepage #2</a></li>
-              <li class="menu-item"><a href="#">Homepage #3</a></li>
-            </ul>
-          </li>
+          <li class="menu-item"><a href="{{route('main-allproducts')}}">Products</a></li>
+          <li class="menu-item"><a href="{{route('main-allcategories')}}">Categories</a></li>
           <li class="menu-item menu-item-has-children has-mega-menu"><a href="#">Men</a>
             <div class="mega-menu">
               <div class="mega-wrap">
@@ -75,25 +70,7 @@
               </div>
             </div>
           </li>
-          <li class="menu-item"><a href="#">Women</a></li>
-          <li class="menu-item"><a href="#">Kids</a></li>
-          <li class="menu-item menu-item-has-children dropdown"><a href="#">News</a>
-            <ul class="sub-menu">
-              <li class="menu-item menu-item-has-children dropdown"><a href="blog-grid.html">Blog-grid</a>
-                <ul class="sub-menu">
-                  <li class="menu-item"><a href="blog-grid.html">Blog Grid 1</a></li>
-                  <li class="menu-item"><a href="blog-grid-2.html">Blog Grid 2</a></li>
-                </ul>
-              </li>
-              <li class="menu-item"><a href="blog-list.html">Blog List</a></li>
-            </ul>
-          </li>
-          <li class="menu-item menu-item-has-children dropdown"><a href="#">Contact</a>
-            <ul class="sub-menu">
-              <li class="menu-item"><a href="contact-us.html">Contact Us #1</a></li>
-              <li class="menu-item"><a href="contact-us.html">Contact Us #2</a></li>
-            </ul>
-          </li>
+          <li class="menu-item"><a href="{{route('main-allproducts')}}">Blog</a></li>
         </ul>
       </div>
       <div class="navigation__column right">

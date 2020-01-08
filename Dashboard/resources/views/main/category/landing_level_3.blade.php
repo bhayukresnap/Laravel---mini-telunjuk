@@ -3,7 +3,7 @@
 
 @section('breadcrumb')
 <ol class="breadcrumb">
-	{{ Breadcrumbs::render('main-plplevel1', $parent)}}
+	{{ Breadcrumbs::render('main-plplevel3', $parent, $level1, $level2)}}
 </ol>
 @endsection
 
