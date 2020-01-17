@@ -260,6 +260,20 @@ function formatRupiah(angka, prefix) {
           },
     });
     
+    $('input[name="start_end_promotion"]').daterangepicker({
+        autoUpdateInput: false,
+        locale: {
+            cancelLabel: 'Clear'
+        }
+    }, function(start, end){
+        $('input[name="started_at"]').val(start.format('YYYY/MM/DD HH:mm:ss'));
+        $('input[name="ended_at"]').val(end.format('YYYY/MM/DD HH:mm:ss'));
+    }).on('apply.daterangepicker', function(ev, picker) {
+        $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
+    }).on('cancel.daterangepicker', function(ev, picker) {
+        $(this).val('');
+    });
+
     $('.currency-dashboard').on('focusout',function(){
         $(this).val(formatRupiah($(this).val(), 'Rp '));
         $(this).siblings('input.final').val($(this).val().replace(/\D/g,''));

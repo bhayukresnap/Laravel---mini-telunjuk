@@ -190,7 +190,7 @@
 					<a href="{{route('stores')}}"><i class="icon-briefcase"></i>Store</a>
 				</li>
 				<li>
-					<a href="#"><i class="fa fa-money"></i>Promotion (Under Development)</a>
+					<a href="{{route('promotions')}}"><i class="fa fa-money"></i>Promotion</a>
 				</li>
 			</ul>
 		</nav>

@@ -57,7 +57,7 @@
 							<td>{{$blog->title}}</td>
 							<td>{{$blog->meta->created_at->diffForHumans()}}</td>
 							<td>{{$blog->meta->updated_at->diffForHumans()}}</td>
-							<td>{{$blog->getPublishedTime($blog->published_at)}}</td>
+							<td>{{\AppHelper::instance()->getPublishedTime($blog->published_at)}}</td>
 							<td>
 								<a href="{{route('editblog',$blog->id)}}" class="btn btn-sm btn-success"><i class="fa fa-edit"></i> Update</a>
 								<a href="#" class="btn btn-sm btn-danger btn-delete" data-list='{"name":"{{$blog->title}}","url":"{{route("deleteblog",$blog->id)}}"}'><i class="fa fa-trash"></i> Delete</a>

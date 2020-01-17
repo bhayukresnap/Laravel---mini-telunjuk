@@ -21,6 +21,7 @@ Route::prefix('/')->group(function(){
 	Route::get('/products/{slug}', 'Main\ProductController@pip')->name('main-product');
 	Route::get('/brands','Main\BrandController@index')->name('main-brands');
 	Route::get('/brands/{slug}', 'Main\BrandController@landingPage')->name('main-plpbrand');
+	Route::get('/promo','Main\PromotionController@index')->name('main-promo');
 });
 
 
@@ -71,6 +72,16 @@ Route::prefix('/dashboard-panel')->group(function(){
 			'update'=>'updatestore',
 			'destroy'=>'deletestore',
 			'show'=>'viewstore',
+		]);
+
+		Route::resource('promotions', 'Dashboard\PromotionController')->names([
+			'index'=>'promotions',
+			'create'=>'createpromotion',
+			'store'=>'addpromotion',
+			'edit'=>'editpromotion',
+			'update'=>'updatepromotion',
+			'destroy'=>'deletepromotion',
+			'show'=>'viewpromotion',
 		]);
 
 

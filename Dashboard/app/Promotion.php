@@ -1,27 +1,25 @@
 <?php
 
 namespace App;
-use Illuminate\Database\Eloquent\Model;
 use Cesargb\Database\Support\CascadeDelete;
-class Blog extends Model
+use Illuminate\Database\Eloquent\Model;
+
+class Promotion extends Model
 {
     use CascadeDelete;
-    protected $table = "blogs";
+    protected $table = "promotions";
     protected $primaryKey = "id";
     protected $fillable = [
-        'title','body','featuredImage','published_at'
+        'title','started_at','ended_at','link'
     ];
-    protected $cascadeDeleteMorph = ['meta','tags','thumbnail'];
+    protected $cascadeDeleteMorph = ['meta','thumbnail'];
     public function meta(){
     	return $this->morphOne('App\Meta', 'metaable');
     }
-
-    public function tags()
-    {
-        return $this->morphToMany(Tag::class, 'taggable');
-    }
-
     public function thumbnail(){
         return $this->morphOne('App\Thumbnail', 'imageable');
+    }
+    public function belongStore(){
+        return $this->belongsTo('App\Store', 'store_id', 'id');
     }
 }

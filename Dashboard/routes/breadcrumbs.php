@@ -88,6 +88,21 @@ Breadcrumbs::for('tags', function ($trail) {
     $trail->push('Tag', route('tags'));
 });
 
+Breadcrumbs::for('promotions', function ($trail) {
+    $trail->parent('dashboard.index');
+    $trail->push('Promotion', route('promotions'));
+});
+
+Breadcrumbs::for('createpromotion', function ($trail) {
+    $trail->parent('promotions');
+    $trail->push('Create Promotion', route('createpromotion'));
+});
+
+Breadcrumbs::for('updatepromotion', function ($trail, $promotion) {
+    $trail->parent('promotions');
+    $trail->push($promotion->title, route('updatepromotion', $promotion->id));
+});
+
 Breadcrumbs::for('createtag', function ($trail) {
     $trail->parent('tags');
     $trail->push('Create Tag', route('createtag'));
