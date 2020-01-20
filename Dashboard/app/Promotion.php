@@ -10,7 +10,7 @@ class Promotion extends Model
     protected $table = "promotions";
     protected $primaryKey = "id";
     protected $fillable = [
-        'title','started_at','ended_at','link'
+        'title','started_at','ended_at','link','store_id'
     ];
     protected $cascadeDeleteMorph = ['meta','thumbnail'];
     public function meta(){

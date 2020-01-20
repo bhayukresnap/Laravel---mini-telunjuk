@@ -22,6 +22,11 @@ Route::prefix('/')->group(function(){
 	Route::get('/brands','Main\BrandController@index')->name('main-brands');
 	Route::get('/brands/{slug}', 'Main\BrandController@landingPage')->name('main-plpbrand');
 	Route::get('/promo','Main\PromotionController@index')->name('main-promo');
+	Route::get('/blog','Main\BlogController@index')->name('main-blogs');
+	Route::get('/blog/{slug}', 'Main\BlogController@blogpost')->name('main-blogpost');
+	Route::get('/tag','Main\TagController@index')->name('main-tags');
+	Route::get('/tag/{slug}','Main\TagController@tagpost')->name('main-tagpost');
+	Route::get('/search','Main\ProductController@search')->name('main-search');
 });
 
 

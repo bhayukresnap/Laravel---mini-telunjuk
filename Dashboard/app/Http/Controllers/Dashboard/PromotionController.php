@@ -156,6 +156,7 @@ class PromotionController extends DashboardController
                 'started_at' => $req->started_at,
                 'ended_at' => $req->ended_at,
                 'link'=>$req->link,
+                'store_id'=>$req->store_id,
             ]);
             $promotion->thumbnail()->update([
                 'original' => $req->original,

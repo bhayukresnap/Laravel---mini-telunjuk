@@ -19,11 +19,11 @@ class Tag extends Model
 
     public function blogs()
     {
-        return $this->morphedByMany(Blog::class, 'taggable');
+        return $this->morphedByMany(\App\Blog::class, 'taggable');
     }
 
     public function products()
     {
-        return $this->morphedByMany(Product::class, 'taggable');
+        return $this->morphedByMany(\App\Product::class, 'taggable');
     }
 }

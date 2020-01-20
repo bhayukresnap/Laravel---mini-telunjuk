@@ -21,13 +21,15 @@
 </head>
 <body class="ps-loading">
 	<div class="header--sidebar"></div>
-    @includeIf('layout.header')
-    <div class="header-services">
-      @yield('breadcrumb')
+    @includeIf('includes.header')
+    <div class="header-services hidden-xs hidden-sm">
+        <ol class="breadcrumb">
+            @yield('breadcrumb')
+        </ol>    
     </div>
     <main class="ps-main">
     	@yield('body')
-      @includeIf('layout.footer')
+      @includeIf('includes.footer')
     </main>
     <script type="text/javascript" src="{{mix('/assets/js/main.js')}}"></script>
     @yield('script')

@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Main;
 use App\Promotion;
 use Carbon\Carbon;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\MainController;
 use Illuminate\Http\Request;
 
-class PromotionController extends Controller
+class PromotionController extends MainController
 {
     public function index(){
     	$current = Carbon::now();

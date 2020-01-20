@@ -16,10 +16,6 @@ class BrandController extends MainController
         
         $parent = $this->getSlug('\App\Brand',$slug);
         
-        if(count($parent) <= 0){
-            return abort(404);
-        }
-
         $collection =\App\Product::where('brandId', $parent->first()->id);
 
         if($request->filter == 'name_asc'){

@@ -691,14 +691,37 @@
         }
     ]
 
+    function addParameterToURL(param){
+        var _url = location.href;
+        _url += (_url.split('?')[1] ? '&':'?') + param;
+        return _url;
+    }
+
+    var addOrReplaceParam = function(url, param, value) {
+        param = encodeURIComponent(param);
+        var r = "([&?]|&amp;)" + param + "\\b(?:=(?:[^&#]*))*";
+        var a = document.createElement('a');
+        var regex = new RegExp(r);
+        var str = param + (value ? "=" + encodeURIComponent(value) : ""); 
+        a.href = url;
+        var q = a.search.replace(regex, "$1"+str);
+        if (q === a.search) {
+            a.search += (a.search ? "&" : "") + str;
+        } else {
+            a.search = q;
+        }
+        return a.href;
+    }
+
+
     function appendFilter(x){
         let str = '';
         str +=  '<option value="" selected disabled>Sort By</option>'
         $(x).each(function(index,item){
             if(document.URL.indexOf(item.path) > -1){
-                str +=  '<option value="?filter='+(item.path)+'" selected>'+item.filter_name+'</option>'    
+                str +=  '<option value="'+addOrReplaceParam(document.URL, "filter", item.path)+'" selected>'+item.filter_name+'</option>'    
             }else{
-                str +=  '<option value="?filter='+(item.path)+'">'+item.filter_name+'</option>'
+                str +=  '<option value="'+addOrReplaceParam(document.URL, "filter", item.path)+'">'+item.filter_name+'</option>'
             }
             
         });

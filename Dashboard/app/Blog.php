@@ -18,7 +18,7 @@ class Blog extends Model
 
     public function tags()
     {
-        return $this->morphToMany(Tag::class, 'taggable');
+        return $this->morphToMany(\App\Tag::class, 'taggable')->withPivot('tag_id');
     }
 
     public function thumbnail(){

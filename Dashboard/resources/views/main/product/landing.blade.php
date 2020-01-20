@@ -2,9 +2,7 @@
 
 
 @section('breadcrumb')
-<ol class="breadcrumb">
-	{{ Breadcrumbs::render('main-product',$product) }}
-</ol>
+{{ Breadcrumbs::render('main-product',$product) }}
 @endsection
 
 @section('body')
@@ -128,6 +126,4 @@
           </div>
         </div>
       </div>
-}
-}
 @endsection

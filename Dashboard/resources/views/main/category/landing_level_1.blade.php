@@ -2,10 +2,7 @@
 
 
 @section('breadcrumb')
-<ol class="breadcrumb">
-	{{ Breadcrumbs::render('main-plplevel1', $parent)}}
-</ol>
-
+{{ Breadcrumbs::render('main-plplevel1', $parent)}}
 @endsection
 
 @section('body')
@@ -36,5 +33,5 @@
 			</div>
 		</div>
 	@endif
-	@includeIf('layout.product')
+	@includeIf('includes.product')
 @endsection

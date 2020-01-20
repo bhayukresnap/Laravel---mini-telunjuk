@@ -44,6 +44,37 @@ Breadcrumbs::for('main-product', function ($trail, $product) {
     $trail->push($product->first()->product_name, route('main-product', $product->first()->meta->path_url));
 });
 
+Breadcrumbs::for('main-promo', function ($trail) {
+    $trail->parent('home');
+    $trail->push('Promo', route('main-promo'));
+});
+
+Breadcrumbs::for('main-blogs', function ($trail) {
+    $trail->parent('home');
+    $trail->push('Blog', route('main-blogs'));
+});
+
+Breadcrumbs::for('main-blogpost', function ($trail, $blog) {
+    $trail->parent('main-blogs');
+    $trail->push($blog->title, route('main-blogpost',$blog->meta->path_url));
+});
+
+Breadcrumbs::for('main-tags', function ($trail) {
+    $trail->parent('home');
+    $trail->push('Tag', route('main-tags'));
+});
+
+Breadcrumbs::for('main-tagpost', function ($trail, $tag) {
+    $trail->parent('main-tags');
+    $trail->push($tag->tagname, route('main-tagpost',$tag->meta->path_url));
+});
+
+Breadcrumbs::for('main-search', function ($trail) {
+    $trail->parent('home');
+    $trail->push('Search', route('main-search'));
+});
+
+
 // Dashboard
 Breadcrumbs::for('dashboard.index', function ($trail) {
     $trail->push('Dashboard', route('dashboard.index'));

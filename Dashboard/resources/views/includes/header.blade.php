@@ -74,8 +74,8 @@
         </ul>
       </div>
       <div class="navigation__column right">
-        <form class="ps-search--header" action="do_action" method="post">
-          <input class="form-control" type="text" placeholder="Search Product…">
+        <form class="ps-search--header" method="get" action="{{route('main-search')}}">
+          <input class="form-control" name="q" type="text" placeholder="Search Product…" autocomplete="off">
           <button><i class="ps-icon-search"></i></button>
         </form>
         <div class="menu-toggle"><span></span></div>

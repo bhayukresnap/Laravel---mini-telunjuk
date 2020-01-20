@@ -1,4 +1,4 @@
-@if(count($products) > 0)
+@if(isset($products))
 <div class="ps-products-wrap">
 	<div class="ps-product-action">
 		<div class="ps-product__filter">
@@ -49,4 +49,6 @@
 		{{$products->appends(request()->input())->links('vendor.pagination.skytheme-filter')}}
 	</div>
 </div>
+@else
+	<h3 class="text-center pb-50"><b>Results not found!</b></h3>
 @endif
